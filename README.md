@@ -1,2 +1,1 @@
-# recordings
-Music catalog database
+Music database catalog

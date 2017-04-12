@@ -1,0 +1,386 @@
+/*!
+ * Custom attributes override
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+body {
+	padding-top: 54px;
+}
+
+h4.titlu {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+}
+
+.input-xxxlarge {
+  width: 676px;
+}
+
+.input-select-xxxlarge {
+  width: 689px;
+}
+
+.input-premedium {
+  width: 138px;
+}
+
+
+.dropdown-menu li > a {
+  color: #333333;
+}
+
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.span6 h3 {
+	font-family: "Trebuchet MS", "Times New Roman", Tahoma, Arial;
+	font-weight: bold;
+	color: #606060;
+	margin: 0px 0px 10px 0px;
+}
+
+#footer {
+	clear: both;
+	width: 100%;
+	background-color: #696969;
+	border-top: 3px solid #555;
+	height: 60px;
+	position: fixed;
+	bottom: 0;
+}
+
+#footer .links {
+	margin: 5px auto;
+	text-align: center;
+}
+
+#footer .links a{
+	font-family: Calibri, Tahoma, Arial;
+	font-size: 18px;
+	color: white;
+}
+
+#footer .links a:hover {
+	color: #ddd;
+	text-decoration: none;
+}
+
+#footer .copyright {
+	font-family: "Arial Narrow", Calibri, Arial, Helvetica;
+	font-size: 14px;
+	color: white;
+	text-align: center;
+}
+
+.grupbox {
+	background-color: #e8e8e8; 
+	border: 1px solid #ccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding: 10px 15px 10px 15px;
+
+}
+
+.grup {
+	text-align: left;
+	padding: 0px 10px 0px 0px;
+	display: inline-block;
+}
+
+.grup label {
+	vertical-align: bottom;
+}
+
+.input-x-mediumlarge {
+	width: 490px;
+}
+
+.input-medium-plus {
+	width: 160px;
+}
+
+.necompletat label
+{
+	color: red;
+}
+
+.cauta {
+	clear: both;
+}
+
+.cauta .btn {
+	margin-bottom: 10px;
+	
+}
+
+.outlined {
+	border: 1px solid #bbb;
+}
+
+table.table {
+    font-size: 12px;
+}
+
+table.bluehead thead tr th {
+	color:#0088CC;
+}
+
+td span.clinica {
+	font-size: 0.9em;
+	color: #666;
+}
+
+table.table tbody tr td.dt {
+	width: 220px;
+	text-align: right;
+	color: white;
+	background: #3187ce;
+	font-weight: bold;
+}
+
+table.table tbody tr td.necompletat
+{
+	color: red;
+}
+
+table.table tbody tr.strong td {
+	font-weight: bold;
+} 
+
+div.subnav {
+  background-color: #dfdfdf;
+  background-image: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0;
+  position: relative;
+  top: -10px;
+}
+
+
+div.subnav ul {
+	margin: 0;
+	padding: 0;
+}
+
+div.subnav ul li {
+	margin: 0;
+	padding: 0;
+}
+
+
+div.subnav .nav {
+  background-color: transparent;
+  margin-left: 45px;
+}
+
+div.subnav .nav > li > a {
+  border-color: transparent;
+}
+div.subnav .nav > .active > a,
+div.subnav .nav > .active > a:hover {
+  border-color: transparent;
+  background-color: #000000;
+  color: #ffffff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.nav .open .dropdown-toggle,
+.nav  > li.dropdown.open.active > a:hover {
+  color: #007fff;
+}
+.nav-tabs  > li > a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.nav-tabs.nav-stacked  > li > a:hover {
+  background-color: #007fff;
+  color: #ffffff;
+}
+.nav-tabs.nav-stacked  > .active > a,
+.nav-tabs.nav-stacked  > .active > a:hover {
+  background-color: #ffffff;
+  color: #bbbbbb;
+}
+.nav-tabs.nav-stacked  > li:first-child > a,
+.nav-tabs.nav-stacked  > li:last-child > a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.tabs-below  > .nav-tabs > li > a,
+.tabs-left  > .nav-tabs > li > a,
+.tabs-right  > .nav-tabs > li > a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.nav-pills > li > a {
+    border-radius: 5px 5px 5px 5px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.nav-pills  > li > a {
+  background-color: #dfdfdf;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  color: #000000;
+}
+.nav-pills  > li > a:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+.nav-pills  > .disabled > a,
+.nav-pills  > .disabled > a:hover {
+  background-color: #eeeeee;
+  color: #999999;
+}
+.nav-list  > li > a {
+  color: #080808;
+}
+.nav-list  > li > a:hover {
+  background-color: #007fff;
+  color: #ffffff;
+  text-shadow: none;
+}
+.nav-list .nav-header {
+  color: #080808;
+}
+.nav-list .divider {
+  background-color: #bbbbbb;
+  border-bottom: none;
+}
+
+.minus25top {
+  position: relative;
+  top: -25px;
+}
+
+.minus50top {
+  position: relative;
+  top: -80px;
+}
+
+a.amsg {
+	color: black;
+}
+
+.msgwrapper {
+	display: none;
+	font-size: 11px;
+	color: #666;
+	padding: 5px 5px 5px 5px;
+	text-indent: 20px;
+	font-weight: normal;
+	border: 1px dashed #ccc;
+	background-color: #e5e5e5;
+}
+
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  /* background-color: #f9f9f9; */
+  background-color: #e5e5e5;
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  /* background-color: #f5f5f5; */
+  background-color: #B0C6FF;
+}
+
+.table td.viewlabel {
+    width: 200px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.table td.viewdata {
+    text-align: left;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.table td.text-maroon {
+    color: maroon;
+}
+
+.table td.text-navy {
+    color: navy;
+}
+
+body .modal {
+    width: 700px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: -330px;
+}
+
+.container {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.controls-row .stil1 {
+	margin-left: 0px;
+}
+
+.still {
+	margin-top: 15px;
+}
+
+.stil1 input[type="text"],
+.stil1 label,
+.stil1 select,
+.stil1 select option
+{
+	font-family: Arial, "Arial Narrow", Calibri, Helvetica;
+	font-size: 12px;
+	margin: 0px;
+}
+
+.stil1 .control-group {
+	margin: 0px;
+	padding: 0px;
+}
+
+table.listare thead tr {
+	background-color:#811818;
+}
+
+table.listare thead tr th {
+	color: white;
+}
+
+table.listare tbody tr td {
+	font-size: 0.95em;
+}
+
+table.module thead tr {
+	background-color:#3187ce;
+}
+
+table.module thead tr th {
+	color: white;
+}
+
+table.module tbody tr td {
+	font-size: 0.95em;
+}
+
+
