@@ -624,3 +624,21 @@ td.has_links {
     right: 45px;
     font-size: 60px;
 }
+
+.recordings form select { 
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif; 
+	font-size: 120%; 
+	padding: 1%; 
+	color: #333; 
+	margin: 0; 
+	width: 100%; 
+	box-sizing: border-box;
+}
+
+.recordings form select option {
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif; 
+	width: 98%;
+	font-size: 100%; 
+	line-height: 130%;
+	color: #333;
+}

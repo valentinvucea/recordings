@@ -21,16 +21,16 @@
 			<?php echo h($composer['Nationality']['nationality']); ?>
 			&nbsp;
 		</dd>        
-		<dt><?php echo __('Notes'); ?></dt>
-		<dd>
-			<?php echo h($composer['Composer']['notes']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Dates'); ?></dt>
 		<dd>
 			<?php echo h($composer['Composer']['dates']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Notes'); ?></dt>
+		<dd>
+			<?php echo h($composer['Composer']['notes']); ?>
+			&nbsp;
+		</dd>		
 	</dl>
 </div>
 <div class="actions">

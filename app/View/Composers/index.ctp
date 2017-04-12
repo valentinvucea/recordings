@@ -78,10 +78,9 @@
         <tr class="border-top">
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
-                <th><?php echo $this->Paginator->sort('alt_name'); ?></th>
-                <th><?php echo $this->Paginator->sort('nationality'); ?></th>            
+                <th><?php echo $this->Paginator->sort('alt_name'); ?></th> 
+                <th><?php echo $this->Paginator->sort('dates'); ?></th>                        
                 <th><?php echo $this->Paginator->sort('notes'); ?></th>
-                <th><?php echo $this->Paginator->sort('dates'); ?></th>
                 <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         
@@ -90,9 +89,8 @@
             <td><?php echo h($composer['Composer']['id']); ?>&nbsp;</td>
             <td><?php echo h($composer['Composer']['name']); ?>&nbsp;</td>
             <td><?php echo h($composer['Composer']['alt_name']); ?>&nbsp;</td>
-            <td><?php echo h($composer['Nationality']['nationality']); ?>&nbsp;</td>        
+            <td><?php echo h($composer['Composer']['dates']); ?>&nbsp;</td>                   
             <td><?php echo h($composer['Composer']['notes']); ?>&nbsp;</td>
-            <td><?php echo h($composer['Composer']['dates']); ?>&nbsp;</td>
             <td class="actions">
                 <?php
                     if( $this->Sessionplus->isSession('Songs') == true ) {

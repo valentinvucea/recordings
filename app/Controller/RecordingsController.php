@@ -29,10 +29,10 @@ class RecordingsController extends AppController {
 			else
 				$this->Session->write('RecordingSearch.name_value', null);
 				
-			if(isset($this->data['Recording']['company_id']) && $this->data['Recording']['company_id'])
-		        $filters['company_id'] = $this->data['Recording']['company_id'];
+			if(isset($this->data['Recording']['format_id']) && $this->data['Recording']['format_id'])
+		        $filters['format_id'] = $this->data['Recording']['format_id'];
 			else
-				$this->Session->write('RecordingSearch.company_id_value', null);
+				$this->Session->write('RecordingSearch.format_id_value', null);
 			
 		    if(isset($this->data['Recording']['no']))
 		        $filters['no'] = $this->data['Recording']['no'];
@@ -69,11 +69,11 @@ class RecordingsController extends AppController {
 		
 		/* company */
         if(array_key_exists('Recording.no', $conditions) == false) {
-            if(isset($this->passedArgs['company_id']))
-                $conditions['Company.company'] = $this->passedArgs['company_id']; 
+            if(isset($this->passedArgs['format_id']))
+                $conditions['Recording.format_id'] = $this->passedArgs['format_id']; 
             else
-                if($this->Session->check('RecordingSearch.company_id_value'))
-                    $conditions['Company.company'] = $this->Session->read('RecordingSearch.company_id_value');
+                if($this->Session->check('RecordingSearch.format_id_value'))
+                    $conditions['Recording.format_id'] = $this->Session->read('RecordingSearch.format_id_value');
         }
 
 		/* page */
@@ -88,20 +88,12 @@ class RecordingsController extends AppController {
 		/* WRITE FORM VALUES TO SESSION */
 		foreach($conditions As $k=>$v)
 		{
-			if($k == 'Company.company')
-				$this->Session->write('RecordingSearch.company_id_value', $v);
-			else
-				$this->Session->write(str_replace('Recording', 'RecordingSearch', $k) . '_value', $v);
+			$this->Session->write(str_replace('Recording', 'RecordingSearch', $k) . '_value', $v);
 		}
 		
 		if(array_key_exists('Recording.name', $conditions) == true) {
 			$name = array_shift($conditions);
 			$conditions['Recording.name LIKE'] = '%' . $name . '%';
-		}
-		
-		if(array_key_exists('Recording.company_id', $conditions) == true) {
-			$company_id = array_shift($conditions);
-			$conditions['Recording.company_id'] = $company_id;
 		}
 				
 		$this->paginate = array (
@@ -126,7 +118,8 @@ class RecordingsController extends AppController {
 		
 		$recordings = $this->paginate('Recording');
 
-		$this->set(compact('recordings', 'conditions'));
+		$formats = $this->Recording->Format->find('list');
+		$this->set(compact('recordings', 'conditions', 'formats'));
         
 		$this->render('index');
 	}
@@ -138,8 +131,8 @@ class RecordingsController extends AppController {
         if($this->Session->check('RecordingSearch.name_value'))
             $this->Session->delete('RecordingSearch.name_value');
             
-        if($this->Session->check('RecordingSearch.company_id_value'))
-            $this->Session->delete('RecordingSearch.company_id_value');
+        if($this->Session->check('RecordingSearch.format_id_value'))
+            $this->Session->delete('RecordingSearch.format_id_value');
 
 		$this->redirect(array('action' => 'index'));
     }	

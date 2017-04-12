@@ -25,7 +25,7 @@
 		)); 
 
         echo $this->Form->input('choir_id', array(
-		    'type' => 'text',
+		    'type' => 'hidden',
 			'div' => 'grup grid-1-8 fleft',
             'required' => false,
 			'label' => 'Choir ID:',
@@ -33,7 +33,7 @@
 		));
 
         echo $this->Form->input('director_id', array(
-            'type' => 'text',
+            'type' => 'hidden',
             'div' => 'grup grid-1-8 fleft',      
             'label' => 'Director ID:',
             'value' => (isset($conditions['Singer.director_id']) ? $conditions['Singer.director_id'] : ''),

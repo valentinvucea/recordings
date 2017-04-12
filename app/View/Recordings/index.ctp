@@ -12,7 +12,7 @@
 </div>
 
 <div class="conditions horizontal-form row bg-grey rounded">
-    <div class="inner">
+    <div class="inner recordings">
     <?php
 		echo $this->Form->create(
 			array('url' => '/Recordings/index',
@@ -38,13 +38,13 @@
 			'value' => (isset($conditions['Recording.name']) ? $conditions['Recording.name'] : ''),
 		));
 		
-		echo $this->Form->input('company_id', array(
-		    'type'    => 'text',
+		echo $this->Form->input('format_id', array(
+		    'type'    => 'select',
 			'div' => 'grup grid-1-3 fleft',
-			'placeholder' => 'min. 4 chars',
+			'empty' => '(choose one)',
             'required' => false,
-			'label' => 'Company:',
-			'value' => (isset($conditions['Company.company']) ? $conditions['Company.company'] : ''),
+			'label' => 'Format:',
+			'value' => (isset($conditions['Recording.format_id']) ? $conditions['Recording.format_id'] : ''),
 		));
 			
 		echo '<div class="grup grid-1-4 submit fleft" style="padding-top: 27px;">';
