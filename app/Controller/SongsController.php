@@ -378,17 +378,26 @@ class SongsController extends AppController {
 		} else {
 			if (!$this->Song->exists($id)) {
 				throw new NotFoundException(__('Invalid Song'));
-			}	
-			
-			if ($this->Session->check('links') === false) {
+			}
+
+            if ($this->Session->check('links') === false) {
 				$this->Session->setFlash(__('No active Composition-composer session! Memory cleared!'));				
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$links = $this->Session->read('links');
 
-				$options = array(
+
+                $options = array(
 					'conditions' => array('Song.' . $this->Song->primaryKey => $id),
-					'fields' => array('Song.id', 'Song.composition_id', 'Song.composer_id', 'Composition.title', 'Composer.name'),
+                    'contain' => array(
+                        'Composition' => array(
+                            'fields' => array('id', 'title'),
+                            'Genre' => array('fields' => array('id', 'genre'))
+                        ),
+                        'Composer' => array(
+                            'fields' => array('id', 'name')
+                        ),
+                    ),
 				);
 				
 				$row = $this->Song->find('first', $options);
@@ -399,11 +408,13 @@ class SongsController extends AppController {
 					'composer_id' => $row['Song']['composer_id'],
 					'composition' => $row['Composition']['title'],
 					'composer' => $row['Composer']['name'],
+                    'genre_id' => $row['Composition']['Genre']['id'],
+                    'genre' => $row['Composition']['Genre']['genre'],
 					'source' => 'ses',
 					'id' => 0
-				);			
+				);
 
-				$this->Util->addToSessArr('Songs', $arr, 'links');
+                $this->Util->addToSessArr('Songs', $arr, 'links');
 				$this->redirect(array('action' => 'index'));
 			}
 		}	
