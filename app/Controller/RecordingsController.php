@@ -500,7 +500,7 @@ class RecordingsController extends AppController {
 		    'contain' => array(
 		        'Singer' => array(
 		            'Choir' => array(
-		            	'fields' => array('id', 'choir')
+		            	'fields' => array('id', 'choir', 'city')
 		            ),
 		            'Director' => array(
 		            	'fields' => array('id', 'name')
@@ -519,6 +519,7 @@ class RecordingsController extends AppController {
 				'director_id' => $singer['Singer']['director_id'],
 				'choir' => $singer['Singer']['Choir']['choir'],
 				'director' => $singer['Singer']['Director']['name'],
+				'city' => $singer['Singer']['Choir']['city'],
 				'source' => 'db',
 				'id' => $singer['Recsinger']['id']
 			);

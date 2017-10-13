@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Ancillary music'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('class' => 'focus-field'));
 		echo $this->Form->input('notes');
 	?>
 	</fieldset>

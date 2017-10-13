@@ -142,7 +142,8 @@
 			$singers_display.= '<tr>';
 			$singers_display.= '<td class="text-center">' . $elem['singer_id'] . '</td>';
             $singers_display.= '<td>' . $elem['choir'] . '</td>';
-            $singers_display.= '<td>' . $elem['director'] . '</td>';			
+            $singers_display.= '<td>' . $elem['city'] . '</td>';
+            $singers_display.= '<td>' . $elem['director'] . '</td>';
             $singers_display.= '<td class="actions">';
             $singers_display.= $this->Html->link(__('View'), array('controller'=>'Singers', 'action' => 'view', $elem['singer_id']));
             $singers_display.= $this->Html->link(__('Delete'), array('action' => 'linkdel/Singers-' . $i), array('class'=>'delete'));
@@ -156,6 +157,7 @@
 				<tr class="border-top">
 					<th class="text-center">#</th>
             		<th>CHOIR(S)</th>
+                    <th>CITY</th>
             		<th>DIRECTOR(S)</th>
             		<th class="actions text-center grid-1-10">Actions</th>
         		</tr>

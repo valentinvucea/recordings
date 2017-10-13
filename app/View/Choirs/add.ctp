@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Choir'); ?></legend>
 	<?php
-		echo $this->Form->input('choir');
+		echo $this->Form->input('choir', array('class' => 'focus-field'));
 		echo $this->Form->input('alt_name');
 		echo $this->Form->input('city', array('value' => ''));
 		echo $this->Form->input('state_id', array('class' => 'tall', 'value' => 'XX'));

@@ -85,5 +85,6 @@ $cakeDescription = __d('cake_dev', 'Choirs recordings database');
 		<div class="overlay-content"></div>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
-</body>
+
+    <script src="/js/custom.js"></script></body>
 </html>

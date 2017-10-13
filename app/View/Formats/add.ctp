@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Format'); ?></legend>
 	<?php
-		echo $this->Form->input('format');
+		echo $this->Form->input('format', array('class' => 'focus-field'));
 		echo $this->Form->input('order');
 	?>
 	</fieldset>

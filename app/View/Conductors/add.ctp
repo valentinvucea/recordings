@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Conductor'); ?></legend>
 	<?php
-		echo $this->Form->input('first_name');
+		echo $this->Form->input('first_name', array('class' => 'focus-field'));
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('alt_first_name');
 		echo $this->Form->input('alt_last_name');

@@ -228,5 +228,16 @@ class DirectorsController extends AppController {
 					$this->redirect(array('controller' => 'Singers', 'action' => 'edit/' . $singers['id']));
 			}
 		}	
-	}		
+	}
+
+    public function reset() {
+        if($this->Session->check('DirectorSearch.name_value'))
+            $this->Session->delete('DirectorSearch.name_value');
+
+        if($this->Session->check('DirectorSearch.position_id_value'))
+            $this->Session->delete('DirectorSearch.position_id_value');
+
+        $this->redirect(array('action' => 'index'));
+    }
+
 }

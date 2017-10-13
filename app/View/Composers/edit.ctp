@@ -7,8 +7,8 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('alt_name');
 		echo $this->Form->input('nationality_id');           
-		echo $this->Form->input('notes');
 		echo $this->Form->input('dates');
+        echo $this->Form->input('notes');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

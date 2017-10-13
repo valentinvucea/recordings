@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Position'); ?></legend>
 	<?php
-		echo $this->Form->input('position');
+		echo $this->Form->input('position', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

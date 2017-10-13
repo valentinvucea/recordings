@@ -38,4 +38,7 @@ $( document ).ready(function() {
         event.preventDefault();
         document.getElementById("popup").style.width = "0%";
     });
+
+    /* set focus on first field in add view */
+    $("input.focus-field").focus();
 });

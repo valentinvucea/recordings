@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Version'); ?></legend>
 	<?php
-		echo $this->Form->input('version');
+		echo $this->Form->input('version', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -625,7 +625,8 @@ td.has_links {
     font-size: 60px;
 }
 
-.recordings form select { 
+.recordings form select,
+.search-form select {
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif; 
 	font-size: 120%; 
 	padding: 1%; 
@@ -635,8 +636,13 @@ td.has_links {
 	box-sizing: border-box;
 }
 
-.recordings form select option {
-	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif; 
+.search-form select {
+    padding: 5px 1%;
+}
+
+.recordings form select option,
+.search-form select option {
+	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	width: 98%;
 	font-size: 100%; 
 	line-height: 130%;

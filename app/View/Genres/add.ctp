@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Genre'); ?></legend>
 	<?php
-		echo $this->Form->input('genre');
+		echo $this->Form->input('genre', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

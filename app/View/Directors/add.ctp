@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Director'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
+		echo $this->Form->input('name', array('class' => 'focus-field'));
 		echo $this->Form->input('alt_name');
 		echo $this->Form->input('position_id');
 		echo $this->Form->input('notes');
