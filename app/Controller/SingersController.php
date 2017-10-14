@@ -265,11 +265,11 @@ class SingersController extends AppController {
 			} else {
 				$singers_sess = $this->Session->read('Singers');
 				if( $singers_sess['method'] != 'edit' ) {
-					$this->Session->setFlash(__('Memory data was cleared (not set for EDIT action)!'));
+					$this->Session->setFlash(__('Memory data was cleared (not set for EDIT action)'));
 					$this->Util->delSess('Singers');
 					$this->redirect(array('action' => 'index'));
 				} else if( $singers_sess['id'] != $id ) {
-					$this->Session->setFlash(__('Memory data wass cleared (IDs not equal)!'));
+					$this->Session->setFlash(__('Memory data was cleared (IDs not equal)'));
 					$this->Util->delSess('Singers');
 					$this->redirect(array('action' => 'index'));
 				} else {
@@ -315,7 +315,7 @@ class SingersController extends AppController {
 
 	public function current() {
 		if ($this->Session->check('Singers') === false) {
-			$this->Session->setFlash(__('No active Choir-Director session in memory!'));				
+			$this->Session->setFlash(__('No active Choir-Director session in memory'));
 			$this->redirect(array('action' => 'index'));
 		} else {
 			$singers = $this->Session->read('Singers');			
@@ -332,7 +332,7 @@ class SingersController extends AppController {
 			$id = substr($id, 1);
 
 			if ($this->Session->check('links') === false) {
-				$this->Session->setFlash(__('No active Choir-director session! Memory cleared!'));				
+				$this->Session->setFlash(__('No active Choir-director session! Memory cleared'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$links = $this->Session->read('links');
@@ -353,7 +353,7 @@ class SingersController extends AppController {
 									$this->Session->setFlash(__('The record could not be deleted.' . $error[0]));
 							}
 
-							$this->Session->setFlash(__('The link (Choir-director pair #' . $id . ') was removed from database/memory!'));
+							$this->Session->setFlash(__('The link (Choir-director pair #' . $id . ') was removed from database/memory'));
 							$this->Util->delFromSessArr('Singers', 'singer_id', $id, 'links');
 							$this->redirect(array('action' => 'index'));							
 						}
@@ -366,7 +366,7 @@ class SingersController extends AppController {
 			}	
 			
 			if ($this->Session->check('links') === false) {
-				$this->Session->setFlash(__('No active Choir-director session! Memory cleared!'));				
+				$this->Session->setFlash(__('No active Choir-director session. Memory cleared'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$links = $this->Session->read('links');

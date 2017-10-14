@@ -304,7 +304,7 @@ class RecordingsController extends AppController {
 
 			$links = $this->Session->read('links');
 			if( !isset($links['Recording']['id']) ) {
-				$this->Session->setFlash(__('No RecordingID set for this Link session!'));
+				$this->Session->setFlash(__('No RecordingID set for this Link session.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				if( $links[$urls[0]][$urls[1]]['source'] == 'db' ) {
@@ -336,7 +336,7 @@ class RecordingsController extends AppController {
 						$this->Session->setFlash(__('The record could not be deleted.' . $error[0]));
 				}
 
-				$this->Session->setFlash(__('The link was deleted from database/memory!'));
+				$this->Session->setFlash(__('The link was deleted from database/memory'));
 				$this->Util->delRowFromSessArr($urls[0], $urls[1], 'links');
 				$this->redirect(array('action' => 'current'));				
 			}
@@ -365,7 +365,6 @@ class RecordingsController extends AppController {
 		// POST PROCESSING
 		if ($this->request->is('post')) {	
 			$postData = $this->request->data;
-			$request = array();
 			$errors = array();
 
 			if( isset($postData['Recsong']) && is_array($postData['Recsong']) ) {
@@ -434,7 +433,7 @@ class RecordingsController extends AppController {
 				}
 			} 
 		} else {
-			$this->Session->setFlash(__('Warning! None of recordings was selected!'));
+			$this->Session->setFlash(__('Warning! None of recordings was selected.'));
 			$this->redirect(array('controller' => 'Recordings', 'action' => 'index'));
 		}
 
@@ -530,7 +529,6 @@ class RecordingsController extends AppController {
 		// POST PROCESSING
 		if ($this->request->is('post')) {	
 			$postData = $this->request->data;
-			$request = array();
 			$errors = array();
 
 			if( isset($postData['Recsong']) && is_array($postData['Recsong']) ) {
@@ -645,7 +643,7 @@ class RecordingsController extends AppController {
 					);
 				} else {
 					if( isset($links['method']) && $links['method'] !='edit' ) {
-						$this->Session->setFlash(__('Memory set for adding! Memory was erased!'));
+						$this->Session->setFlash(__('Memory set for adding. Memory was erased.'));
 						$this->Util->delSession('links');
 						$this->redirect(array('controller' => 'Recordings', 'action' => 'index'));
 					}
@@ -684,7 +682,7 @@ class RecordingsController extends AppController {
 			$this->Session->write('links', $links);					
 
 		} else {
-			$this->Session->setFlash(__('Warning! No recording selected!'));
+			$this->Session->setFlash(__('Warning! No recording selected.'));
 			$this->redirect(array('controller' => 'Recordings', 'action' => 'index'));
 		}
 

@@ -12,8 +12,8 @@
 		echo $this->Form->input('comprecordingnote_id', array('label' => 'Recording note'));
 		echo $this->Form->input('ancillarymusic_id', array('label' => 'Ancillary music'));
 		echo $this->Form->input('presentation_id');
-		echo $this->Form->input('notes');
 		echo $this->Form->input('recordingdate', array('label' => 'Recording date'));
+        echo $this->Form->input('notes');
 		?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -6,11 +6,11 @@
 		echo $this->Form->input('no', array('label' => 'Rec. no'));
 		echo $this->Form->input('name', array('class' => 'focus-field'));
 		echo $this->Form->input('format_id', array('class' => 'tall'));
-		echo $this->Form->input('company_id', array('class' => 'tall'));
+		echo $this->Form->input('company_id', array('class' => 'tall', 'value' => 7));
 		echo $this->Form->input('catalog');
-		echo $this->Form->input('comprecordingnote_id', array('label' => 'Recording note', 'class' => 'tall'));
-		echo $this->Form->input('ancillarymusic_id', array('label' => 'Ancillary music', 'class' => 'tall'));
-		echo $this->Form->input('presentation_id', array('class' => 'tall'));
+		echo $this->Form->input('comprecordingnote_id', array('label' => 'Recording note', 'class' => 'tall', 'value' => 8));
+		echo $this->Form->input('ancillarymusic_id', array('label' => 'Ancillary music', 'class' => 'tall', 'value' => 18));
+		echo $this->Form->input('presentation_id', array('class' => 'tall', 'value' => 27));
 		echo $this->Form->input('recordingdate', array('label' => 'Recording date'));
 		echo $this->Form->input('notes');		
 	?>

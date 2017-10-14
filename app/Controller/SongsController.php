@@ -302,11 +302,11 @@ class SongsController extends AppController {
 			} else {
 				$songs_sess = $this->Session->read('Songs');
 				if( $songs_sess['method'] != 'edit' ) {
-					$this->Session->setFlash(__('Memory data was cleared (not set for EDIT action)!'));
+					$this->Session->setFlash(__('Memory data was cleared (not set for EDIT action)'));
 					$this->Util->delSess('Songs');
 					$this->redirect(array('action' => 'index'));
 				} else if( $songs_sess['id'] != $id ) {
-					$this->Session->setFlash(__('Memory data wass cleared (IDs not equal)!'));
+					$this->Session->setFlash(__('Memory data wass cleared (IDs not equal)'));
 					$this->Util->delSess('Songs');
 					$this->redirect(array('action' => 'index'));
 				} else {
@@ -330,7 +330,7 @@ class SongsController extends AppController {
 
 	public function current() {
 		if ($this->Session->check('Songs') === false) {
-			$this->Session->setFlash(__('No active Composition-Composer session in memory!'));				
+			$this->Session->setFlash(__('No active Composition-Composer session in memory'));
 			$this->redirect(array('action' => 'index'));
 		} else {
 			$songs = $this->Session->read('Songs');			
@@ -347,7 +347,7 @@ class SongsController extends AppController {
 			$id = substr($id, 1);
 
 			if ($this->Session->check('links') === false) {
-				$this->Session->setFlash(__('No active Composition-composer session! Memory cleared!'));				
+				$this->Session->setFlash(__('No active Composition-composer session! Memory cleared'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$links = $this->Session->read('links');
@@ -368,7 +368,7 @@ class SongsController extends AppController {
 									$this->Session->setFlash(__('The record could not be deleted.' . $error[0]));
 							}
 
-							$this->Session->setFlash(__('The link (Composition-composer pair #' . $id . ') was removed from database/memory!'));
+							$this->Session->setFlash(__('The link (Composition-composer pair #' . $id . ') was removed from database/memory'));
 							$this->Util->delFromSessArr('Songs', 'song_id', $id, 'links');
 							$this->redirect(array('action' => 'index'));							
 						}
@@ -381,7 +381,7 @@ class SongsController extends AppController {
 			}
 
             if ($this->Session->check('links') === false) {
-				$this->Session->setFlash(__('No active Composition-composer session! Memory cleared!'));				
+				$this->Session->setFlash(__('No active Composition-composer session! Memory cleared'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$links = $this->Session->read('links');
