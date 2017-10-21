@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Composition'); ?></legend>
 	<?php
-		echo $this->Form->input('title');
+		echo $this->Form->input('title', array('class' => 'focus-field'));
 		echo $this->Form->input('opening_text');
 		echo $this->Form->input('genre_id', array('class' => 'tall'));
 		echo $this->Form->input('version_id', array('class' => 'tall'));

@@ -3,9 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Add Recording'); ?></legend>
 	<?php
-		echo $this->Form->input('no', array('label' => 'Rec. no'));
-		echo $this->Form->input('name', array('class' => 'focus-field'));
-		echo $this->Form->input('format_id', array('class' => 'tall'));
+		echo $this->Form->input('no', array('label' => 'Rec. no', 'class' => 'focus-field'));
+		echo $this->Form->input('name');
+		echo $this->Form->input('format_id', array('class' => 'tall', 'value' => 6));
 		echo $this->Form->input('company_id', array('class' => 'tall', 'value' => 7));
 		echo $this->Form->input('catalog');
 		echo $this->Form->input('comprecordingnote_id', array('label' => 'Recording note', 'class' => 'tall', 'value' => 8));

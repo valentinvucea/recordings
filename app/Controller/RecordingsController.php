@@ -205,10 +205,10 @@ class RecordingsController extends AppController {
 			}
 		}
 		$formats = $this->Recording->Format->find('list');
-		$companies = $this->Recording->Company->find('list');
-		$comprecordingnotes = $this->Recording->Comprecordingnote->find('list');
-		$ancillarymusics = $this->Recording->Ancillarymusic->find('list');
-		$presentations = $this->Recording->Presentation->find('list');
+		$companies = $this->Recording->Company->find('list', array('order' => array('company' => 'asc')));
+		$comprecordingnotes = $this->Recording->Comprecordingnote->find('list', array('order' => array('note' => 'asc')));
+		$ancillarymusics = $this->Recording->Ancillarymusic->find('list', array('order' => array('name' => 'asc')));
+		$presentations = $this->Recording->Presentation->find('list', array('order' => array('presentation' => 'asc')));
 		$this->set(compact('formats', 'companies', 'comprecordingnotes', 'ancillarymusics', 'presentations'));
 	}
 
