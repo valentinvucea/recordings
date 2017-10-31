@@ -46,7 +46,7 @@
 				<ul>
 					<li><a href="/Formats/index"><img src="../img/icon-formats.png" alt="Recording formats" class=""><span>Recordings <br />formats</span></a></li>
 					<li><a href="/Companies/index"><img src="../img/icon-cd-house.png" alt="Recording companies" class=""><span>Recordings <br />companies</span></a></li>
-					<li><a href="/Recordingnotes/index"><img src="../img/icon-recording-notes.png" alt="Recording notes" class=""><span>Recordings <br />standard notes</span></a></li>
+                    <li><a href="/Comprecordingnotes/index"><img src="../img/icon-comp-recording-notes.png" alt="Composition recording notes" class=""><span>Recording <br />standard notes</span></a></li>
 					<li><a href="/Ancillarymusics/index"><img src="../img/icon-ancillary.png" alt="Ancillary music" class=""><span>Recordings <br />ancillary music</span></a></li>
 					<li><a href="/Presentations/index"><img src="../img/icon-presentations.png" alt="Presentations" class=""><span>Recordings <br />presentations</span></a></li>
 				</ul>
@@ -54,7 +54,7 @@
 		</div>
 		
 		<div class="hrow">
-			<h4>Choirs related tables</h4>
+			<h4>Choirs/Directors related tables</h4>
 			<div class="dashboard">
 				<ul>
 					<li><a href="/States/index"><img src="../img/icon-map.png" alt="Choir states" class=""><span>Choir <br />states</span></a></li>
@@ -67,14 +67,14 @@
 		</div>
 		
 		<div class="hrow">
-			<h4>Compositions related tables</h4>
+			<h4>Composers/Compositions related tables</h4>
 			<div class="dashboard">
 				<ul>
+                    <li><a href="/Nationalities/index"><img src="../img/icon-nationalities.png" alt="Composers nationalities" class=""><span>Composers <br />nationalities</span></a></li>
 					<li><a href="/Genres/index"><img src="../img/icon-genre.png" alt="Composition genres" class=""><span>Composition <br />genres</span></a></li>
 					<li><a href="/Versions/index"><img src="../img/icon-comp-versions.png" alt="Composition versions" class=""><span>Composition <br />versions</span></a></li>
-					<li><a href="/Comprecordingnotes/index"><img src="../img/icon-comp-recording-notes.png" alt="Composition recording notes" class=""><span>Composition <br />recording notes</span></a></li>
-					<li><a href="/Voicings/index"><img src="../img/icon-voicings.png" alt="Compositions voicings" class=""><span>Composition <br />voicings</span></a></li>
-	                <li><a href="/Nationalities/index"><img src="../img/icon-nationalities.png" alt="Composers nationalities" class=""><span>Composers <br />nationalities</span></a></li>
+                    <li><a href="/Recordingnotes/index"><img src="../img/icon-recording-notes.png" alt="Recording notes" class=""><span>Composition <br />standard notes</span></a></li>
+                    <li><a href="/Voicings/index"><img src="../img/icon-voicings.png" alt="Compositions voicings" class=""><span>Composition <br />voicings</span></a></li>
 				</ul>
 			</div>
 		</div>

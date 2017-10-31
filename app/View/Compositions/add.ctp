@@ -11,7 +11,7 @@
 		echo $this->Form->input('recordingnote_id', array('class' => 'tall', 'label' => 'Recording Note'));
 		echo $this->Form->input('voicing_id', array('class' => 'tall'));
 		echo $this->Form->input('collection_title');
-		echo $this->Form->input('ancillary_music');
+		echo $this->Form->input('ancillary_music', array('label' => 'Additional text'));
 		echo $this->Form->input('notes');
 	?>
 	</fieldset>

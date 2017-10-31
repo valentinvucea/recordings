@@ -52,13 +52,13 @@ $cakeDescription = __d('cake_dev', 'Choirs recordings database');
 			
 			<ul>		
 				<li><a href="/Recordings/index">Recordings</a></li>
-				<li><a href="/Compositions/index">Compositions</a></li>
-				<li><a href="/Composers/index">Composers</a></li>				
-				<li><a href="/Choirs/index">Choirs</a></li>
-				<li><a href="/Directors/index">Directors</a></li>
+                <li><a href="/Choirs/index">Choirs</a></li>
+                <li><a href="/Directors/index">Directors</a></li>
+				<li><a href="/Composers/index">Composers</a></li>
+                <li><a href="/Compositions/index">Compositions</a></li>
 				<br/>
-				<li><a href="/Songs/current">Composers-Compositions</a></li>	
-				<li><a href="/Singers/current">Choirs-Directors</a></li>
+                <li><a href="/Singers/current">Choirs-Directors</a></li>
+				<li><a href="/Songs/current">Composers-Compositions</a></li>
 				<li><a href="/Recordings/current">Add/Confirm Links</a></li>				
 			</ul>
 		</div>
