@@ -6,7 +6,7 @@
 		<?php echo h($recording['Recording']['id']); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Rec. no'); ?></dt>
+	<dt><?php echo __('Rec. No.'); ?></dt>
 	<dd>
 		<?php echo h($recording['Recording']['no']); ?>
 		&nbsp;
@@ -26,7 +26,7 @@
 		<?php echo $this->Html->link($recording['Company']['company'], array('controller' => 'companies', 'action' => 'view', $recording['Company']['id'])); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Catalog'); ?></dt>
+	<dt><?php echo __('Catalog No.'); ?></dt>
 	<dd>
 		<?php echo h($recording['Recording']['catalog']); ?>
 		&nbsp;
@@ -36,7 +36,7 @@
 		<?php echo $this->Html->link($recording['Comprecordingnote']['note'], array('controller' => 'comprecordingnotes', 'action' => 'view', $recording['Comprecordingnote']['id'])); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Ancillary music'); ?></dt>
+	<dt><?php echo __('Additional text'); ?></dt>
 	<dd>
 		<?php echo $this->Html->link($recording['Ancillarymusic']['name'], array('controller' => 'ancillarymusics', 'action' => 'view', $recording['Ancillarymusic']['id'])); ?>
 		&nbsp;
@@ -59,43 +59,6 @@
 </dl>
 
 <?php
-	
-	/*
-	echo '<pre>';
-	print_r($recsongs);
-	die;
-	*/
-
-	// COMPOSITIONS - COMPOSERS
-	echo '<div class="input text divider"><label for="Composition">Composers-Compositions</label></div>';
-	
-	if( count($recsongs)>0 ) {	
-		$songs_display = '';
-
-		foreach($recsongs as $i=>$elem) {		
-			// Display
-			$songs_display.= '<tr>';
-            $songs_display.= '<td>' . $elem['Song']['Composer']['name'] . '</td>';	
-            $songs_display.= '<td>' . $elem['Song']['Composition']['title'] . '</td>';
-            $songs_display.= '<td>' . $elem['Song']['Composition']['Genre']['genre'] . '</td>';
-        	$songs_display.= '</tr>';
-		}
-?>
-		<!-- Render Display -->
-		<div class="inner">
-			<table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
-				<tr class="border-top">
-					<th>COMPOSER(S)</th>
-            		<th>COMPOSITION(S)</th>
-            		<th>GENRE</th>
-        		</tr>
-        		<?php echo $songs_display; ?>
-        	</table>
-        </div>
-
-<?php
-}
-
 	// CHOIR - DIRECTORS
 	echo '<div class="input text divider"><label for="Choir">Choirs-Directors</label></div>';
 	
@@ -120,13 +83,45 @@
         		<?php echo $singers_display; ?>
         	</table>
         </div>
-
 <?php
 }
+
+    /*
+    echo '<pre>';
+    print_r($recsongs);
+    die;
+    */
+
+    // COMPOSITIONS - COMPOSERS
+    echo '<div class="input text divider"><label for="Composition">Composers-Compositions</label></div>';
+
+    if( count($recsongs)>0 ) {
+        $songs_display = '';
+
+        foreach($recsongs as $i=>$elem) {
+            // Display
+            $songs_display.= '<tr>';
+            $songs_display.= '<td>' . $elem['Song']['Composer']['name'] . '</td>';
+            $songs_display.= '<td>' . $elem['Song']['Composition']['title'] . '</td>';
+            $songs_display.= '<td>' . $elem['Song']['Composition']['Genre']['genre'] . '</td>';
+            $songs_display.= '</tr>';
+        }
+    ?>
+    <!-- Render Display -->
+    <div class="inner">
+        <table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
+            <tr class="border-top">
+                <th>COMPOSER(S)</th>
+                <th>COMPOSITION(S)</th>
+                <th>GENRE</th>
+            </tr>
+            <?php echo $songs_display; ?>
+        </table>
+    </div>
+<?php
+    }
 ?>
-
-
-
+    
 </div>
 
 <div class="actions">
