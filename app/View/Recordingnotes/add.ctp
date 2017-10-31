@@ -4,6 +4,7 @@
 		<legend><?php echo __('Add Recordings note'); ?></legend>
 	<?php
 		echo $this->Form->input('recording_note');
+        echo $this->Form->input('notes');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

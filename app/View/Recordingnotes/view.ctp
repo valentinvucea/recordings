@@ -11,6 +11,11 @@
 			<?php echo h($recordingnote['Recordingnote']['recording_note']); ?>
 			&nbsp;
 		</dd>
+        <dt><?php echo __('Notes'); ?></dt>
+        <dd>
+            <?php echo h($recordingnote['Recordingnote']['notes']); ?>
+            &nbsp;
+        </dd>
 	</dl>
 </div>
 <div class="actions">
