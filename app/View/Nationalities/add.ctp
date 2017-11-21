@@ -14,6 +14,6 @@
 
 		<li><?php echo $this->Html->link(__('List Nationalities'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

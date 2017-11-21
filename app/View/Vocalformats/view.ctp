@@ -19,6 +19,6 @@
 		<li><?php echo $this->Html->link(__('Edit Vocal format'), array('action' => 'edit', $vocalformat['Vocalformat']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Vocal format'), array('action' => 'delete', $vocalformat['Vocalformat']['id']), null, __('Are you sure you want to delete # %s?', $vocalformat['Vocalformat']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Vocal formats'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Vocal format'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Vocal format'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -19,6 +19,6 @@
 		<li><?php echo $this->Html->link(__('Edit Voicing'), array('action' => 'edit', $voicing['Voicing']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Voicing'), array('action' => 'delete', $voicing['Voicing']['id']), null, __('Are you sure you want to delete # %s?', $voicing['Voicing']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Voicings'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Voicing'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Voicing'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>

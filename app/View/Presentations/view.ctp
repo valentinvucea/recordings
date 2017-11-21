@@ -24,6 +24,6 @@
 		<li><?php echo $this->Html->link(__('Edit Presentation'), array('action' => 'edit', $presentation['Presentation']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Presentation'), array('action' => 'delete', $presentation['Presentation']['id']), null, __('Are you sure you want to delete # %s?', $presentation['Presentation']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Presentations'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Presentation'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Presentation'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -28,13 +28,13 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit this pair'), array('action' => 'edit', $song['Song']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete this pair'), array('action' => 'delete', $song['Song']['id']), null, __('Are you sure you want to delete # %s?', $song['Song']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('New pair'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add new pair'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List all pairs'), array('action' => 'index')); ?> </li>
 		<li><hr/></li>
 		<li><?php echo $this->Html->link(__('List Compositions'), array('controller' => 'compositions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Composition'), array('controller' => 'compositions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Composition'), array('controller' => 'compositions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Composer'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Composer'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 

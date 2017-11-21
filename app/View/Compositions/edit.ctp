@@ -25,12 +25,12 @@
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Composition.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Composition.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Compositions'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Genres'), array('controller' => 'genres', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Genre'), array('controller' => 'genres', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Genre'), array('controller' => 'genres', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Versions'), array('controller' => 'versions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Version'), array('controller' => 'versions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Version'), array('controller' => 'versions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Recording Notes'), array('controller' => 'recordingnotes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Recording Note'), array('controller' => 'recordingnotes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Recording Note'), array('controller' => 'recordingnotes', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Voicings'), array('controller' => 'voicings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Voicing'), array('controller' => 'voicings', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Voicing'), array('controller' => 'voicings', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

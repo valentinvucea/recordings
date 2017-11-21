@@ -24,6 +24,6 @@
 		<li><?php echo $this->Html->link(__('Edit Ancillary music'), array('action' => 'edit', $ancillarymusic['Ancillarymusic']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Ancillary music'), array('action' => 'delete', $ancillarymusic['Ancillarymusic']['id']), null, __('Are you sure you want to delete # %s?', $ancillarymusic['Ancillarymusic']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Ancillary music'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ancillary music'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Ancillary music'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>

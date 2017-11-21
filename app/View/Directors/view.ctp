@@ -34,8 +34,8 @@
 		<li><?php echo $this->Html->link(__('Edit Director'), array('action' => 'edit', $director['Director']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Director'), array('action' => 'delete', $director['Director']['id']), null, __('Are you sure you want to delete # %s?', $director['Director']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Directors'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Director'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Director'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Positions'), array('controller' => 'positions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

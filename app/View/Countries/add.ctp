@@ -14,6 +14,6 @@
 
 		<li><?php echo $this->Html->link(__('List Countries'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List States'), array('controller' => 'states', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New State'), array('controller' => 'states', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add State'), array('controller' => 'states', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

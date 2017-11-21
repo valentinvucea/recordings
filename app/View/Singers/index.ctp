@@ -1,7 +1,7 @@
 <div>
     <div class="actions-top grid-1-2 fright" style="padding: 5px 0px;">
         <ul>
-            <li><?php echo $this->Html->link(__('New Choir-Director pair'), array('action' => 'add')); ?></li>
+            <li><?php echo $this->Html->link(__('Add Choir-Director pair'), array('action' => 'add')); ?></li>
         </ul>
     </div>    
 

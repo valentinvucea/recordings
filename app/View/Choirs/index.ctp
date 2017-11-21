@@ -6,7 +6,7 @@
     </div>
     <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
         <ul>
-            <li><?php echo $this->Html->link(__('New Choir'), array('action' => 'add')); ?></li>
+            <li><?php echo $this->Html->link(__('Add Choir'), array('action' => 'add')); ?></li>
         </ul>
     </div>
 </div>

@@ -35,6 +35,6 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Comp. recording note'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Add Comp. Recording Note'), array('action' => 'add')); ?></li>
 	</ul>
 </div>

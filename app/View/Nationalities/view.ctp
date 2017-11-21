@@ -19,9 +19,9 @@
 		<li><?php echo $this->Html->link(__('Edit Nationality'), array('action' => 'edit', $nationality['Nationality']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Nationality'), array('action' => 'delete', $nationality['Nationality']['id']), null, __('Are you sure you want to delete # %s?', $nationality['Nationality']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Nationalities'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Nationality'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Nationality'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -59,7 +59,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

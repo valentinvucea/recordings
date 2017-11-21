@@ -8,10 +8,6 @@
 
 <br />
 
-print_r($recording);
-die;
-
-
 <div class="inner bg-lightgrey rounded grey-bordered" style="padding: 0px 15px 5px 15px; ">
 	<table cellpadding="0" cellspacing="0" style="margin-bottom: 0;">
 		<?php

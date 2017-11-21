@@ -35,8 +35,8 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Nationality'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Add Nationality'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -19,6 +19,6 @@
 		<li><?php echo $this->Html->link(__('Edit Company'), array('action' => 'edit', $company['Company']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Company'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Companies'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Company'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>

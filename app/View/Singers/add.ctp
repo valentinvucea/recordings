@@ -59,8 +59,8 @@
 
 		<li><?php echo $this->Html->link(__('List all pairs'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Choirs'), array('controller' => 'choirs', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Choir'), array('controller' => 'choirs', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Choir'), array('controller' => 'choirs', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Directors'), array('controller' => 'directors', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Director'), array('controller' => 'directors', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'directors', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -54,14 +54,14 @@
 		<li><?php echo $this->Html->link(__('Edit Choir'), array('action' => 'edit', $choir['Choir']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Choir'), array('action' => 'delete', $choir['Choir']['id']), null, __('Are you sure you want to delete # %s?', $choir['Choir']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Choirs'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Choir'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Choir'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List States'), array('controller' => 'states', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New State'), array('controller' => 'states', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add State'), array('controller' => 'states', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Countries'), array('controller' => 'countries', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Country'), array('controller' => 'countries', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Country'), array('controller' => 'countries', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Denominations'), array('controller' => 'denominations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Denomination'), array('controller' => 'denominations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Vocalformats'), array('controller' => 'vocalformats', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Vocalformat'), array('controller' => 'vocalformats', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Denomination'), array('controller' => 'denominations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Vocal Formats'), array('controller' => 'vocalformats', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Vocal Format'), array('controller' => 'vocalformats', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

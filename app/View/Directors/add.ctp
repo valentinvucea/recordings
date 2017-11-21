@@ -17,6 +17,6 @@
 
 		<li><?php echo $this->Html->link(__('List Directors'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Positions'), array('controller' => 'positions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

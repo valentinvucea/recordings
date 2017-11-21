@@ -16,6 +16,6 @@
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Position.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Position.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Positions'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Directors'), array('controller' => 'directors', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Director'), array('controller' => 'directors', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'directors', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

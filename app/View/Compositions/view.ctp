@@ -64,14 +64,14 @@
 		<li><?php echo $this->Html->link(__('Edit Composition'), array('action' => 'edit', $composition['Composition']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Composition'), array('action' => 'delete', $composition['Composition']['id']), null, __('Are you sure you want to delete # %s?', $composition['Composition']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Compositions'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Composition'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Composition'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Genres'), array('controller' => 'genres', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Genre'), array('controller' => 'genres', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Genre'), array('controller' => 'genres', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Versions'), array('controller' => 'versions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Version'), array('controller' => 'versions', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Version'), array('controller' => 'versions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Recordings notes'), array('controller' => 'recordingnotes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Recordings note'), array('controller' => 'recordingnotes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Recordings note'), array('controller' => 'recordingnotes', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Voicings'), array('controller' => 'voicings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Voicing'), array('controller' => 'voicings', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Voicing'), array('controller' => 'voicings', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

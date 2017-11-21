@@ -121,7 +121,7 @@
 <?php
     }
 ?>
-    
+
 </div>
 
 <div class="actions">
@@ -130,16 +130,16 @@
 		<li><?php echo $this->Html->link(__('Edit Recording'), array('action' => 'edit', $recording['Recording']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Recording'), array('action' => 'delete', $recording['Recording']['id']), null, __('Are you sure you want to delete # %s?', $recording['Recording']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Recordings'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Recording'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Recording'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Formats'), array('controller' => 'formats', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Format'), array('controller' => 'formats', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Format'), array('controller' => 'formats', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Recording Notes'), array('controller' => 'comprecordingnotes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Recording Note'), array('controller' => 'comprecordingnotes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Recording Note'), array('controller' => 'comprecordingnotes', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Ancillary Musics'), array('controller' => 'ancillarymusics', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ancillary Music'), array('controller' => 'ancillarymusics', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Ancillary Music'), array('controller' => 'ancillarymusics', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Presentations'), array('controller' => 'presentations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Presentation'), array('controller' => 'presentations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Presentation'), array('controller' => 'presentations', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

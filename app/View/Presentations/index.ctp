@@ -37,6 +37,6 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Presentation'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Add Presentation'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
