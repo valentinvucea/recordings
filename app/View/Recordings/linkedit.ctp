@@ -98,7 +98,6 @@
 
             // Display
             $singers_display.= '<tr>';
-            $singers_display.= '<td class="text-center">' . $elem['singer_id'] . '</td>';
             $singers_display.= '<td>' . $elem['choir'] . '</td>';
             $singers_display.= '<td>' . $elem['city'] . '</td>';
             $singers_display.= '<td>' . $elem['director'] . '</td>';
@@ -113,7 +112,6 @@
         <div class="inner">
             <table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
                 <tr class="border-top">
-                    <th class="text-center">#</th>
                     <th>CHOIR(S)</th>
                     <th>CITY</th>
                     <th>DIRECTOR(S)</th>
@@ -140,8 +138,7 @@
 			
 			// Display
 			$songs_display.= '<tr>';
-			$songs_display.= '<td class="text-center">' . $elem['song_id'] . '</td>';
-            $songs_display.= '<td>' . $elem['composer'] . '</td>';			
+            $songs_display.= '<td>' . $elem['composer'] . '</td>';
             $songs_display.= '<td>' . $elem['composition'] . '</td>';
             $songs_display.= '<td>' . $elem['genre'] . '</td>';            
             $songs_display.= '<td class="actions">';
@@ -155,7 +152,6 @@
 		<div class="inner">
 			<table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
 				<tr class="border-top">
-					<th class="text-center">#</th>
             		<th>COMPOSER(S)</th>
             		<th>COMPOSITION(S)</th>
             		<th>GENRE</th>            		

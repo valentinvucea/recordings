@@ -464,15 +464,15 @@ class RecordingsController extends AppController {
 	    	'conditions' => array('Recsong.recording_id' => $id),
 	    	'contain' => array(
 	        	'Song' => array(
-	            	'Composition' => array(
+                    'Composer' => array(
+                        'fields' => array('id', 'name'),
+                    ),
+	        	    'Composition' => array(
 	            		'fields' => array('id', 'title'),
 	            		'Genre' => array('fields' => array('id', 'genre'))
 	            	),
-	            	'Composer' => array(
-	            		'fields' => array('id', 'name')
-	            	)
 	        	),
-	    	),
+	    	)
 		));
 
 		$recsongs = array();
@@ -492,7 +492,19 @@ class RecordingsController extends AppController {
 			);
 			$song_list[] = $song['Song']['id'];
 			$songs_id_list[] = $song['Recsong']['id'];
-		}	
+		}
+
+		/* sort array by composer and composition */
+        usort($recsongs, function($a, $b) {
+            $rdiff = strcasecmp($a['composer'],$b['composer']);
+            if ($rdiff < 0) return $rdiff;
+            if ($rdiff == 0) {
+                $ldiff = strcasecmp($a['composition'],$b['composition']);
+                if ($ldiff < 0) return $ldiff;
+                if ($ldiff > 0) return 1;
+            }
+            return 1;
+        });
 
 		$recsingers_raw = $this->Recording->Recsinger->find('all', array(
 		    'conditions' => array('recording_id' => $id),
@@ -524,7 +536,20 @@ class RecordingsController extends AppController {
 			);
 			$singer_list[] = $singer['Singer']['id'];
 			$singers_id_list[] = $singer['Recsinger']['id'];
-		}	
+		}
+
+        /* sort array by choir and director */
+        usort($recsingers, function($a, $b) {
+            $rdiff = strcasecmp($a['choir'],$b['choir']);
+            if ($rdiff < 0) return $rdiff;
+            if ($rdiff == 0) {
+                $ldiff = strcasecmp($a['director'],$b['director']);
+                if ($ldiff < 0) return $ldiff;
+                if ($ldiff > 0) return 1;
+            }
+            return 1;
+        });
+
 
 		// POST PROCESSING
 		if ($this->request->is('post')) {	
@@ -687,6 +712,5 @@ class RecordingsController extends AppController {
 		}
 
 		$this->set(compact('recording', 'links'));
-	}	
-
+	}
 }
