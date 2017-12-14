@@ -124,7 +124,7 @@ class CompositionsController extends AppController {
 			'conditions' => $conditions,
             'contain' => array('Genre', 'Version', 'Recordingnote', 'Voicing'),
 			'fields' => array('Composition.id', 'Composition.title', 'Composition.opening_text', 'Composition.genre_id', 'Genre.genre', 'Composition.version_id', 'Version.version', 'Composition.key_name', 'Composition.collection_title'),
-			'order' => array ('Composition.title' => 'ASC'),
+			'order' => array ('Composition.title' => 'ASC', 'Composition.id' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 1
