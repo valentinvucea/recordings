@@ -44,7 +44,7 @@ $cakeDescription = __d('cake_dev', 'Choirs recordings database');
 		
 		<div id="header">
 			<div style="float: right;">
-				<h1 class="clean"><a href="#" id="clean-sessions">Clean</a></h1>
+				<h1 class="clean"><a href="/Ajax/index" id="clean-sessions">Clean</a></h1>
 				<h1 class="logout"><?php echo $this->Html->link('Log out', '/Users/logout'); ?></h1>
 			</div>
 			

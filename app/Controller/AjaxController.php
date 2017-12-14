@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('ShellDispatcher', 'Console');
 /**
  * Countries Controller
  *
@@ -13,7 +14,7 @@ class AjaxController extends AppController {
  * @return void
  */
 	public function index() {
-		echo 'Boom';
+        $this->reset();
 	}
 
     public function sessions() {
@@ -50,6 +51,18 @@ class AjaxController extends AppController {
             if ($this->Session->check($name)) $this->Session->delete($name);
 
         echo 'Done';
+    }
+
+    private function reset() {
+	    $preserve = array('Config', 'Auth', 'Message');
+	    $sessions = $this->Session->read();
+
+	    foreach ($sessions as $key=>$session) {
+	        if (!in_array($key, $preserve)) {
+                $this->Session->delete($key);
+            }
+        }
+        $this->redirect(array('controller' => 'recordings', 'action' => 'index'));
     }
 
 }
