@@ -25,7 +25,7 @@ class UsersController extends AppController {
 				$this->redirect(array('action'=>'login'));
 			}
 		} else {
-			$this->Session->setFlash('Please fill in the username and password!');
+			$this->Session->setFlash('Please fill in the username and password');
 		}
 	}
 

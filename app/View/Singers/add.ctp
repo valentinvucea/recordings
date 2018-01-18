@@ -11,7 +11,7 @@
 			'choir_id', 
 			array(
 				'type' => 'hidden', 
-				'value' => (isset($singers['choir_id']) ? $singers['choir_id'] : '')
+				'value' => (isset($singers['choir_id']) ? $singers['choir_id'] : ''),
 			));
 		// Display
 		echo $this->Form->input(
@@ -19,11 +19,12 @@
 			array(
 					'type' => 'text', 
 					'readonly' => 'readonly', 
-					'label' => false, 
+					'label' => false,
+					'placeholder' => 'Click on the link below to select a Choir',
 					'value' => (isset($singers['Choir.choir']) ? $singers['Choir.choir'] : '')
 			));
 		// Link to Choirs
-		echo $this->Html->link((isset($singers['choir_id']) ? 'Change Choir' : 'Add Choir'), '/Choirs/select' . (isset($singers['choir_id']) ? '/' . $singers['choir_id'] : ''), array('class' => 'jump first'));
+		echo $this->Html->link((isset($singers['choir_id']) ? 'Change Choir' : 'Link Choir'), '/Choirs/select' . (isset($singers['choir_id']) ? '/' . $singers['choir_id'] : ''), array('class' => 'jump first'));
 
 		echo '<br/><br />';
 
@@ -42,11 +43,12 @@
 			array(
 				'type' => 'text', 
 				'readonly' => 'readonly', 
-				'label' => false, 
+				'label' => false,
+				'placeholder' => 'Click on the link below to select a Direcor',
 				'value' => (isset($singers['Director.name']) ? $singers['Director.name'] : '')
 			));
 		// Change/add link
-		echo $this->Html->link((isset($singers['director_id']) ? 'Change Director' : 'Add Director'), '/Directors/select' . (isset($singers['director_id']) ? '/' . $singers['director_id'] : ''), array('class' => 'jump first'));
+		echo $this->Html->link((isset($singers['director_id']) ? 'Change Director' : 'Link Director'), '/Directors/select' . (isset($singers['director_id']) ? '/' . $singers['director_id'] : ''), array('class' => 'jump first'));
 		
 		?>
 	</fieldset>

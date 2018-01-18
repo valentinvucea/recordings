@@ -19,11 +19,12 @@
 			array(
 				'type' => 'text', 
 				'readonly' => 'readonly', 
-				'label' => false, 
+				'label' => false,
+				'placeholder' => 'Click on the link below to select a Composer',
 				'value' => (isset($songs['Composer.name']) ? $songs['Composer.name'] : '')
 			));
 		// Change/add link
-		echo $this->Html->link((isset($songs['composer_id']) ? 'Change composer' : 'Add composer'), '/Composers/select' . (isset($songs['composer_id']) ? '/' . $songs['composer_id'] : ''), array('class' => 'jump first'));
+		echo $this->Html->link((isset($songs['composer_id']) ? 'Change composer' : 'Link composer'), '/Composers/select' . (isset($songs['composer_id']) ? '/' . $songs['composer_id'] : ''), array('class' => 'jump first'));
 				
 		echo '<br/><br />';		
 
@@ -42,11 +43,12 @@
 			array(
 					'type' => 'text', 
 					'readonly' => 'readonly', 
-					'label' => false, 
+					'label' => false,
+					'placeholder' => 'Click on the link below to select a Composition',
 					'value' => (isset($songs['Composition.title']) ? $songs['Composition.title'] : '')
 			));
 		// Link to compositions
-		echo $this->Html->link((isset($songs['composition_id']) ? 'Change composition' : 'Add composition'), '/Compositions/select' . (isset($songs['composition_id']) ? '/' . $songs['composition_id'] : ''), array('class' => 'jump first'));
+		echo $this->Html->link((isset($songs['composition_id']) ? 'Change composition' : 'Link composition'), '/Compositions/select' . (isset($songs['composition_id']) ? '/' . $songs['composition_id'] : ''), array('class' => 'jump first'));
 
 		?>
 	</fieldset>

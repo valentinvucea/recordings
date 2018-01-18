@@ -22,7 +22,8 @@
 			array(
 					'type' => 'text', 
 					'readonly' => 'readonly', 
-					'label' => false, 
+					'label' => false,
+					'placeholder' => 'Click on the link below to select a Choir',
 					'value' => (isset($singers['Choir.choir']) ? $singers['Choir.choir'] : '')
 			));
 		// Link to Choirs
@@ -45,11 +46,12 @@
 			array(
 				'type' => 'text', 
 				'readonly' => 'readonly', 
-				'label' => false, 
+				'label' => false,
+				'placeholder' => 'Click on the link below to select a Director',
 				'value' => (isset($singers['Director.name']) ? $singers['Director.name'] : '')
 			));
 		// Link to Directors
-		echo $this->Html->link((isset($singers['director_id']) ? 'Change Director' : 'Add Director'), '/Directors/select' . (isset($singers['director_id']) ? '/' . $singers['director_id'] : ''), array('class' => 'jump first'));
+		echo $this->Html->link((isset($singers['director_id']) ? 'Change Director' : 'Link Director'), '/Directors/select' . (isset($singers['director_id']) ? '/' . $singers['director_id'] : ''), array('class' => 'jump first'));
 		?>
 	</fieldset>
 	<?php echo $this->Form->end(__('Submit')); ?>
@@ -60,7 +62,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete this pair'), array('action' => 'delete', $this->Form->value('Singer.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Singer.id'))); ?></li>
+		<li><?php echo $this->Form->postLink(__('Unlink this pair'), array('action' => 'delete', $this->Form->value('Singer.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Singer.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List all pairs'), array('action' => 'index')); ?></li>
 		<li><hr/></li>
 		<li><?php echo $this->Html->link(__('List Choirs'), array('controller' => 'choirs', 'action' => 'index')); ?> </li>

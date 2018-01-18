@@ -8,8 +8,8 @@
 	<!--  meta info -->
 	<?php
 		echo $this->Html->meta(array("name"=>"viewport", "content"=>"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"));
-		echo $this->Html->meta(array("name"=>"description", "content"=>"Aplicatie de management a medicilor rezidenti aflati in pregatire in Centrul Universitar Bucuresti"));
-		echo $this->Html->meta(array("name"=>"author", "content"=>"Valentin Vucea@Vav Cretaions"));
+		echo $this->Html->meta(array("name"=>"description", "content"=>"Login Form"));
+		echo $this->Html->meta(array("name"=>"author", "content"=>"Valentin Vucea@Vav Creations"));
 		echo $this->Html->meta(array("name"=>"apple-mobile-web-app-capable", "content"=>"yes"));
 	?>
 

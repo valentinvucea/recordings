@@ -103,7 +103,7 @@
             $singers_display.= '<td>' . $elem['director'] . '</td>';
             $singers_display.= '<td class="actions">';
             $singers_display.= $this->Html->link(__('View'), array('controller'=>'Singers', 'action' => 'view', $elem['singer_id']));
-            $singers_display.= $this->Html->link(__('Delete'), array('action' => 'linkdel/Singers-' . $i), array('class'=>'delete'));
+            $singers_display.= $this->Html->link(__('Unlink'), array('action' => 'linkdel/Singers-' . $i), array('class'=>'delete'));
             $singers_display.= '</td>';
             $singers_display.= '</tr>';
         }
@@ -122,7 +122,7 @@
         </div>
         <?php
     }
-    echo $this->Html->link('Add Choir - Director', '/Singers/index', array('class' => 'jump first'));
+    echo $this->Html->link('Link Choir - Director', '/Singers/index', array('class' => 'jump first'));
 
 	// COMPOSITIONS - COMPOSERS
 	echo '<div class="input text"><label for="Composition">Composers - Compositions</label></div>';
@@ -143,7 +143,7 @@
             $songs_display.= '<td>' . $elem['genre'] . '</td>';            
             $songs_display.= '<td class="actions">';
             $songs_display.= $this->Html->link(__('View'), array('controller'=>'Songs', 'action' => 'view', $elem['song_id']));
-            $songs_display.= $this->Html->link(__('Delete'), array('action' => 'linkdel/Songs-' . $i), array('class'=>'delete'));
+            $songs_display.= $this->Html->link(__('Unlink'), array('action' => 'linkdel/Songs-' . $i), array('class'=>'delete'));
             $songs_display.= '</td>';
         	$songs_display.= '</tr>';
 		}
@@ -162,7 +162,7 @@
         </div>
 <?php
 	}
-	echo $this->Html->link('Add Composer - Composition', '/Songs/index', array('class' => 'jump first'));
+	echo $this->Html->link('Link Composer - Composition', '/Songs/index', array('class' => 'jump first'));
 	
 	echo $this->Form->end(__('Submit')); 
 ?>
