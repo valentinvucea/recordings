@@ -148,7 +148,7 @@ class SongsController extends AppController {
 		
 		
 		if(array_key_exists('Composition.title LIKE', $conditions) == true) {
-			$name = str_replace('%', '', $conditions['Composition.name LIKE']);
+			$name = str_replace('%', '', $conditions['Composition.title LIKE']);
 			unset($conditions['Composition.title LIKE']);
 			$conditions['Composition.title'] = str_replace('%', '', $name);
 		}
