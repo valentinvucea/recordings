@@ -85,20 +85,20 @@ class SongsController extends AppController {
     		$conditions['Composer.name'] = $this->passedArgs['Composer.name'];
 		else 
 			if( $this->Session->check('SongSearch.Composer.name') && $this->Session->check('SongSearch.Composer.name') != '' )
-				$conditions['Composer.name'] = $this->Session->read('SongSearch.Composer.name');	
+				$conditions['Composer.name'] = $this->Session->read('SongSearch.Composer.name');
 
 		// Page
-		if(isset($this->passedArgs['page']))
-			$curpage = $this->passedArgs['page'];
-		else if($this->Session->check('SongSearch.page_value'))
-			$curpage = $this->Session->read('SongSearch.page_value');
-		else
-			$curpage = 1;
+        if(isset($this->passedArgs['page']))
+            $curpage = $this->passedArgs['page'];
+        else if($this->Session->check('SongSearch.page_value'))
+            $curpage = $this->Session->read('SongSearch.page_value');
+        else
+            $curpage = 1;
 
-		// WRITE FORM VALUES TO SESSION
-		foreach($conditions As $k=>$v) { 
-			$this->Session->write('SongSearch.' . $k, $v);
-		}
+        // WRITE FORM VALUES TO SESSION
+        foreach($conditions As $k=>$v) {
+            $this->Session->write('SongSearch.' . $k, $v);
+        }
 
 		$passed = $conditions;
 		
@@ -160,8 +160,7 @@ class SongsController extends AppController {
 		}		
 						
 		/* write page to session */
-		if($curpage > 1)
-			$this->Session->write('SongSearch.page_value', $curpage);
+		$this->Session->write('SongSearch.page_value', $curpage);
 		
 		$songs = $this->paginate('Song');
 
@@ -385,7 +384,6 @@ class SongsController extends AppController {
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$links = $this->Session->read('links');
-
 
                 $options = array(
 					'conditions' => array('Song.' . $this->Song->primaryKey => $id),

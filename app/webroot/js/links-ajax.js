@@ -4,7 +4,7 @@ $( document ).ready(function() {
 		event.preventDefault();
 		var url = $(this).attr('href');
 		
-		if (confirm('Are you sure you want to delete this row?'))
+		if (confirm('Are you sure you want to unlink this row?'))
     		window.location.replace(url);
 	});
 	/*
