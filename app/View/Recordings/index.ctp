@@ -99,7 +99,7 @@
         <tr>
             <?php
                 $has_links = '';
-                if( $recording['Recording']['recsong_count'] > 0 || $recording['Recording']['recsinger_count'] > 0 ) {
+                if( $recording['Recording']['recsong_count'] > 0 && $recording['Recording']['recsinger_count'] > 0 ) {
                     $has_links = 'has_links';
                 }
             ?>
