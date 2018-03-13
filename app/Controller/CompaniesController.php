@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property Company $Company
  */
 class CompaniesController extends AppController {
-
+    public $components = array('Util');
 /**
  * index method
  *
@@ -60,7 +60,7 @@ class CompaniesController extends AppController {
         /* WRITE FORM VALUES TO SESSION */
         foreach($conditions As $k=>$v)
         {
-            $this->Session->write(str_replace('Company', 'CompanySearch', $k) . '_value', $v);
+            //$this->Session->write(str_replace('Company', 'CompanySearch', $k) . '_value', $v);
         }
 
         if(array_key_exists('company', $conditions) == true) {
@@ -175,6 +175,8 @@ class CompaniesController extends AppController {
     /** reset session method **/
     public function reset() {
         $this->Util->delSession('CompanySearch');
+        $this->Util->delSession('name_value');
+        $this->Util->delSession('company_value');
         $this->Session->setFlash(__('Memory was reset!'));
         $this->redirect(array('action' => 'index'));
     }
