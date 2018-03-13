@@ -1,5 +1,50 @@
 <div class="companies index">
 	<h2><?php echo __('Companies'); ?></h2>
+
+    <div class="conditions horizontal-form row bg-grey rounded">
+        <div class="inner recordings">
+            <?php
+            echo $this->Form->create(
+                array('url' => '/Companies/index',
+                      'type' => 'POST',
+                      'style' => 'margin-bottom: 0px;',
+                      //'action' => 'index',
+                      'accept-charset' => 'UTF-8'
+                ));
+
+            echo $this->Form->input('company', array(
+                'type'    => 'text',
+                'div' => 'grup grid-1-3 fleft',
+                'placeholder' => 'min. 4 chars',
+                'required' => false,
+                'label' => 'Name:',
+                'value' => (isset($conditions['company']) ? $conditions['company'] : ''),
+            ));
+
+            echo '<div class="grup grid-1-4 submit fleft" style="padding-top: 27px;">';
+
+            echo $this->Form->submit('SEARCH', array(
+                'type' => 'submit',
+                'div' => false,
+            ));
+
+            echo $this->Form->submit('RESET', array(
+                'type' => 'reset',
+                'style' => 'margin-left: 10px;',
+                'div' => false,
+                'onclick' => 'location.href = \'/Companies/reset\';',
+                'id' => 'CompaniesReset'
+            ));
+
+
+            echo '</div>';
+
+            echo $this->Form->end();
+            ?>
+        </div>
+    </div>
+
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>

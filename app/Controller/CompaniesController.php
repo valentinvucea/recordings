@@ -12,11 +12,87 @@ class CompaniesController extends AppController {
  *
  * @return void
  */
-	public function index() {
+	public function index_old() {
 		$this->Company->recursive = 0;
 		$this->paginate = array('order' => 'company');
 		$this->set('companies', $this->paginate());
 	}
+
+	public function index() {
+        /* HANDLE POST DATA BY TRANSFORMING POST IN GET*/
+        if($this->request && $this->request->is('post'))
+        {
+            $url = array('action'=>'index');
+            $filters = array();
+
+            if(isset($this->data['Company']['company']) && $this->data['Company']['company'])
+                $filters['company'] = $this->data['Company']['company'];
+            else
+                $this->Session->write('CompanySearch.company_value', null);
+
+            $this->Session->write('CompanySearch.page_value', 1);
+
+            //redirect user to the index page including the selected filters
+            $this->redirect(array_merge($url,$filters));
+        }
+
+        //check filters on passedArgs
+        $conditions = array();
+
+        /* name */
+        if(isset($this->passedArgs['company'])) {
+            $conditions['company'] = $this->passedArgs['company'];
+        } else {
+            if($this->Session->check('CompanySearch.company_value')) {
+                $conditions['company'] = $this->Session->read('CompanySearch.company_value');
+            }
+        }
+
+        /* page */
+        if(isset($this->passedArgs['page']))
+            $curpage = $this->passedArgs['page'];
+        else
+            if($this->Session->check('CompanySearch.page_value'))
+                $curpage = $this->Session->read('CompanySearch.page_value');
+            else
+                $curpage = 1;
+
+        /* WRITE FORM VALUES TO SESSION */
+        foreach($conditions As $k=>$v)
+        {
+            $this->Session->write(str_replace('Company', 'CompanySearch', $k) . '_value', $v);
+        }
+
+        if(array_key_exists('company', $conditions) == true) {
+            $name = array_shift($conditions);
+            $conditions['company LIKE'] = '%' . $name . '%';
+        }
+
+        $this->paginate = array (
+            'conditions' => $conditions,
+            'fields' => array('id', 'company'),
+            'order' => array ('company' => 'ASC'),
+            'page' => $curpage,
+            'limit' => 20,
+            'recursive' => 0
+        );
+
+        if(array_key_exists('company LIKE', $conditions) == true) {
+            $name = str_replace('%', '', $conditions['company LIKE']);
+            unset($conditions['company LIKE']);
+            $conditions['company'] = str_replace('%', '', $name);
+        }
+
+        /* write page to session */
+        if($curpage > 1)
+            $this->Session->write('CompanySearch.page_value', $curpage);
+
+        $companies = $this->paginate('Company');
+
+        $this->set(compact('companies', 'conditions'));
+
+        $this->render('index');
+    }
 
 /**
  * view method
@@ -95,4 +171,12 @@ class CompaniesController extends AppController {
 		$this->Session->setFlash(__('Company was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+    /** reset session method **/
+    public function reset() {
+        $this->Util->delSession('CompanySearch');
+        $this->Session->setFlash(__('Memory was reset!'));
+        $this->redirect(array('action' => 'index'));
+    }
+
 }
