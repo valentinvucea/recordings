@@ -99,7 +99,7 @@ class RecordingsController extends AppController {
 		$this->paginate = array (
 			'conditions' => $conditions,
             'contain' => array('Format', 'Presentation', 'Comprecordingnote', 'Company', 'Ancillarymusic'),
-			'fields' => array('Recording.id', 'Recording.no', 'Recording.name', 'Recording.company_id', 'Recording.catalog', 'Company.company', 'Recording.format_id', 'Format.format', 'Recording.comprecordingnote_id', 'Comprecordingnote.note', 'Recording.presentation_id', 'Presentation.presentation', 'Recording.ancillarymusic_id', 'Ancillarymusic.name', 'Recording.no', 'Recording.notes', 'Recording.recsong_count', 'Recording.recsinger_count'),
+			'fields' => array('Recording.id', 'Recording.no', 'Recording.name', 'Recording.company_id', 'Recording.catalog', 'Recording.notes', 'Company.company', 'Recording.format_id', 'Format.format', 'Recording.comprecordingnote_id', 'Comprecordingnote.note', 'Recording.presentation_id', 'Presentation.presentation', 'Recording.ancillarymusic_id', 'Ancillarymusic.name', 'Recording.no', 'Recording.notes', 'Recording.recsong_count', 'Recording.recsinger_count'),
 			'order' => array ('Recording.no' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,

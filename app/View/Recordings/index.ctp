@@ -89,7 +89,8 @@
             <th class="text-center"><?php echo $this->Paginator->sort('no', 'No'); ?></th>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('format_id'); ?></th>
-            <th class="text-center"><?php echo $this->Paginator->sort('company_id'); ?></th>
+<!--            <th class="text-center">--><?php //echo $this->Paginator->sort('company_id'); ?><!--</th>-->
+            <th><?php echo $this->Paginator->sort('notes'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('catalog'); ?></th>
             <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
@@ -106,8 +107,9 @@
             <td class="text-center"><?php echo h($recording['Recording']['no']); ?></td>
             <td class="<?php echo $has_links; ?>"><?php echo h($recording['Recording']['name']); ?></td>
             <td class="text-center"><?php echo h($recording['Format']['format']); ?></td>
-            <td class="text-center"><?php echo h($recording['Company']['company']); ?></td>
-			<td class="text-center"><?php echo h($recording['Recording']['catalog']); ?></td>			
+<!--            <td class="text-center">--><?php //echo h($recording['Company']['company']); ?><!--</td>-->
+            <td class="text-center"><?php echo h($recording['Recording']['notes']); ?></td>
+			<td class="text-center"><?php echo h($recording['Recording']['catalog']); ?></td>
             <td class="actions">
                 <?php echo $this->Html->link(__('Link'), array('action' => ($has_links == 'has_links' ? 'linkedit' : 'linkadd'), $recording['Recording']['id']), array('class' => ($has_links == 'has_links' ? 'btngreen' : ''))); ?>			
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $recording['Recording']['id'])); ?>
