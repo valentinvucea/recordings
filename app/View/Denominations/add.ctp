@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Denomination'); ?></legend>
 	<?php
-		echo $this->Form->input('denomination');
+        echo $this->Form->input('denomination', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

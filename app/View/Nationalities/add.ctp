@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Nationality'); ?></legend>
 	<?php
-		echo $this->Form->input('nationality');
-	?>
+        echo $this->Form->input('nationality', array('class' => 'focus-field'));
+    ?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

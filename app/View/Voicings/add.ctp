@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Voicing'); ?></legend>
 	<?php
-		echo $this->Form->input('voicing');
+        echo $this->Form->input('voicing', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

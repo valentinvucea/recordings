@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Composition recording note'); ?></legend>
 	<?php
-		echo $this->Form->input('note');
+        echo $this->Form->input('note', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

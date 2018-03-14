@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Vocal format'); ?></legend>
 	<?php
-		echo $this->Form->input('vocalformat');
+        echo $this->Form->input('vocalformat', array('class' => 'focus-field'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
