@@ -81,7 +81,7 @@ class DirectorsController extends AppController {
 			'conditions' => $conditions,
 			'contain' => array('Position'),
 			'fields' => array('Director.id', 'Director.name', 'Director.alt_name', 'Director.position_id', 'Position.position', 'Director.notes'),
-			'order' => array ('Director.id' => 'ASC'),
+			'order' => array ('Director.name' => 'ASC', 'Director.alt_name' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 1

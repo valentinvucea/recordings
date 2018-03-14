@@ -115,7 +115,7 @@ class SingersController extends AppController {
 			'conditions' => $conditions,
             'contain' => array('Choir', 'Director'),
 			'fields' => array('Singer.id', 'Singer.choir_id', 'Singer.director_id', 'Choir.choir', 'Director.name'),
-			'order' => array ('Singer.id' => 'ASC'),
+			'order' => array ('Choir.choir' => 'ASC', 'Director.name' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 1

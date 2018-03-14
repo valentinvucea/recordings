@@ -140,7 +140,7 @@ class SongsController extends AppController {
 	            	'fields' => array('id', 'name')
 	            )
 		    ),
-			'order' => array ('Song.no' => 'ASC'),
+			'order' => array ('Composer.name' => 'ASC', 'Composition.title' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 2

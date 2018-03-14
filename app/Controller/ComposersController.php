@@ -87,7 +87,7 @@ class ComposersController extends AppController {
 			'conditions' => $conditions,
             'contain' => array('Nationality'),
 			'fields' => array('Composer.id', 'Composer.name', 'Composer.alt_name', 'Composer.nationality_id', 'Composer.notes', 'Composer.dates', 'Nationality.nationality'),
-			'order' => array ('Composer.name' => 'ASC'),
+			'order' => array ('Composer.name' => 'ASC', 'Composer.alt_name' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 1

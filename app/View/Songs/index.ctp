@@ -94,7 +94,13 @@
             <td class="text-center"><?php echo h($song['Song']['id']); ?></td>
             <td><?php echo h($song['Composer']['name']); ?></td>
             <td><?php echo h($song['Composition']['title']); ?></td> 
-            <td><?php echo h($song['Composition']['Genre']['genre']); ?></td>                        			
+            <td>
+                <?php
+                    if (isset($song['Composition']['Genre']['genre'])) {
+                        echo h($song['Composition']['Genre']['genre']);
+                    }
+                ?>
+            </td>
             <td class="actions">
                 <?php
                     if ($this->Session->check('links') === true) {

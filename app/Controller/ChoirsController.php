@@ -107,7 +107,7 @@ class ChoirsController extends AppController {
 			'conditions' => $conditions,
             'contain' => array('State', 'Country', 'Denomination', 'Vocalformat'),
 			'fields' => array('Choir.id', 'Choir.choir', 'Choir.alt_name', 'Choir.state_id', 'Choir.notes', 'Choir.city', 'Choir.country_id', 'Choir.denomination_id', 'Choir.vocalformat_id', 'State.state', 'Country.country', 'Denomination.denomination', 'Vocalformat.vocalformat'),
-			'order' => array ('Choir.choir' => 'ASC'),
+			'order' => array ('Choir.choir' => 'ASC', 'Choir.city' => 'ASC'),
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 1
