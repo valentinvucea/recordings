@@ -78,7 +78,46 @@
 	echo $this->Form->create('Recording');	
 	
 	echo $this->Form->input('recording_id', array('type' => 'hidden', 'value' => $recording['Recording']['id']));
-	
+
+    // CHOIR - DIRECTOR
+    echo '<div class="input text"><label for="Choir">Choirs - Directors</label></div>';
+
+    if( isset($links['Singers']) && count($links['Singers'])>0 ) {
+        $recsingers = $links['Singers'];
+        $singers_display = '';
+
+        foreach($recsingers as $i=>$elem) {
+            // Hidden
+            echo $this->Form->input('Recsinger.' . $i . '.singer_id', array('type' => 'hidden', 'value' => $elem['singer_id']));
+
+            // Display
+            $singers_display.= '<tr>';
+            $singers_display.= '<td class="text-center">' . $elem['singer_id'] . '</td>';
+            $singers_display.= '<td>' . $elem['choir'] . '</td>';
+            $singers_display.= '<td>' . $elem['director'] . '</td>';
+            $singers_display.= '<td class="actions">';
+            $singers_display.= $this->Html->link(__('View'), array('controller'=>'Singers', 'action' => 'view', $elem['singer_id']));
+            $singers_display.= $this->Html->link(__('Unlink'), array('action' => 'linkdel/Singers-' . $i), array('class'=>'delete'));
+            $singers_display.= '</td>';
+            $singers_display.= '</tr>';
+        }
+        ?>
+        <!-- Render Display -->
+        <div class="inner">
+            <table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
+                <tr class="border-top">
+                    <th class="text-center">#</th>
+                    <th>CHOIR(S)</th>
+                    <th>DIRECTOR(S)</th>
+                    <th class="actions text-center grid-1-10">Actions</th>
+                </tr>
+                <?php echo $singers_display; ?>
+            </table>
+        </div>
+    <?php
+    }
+    echo $this->Html->link('Link Choir - Director', '/Singers/index', array('class' => 'jump first'));
+
 	// COMPOSERS - COMPOSITIONS
 	echo '<div class="input text"><label for="Composition">Composers - Compositions</label></div>';
 	
@@ -101,7 +140,7 @@
             $songs_display.= '</td>';
         	$songs_display.= '</tr>';
 		}
-?>
+    ?>
 		<!-- Render Display -->
 		<div class="inner">
 			<table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
@@ -114,53 +153,13 @@
         		<?php echo $songs_display; ?>
         	</table>
         </div>
-<?php
+    <?php
 	}
 	echo $this->Html->link('Link Composer - Composition', '/Songs/index', array('class' => 'jump first'));
 
-	// CHOIR - DIRECTOR
-	echo '<div class="input text"><label for="Choir">Choirs - Directors</label></div>';
-	
-	if( isset($links['Singers']) && count($links['Singers'])>0 ) {	
-		$recsingers = $links['Singers'];
-		$singers_display = '';
-
-		foreach($recsingers as $i=>$elem) {
-			// Hidden
-			echo $this->Form->input('Recsinger.' . $i . '.singer_id', array('type' => 'hidden', 'value' => $elem['singer_id']));
-			
-			// Display
-			$singers_display.= '<tr>';
-			$singers_display.= '<td class="text-center">' . $elem['singer_id'] . '</td>';
-            $singers_display.= '<td>' . $elem['choir'] . '</td>';
-            $singers_display.= '<td>' . $elem['director'] . '</td>';			
-            $singers_display.= '<td class="actions">';
-            $singers_display.= $this->Html->link(__('View'), array('controller'=>'Singers', 'action' => 'view', $elem['singer_id']));
-            $singers_display.= $this->Html->link(__('Unlink'), array('action' => 'linkdel/Singers-' . $i), array('class'=>'delete'));
-            $singers_display.= '</td>';
-        	$singers_display.= '</tr>';
-		}
-?>
-		<!-- Render Display -->
-		<div class="inner">
-			<table cellpadding="0" cellspacing="0" style="border-bottom: 2px solid #555;">
-				<tr class="border-top">
-					<th class="text-center">#</th>
-            		<th>CHOIR(S)</th>
-            		<th>DIRECTOR(S)</th>
-            		<th class="actions text-center grid-1-10">Actions</th>
-        		</tr>
-        		<?php echo $singers_display; ?>
-        	</table>
-        </div>
-<?php
-	}	
-	echo $this->Html->link('Link Choir - Director', '/Singers/index', array('class' => 'jump first'));
-	
-	echo $this->Form->end(__('Submit')); 
+	echo $this->Form->end(__('Submit'));
 ?>
 </div>
-
 
 <?php 
 	echo $this->Html->css('jquery-ui', null, array('inline' => false));
