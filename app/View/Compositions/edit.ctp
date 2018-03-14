@@ -13,7 +13,7 @@
 		echo $this->Form->input('voicing_id', array('class' => 'tall'));
 		echo $this->Form->input('collection_title');
 		echo $this->Form->input('ancillary_music', array('label' => 'Additional text'));
-		echo $this->Form->input('notes');
+        echo $this->Form->input('notes', array('label' => 'Composer/Other Notes'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

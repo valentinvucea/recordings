@@ -51,7 +51,7 @@
 			<?php echo h($composition['Composition']['ancillary_music']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Notes'); ?></dt>
+		<dt><?php echo __('Composer/Other Notes'); ?></dt>
 		<dd>
 			<?php echo h($composition['Composition']['notes']); ?>
 			&nbsp;
