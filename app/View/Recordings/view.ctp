@@ -46,16 +46,16 @@
 		<?php echo $this->Html->link($recording['Presentation']['presentation'], array('controller' => 'presentations', 'action' => 'view', $recording['Presentation']['id'])); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Notes'); ?></dt>
-	<dd>
-		<?php echo h($recording['Recording']['notes']); ?>
-		&nbsp;
-	</dd>
 	<dt><?php echo __('Recording date'); ?></dt>
 	<dd>
 		<?php echo h($recording['Recording']['recordingdate']); ?>
 		&nbsp;
 	</dd>
+    <dt><?php echo __('Notes'); ?></dt>
+    <dd>
+        <?php echo h($recording['Recording']['notes']); ?>
+        &nbsp;
+    </dd>
 </dl>
 
 <?php
