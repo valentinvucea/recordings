@@ -100,6 +100,7 @@
                 <th class="text-center"><?php echo $this->Paginator->sort('genre_id'); ?></th>            
                 <th class="text-center"><?php echo $this->Paginator->sort('version_id'); ?></th>
 				<th class="text-center"><?php echo $this->Paginator->sort('collection_title'); ?></th>	
+				<th class="text-center"><?php echo $this->Paginator->sort('notes'); ?></th>
                 <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         
@@ -111,6 +112,7 @@
             <td class="text-center"><?php echo h($composition['Genre']['genre']); ?></td>
 			<td class="text-center"><?php echo h($composition['Version']['version']); ?></td>		
 			<td class="text-center"><?php echo h($composition['Composition']['collection_title']); ?></td>		
+			<td class="text-center"><?php echo h($composition['Composition']['notes']); ?></td>
             <td class="actions" style="width: 60px;">
 				<?php
 					if( $this->Sessionplus->isSession('Songs') == true ) {
