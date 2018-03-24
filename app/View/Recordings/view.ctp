@@ -36,7 +36,7 @@
 		<?php echo $this->Html->link($recording['Comprecordingnote']['note'], array('controller' => 'comprecordingnotes', 'action' => 'view', $recording['Comprecordingnote']['id'])); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Additional text'); ?></dt>
+	<dt><?php echo __('Ancillary music'); ?></dt>
 	<dd>
 		<?php echo $this->Html->link($recording['Ancillarymusic']['name'], array('controller' => 'ancillarymusics', 'action' => 'view', $recording['Ancillarymusic']['id'])); ?>
 		&nbsp;
