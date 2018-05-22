@@ -53,5 +53,20 @@ class Choir extends AppModel {
 			'order' => ''
 		)
 	);
-	
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public $validate = array(
+        'choir' => array(
+            'required' => true,
+            'on' => 'create',
+        ),
+        'vocalformat_id' => array(
+            'required' => true,
+            'on' => 'create',
+        )
+    );
 }

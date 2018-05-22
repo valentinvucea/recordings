@@ -11,7 +11,7 @@
 			<?php echo h($choir['Choir']['choir']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Alt Name'); ?></dt>
+		<dt>Alt. name</dt>
 		<dd>
 			<?php echo h($choir['Choir']['alt_name']); ?>
 			&nbsp;
@@ -36,7 +36,7 @@
 			<?php echo $this->Html->link($choir['Denomination']['denomination'], array('controller' => 'denominations', 'action' => 'view', $choir['Denomination']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Vocalformat'); ?></dt>
+		<dt>Vocal format</dt>
 		<dd>
 			<?php echo $this->Html->link($choir['Vocalformat']['vocalformat'], array('controller' => 'vocalformats', 'action' => 'view', $choir['Vocalformat']['id'])); ?>
 			&nbsp;

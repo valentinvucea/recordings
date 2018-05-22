@@ -4,11 +4,11 @@
 		<legend><?php echo __('Edit Recording #' . $this->Form->value('Recording.id')); ?></legend>
 		<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('no', array('label' => 'Rec. No.', 'type' => 'text'));
+		echo $this->Form->input('no', array('label' => 'Recording no.', 'type' => 'text'));
 		echo $this->Form->input('name');
 		echo $this->Form->input('format_id');
         echo $this->Form->input('company_id');
-		echo $this->Form->input('catalog', array('label' => 'Catalog. No.'));
+		echo $this->Form->input('catalog', array('label' => 'Catalog no.'));
 		echo $this->Form->input('comprecordingnote_id', array('label' => 'Recording note'));
 		echo $this->Form->input('ancillarymusic_id', array('label' => 'Ancillary music'));
 		echo $this->Form->input('presentation_id');

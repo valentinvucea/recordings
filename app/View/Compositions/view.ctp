@@ -11,7 +11,7 @@
 			<?php echo h($composition['Composition']['title']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Opening text'); ?></dt>
+		<dt>Opening text</dt>
 		<dd>
 			<?php echo h($composition['Composition']['opening_text']); ?>
 			&nbsp;
@@ -31,7 +31,7 @@
 			<?php echo h($composition['Composition']['key_name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Recordings note'); ?></dt>
+		<dt>Recording notes</dt>
 		<dd>
 			<?php echo $this->Html->link($composition['Recordingnote']['recording_note'], array('controller' => 'recordingnotes', 'action' => 'view', $composition['Recordingnote']['id'])); ?>
 			&nbsp;
@@ -41,7 +41,7 @@
 			<?php echo $this->Html->link($composition['Voicing']['voicing'], array('controller' => 'voicings', 'action' => 'view', $composition['Voicing']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Collection title'); ?></dt>
+		<dt>Collection title</dt>
 		<dd>
 			<?php echo h($composition['Composition']['collection_title']); ?>
 			&nbsp;
@@ -51,7 +51,7 @@
 			<?php echo h($composition['Composition']['ancillary_music']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Composer/Other Notes'); ?></dt>
+		<dt>Composer/Other notes</dt>
 		<dd>
 			<?php echo h($composition['Composition']['notes']); ?>
 			&nbsp;

@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('alt_name');
+		echo $this->Form->input('alt_name', array('label' => 'Alt. name'));
 		echo $this->Form->input('position_id');
 		echo $this->Form->input('notes');
 	?>

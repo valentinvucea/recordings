@@ -15,11 +15,11 @@
 			<h4>Add/edit records</h4>
 			<div class="dashboard">
 				<ul>
-					<li><a href="/Recordings/index"><img src="../img/icon-recordings.png" alt="Add/edit recordings" class=""><span>Add/Edit <br />Recordings</span></a></li>
-					<li><a href="/Choirs/index"><img src="../img/icon-choirs.png" alt="Add/edic choirs" class=""><span>Add/Edit <br />Choirs</span></a></li>
-					<li><a href="/Directors/index"><img src="../img/icon-director.png" alt="Add/edit directors" class=""><span>Add/Edit <br />Directors</span></a></li>
-					<li><a href="/Composers/index"><img src="../img/icon-musician.png" alt="Add/edit composers" class=""><span>Add/Edit <br />Composers</span></a></li>
-					<li><a href="/Compositions/index"><img src="../img/icon-music-notes.png" alt="Add/edit compositions" class=""><span>Add/Edit <br />Compositions</span></a></li>
+					<li><a href="/Recordings/index"><img src="../img/icon-recordings.png" alt="Add/edit recordings" class=""><span>Recordings</span></a></li>
+					<li><a href="/Choirs/index"><img src="../img/icon-choirs.png" alt="Add/edic choirs" class=""><span>Choirs</span></a></li>
+					<li><a href="/Directors/index"><img src="../img/icon-director.png" alt="Add/edit directors" class=""><span>Directors</span></a></li>
+					<li><a href="/Composers/index"><img src="../img/icon-musician.png" alt="Add/edit composers" class=""><span>Composers</span></a></li>
+					<li><a href="/Compositions/index"><img src="../img/icon-music-notes.png" alt="Add/edit compositions" class=""><span>Compositions</span></a></li>
 				</ul>
 			</div>
 		</div>

@@ -24,4 +24,20 @@ class Director extends AppModel {
 			'order' => ''
 		)
 	);
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public $validate = array(
+        'name' => array(
+            'required' => true,
+            'on' => 'create',
+        ),
+        'position_id' => array(
+            'required' => true,
+            'on' => 'create',
+        )
+    );
 }

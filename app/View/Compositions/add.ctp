@@ -4,15 +4,15 @@
 		<legend><?php echo __('Add Composition'); ?></legend>
 	<?php
 		echo $this->Form->input('title', array('class' => 'focus-field'));
-		echo $this->Form->input('opening_text');
+		echo $this->Form->input('opening_text', array('label' => 'Opening text'));
 		echo $this->Form->input('genre_id', array('class' => 'tall'));
 		echo $this->Form->input('version_id', array('class' => 'tall'));
 		echo $this->Form->input('key_name', array('label' => 'Key/Name'));
-		echo $this->Form->input('recordingnote_id', array('class' => 'tall', 'label' => 'Recording Note'));
+		echo $this->Form->input('recordingnote_id', array('class' => 'tall', 'label' => 'Recording notes'));
 		echo $this->Form->input('voicing_id', array('class' => 'tall'));
-		echo $this->Form->input('collection_title');
+		echo $this->Form->input('collection_title', array('label' => 'Collection title'));
 		echo $this->Form->input('ancillary_music', array('label' => 'Additional text'));
-		echo $this->Form->input('notes', array('label' => 'Composer/Other Notes'));
+		echo $this->Form->input('notes', array('label' => 'Composer/Other notes'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -11,7 +11,7 @@
 			<?php echo h($composer['Composer']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Alt Name'); ?></dt>
+		<dt>Alt. name</dt>
 		<dd>
 			<?php echo h($composer['Composer']['alt_name']); ?>
 			&nbsp;

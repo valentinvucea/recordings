@@ -48,4 +48,20 @@ class Composition extends AppModel {
 			'order' => ''
 		)
 	);
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public $validate = array(
+        'title' => array(
+            'required' => true,
+            'on' => 'create',
+        ),
+        'genre_id' => array(
+            'required' => true,
+            'on' => 'create',
+        )
+    );
 }

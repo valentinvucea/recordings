@@ -6,7 +6,7 @@
 		<?php echo h($recording['Recording']['id']); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Rec. No.'); ?></dt>
+	<dt><?php echo __('Recording no.'); ?></dt>
 	<dd>
 		<?php echo h($recording['Recording']['no']); ?>
 		&nbsp;
@@ -26,7 +26,7 @@
 		<?php echo $this->Html->link($recording['Company']['company'], array('controller' => 'companies', 'action' => 'view', $recording['Company']['id'])); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Catalog No.'); ?></dt>
+	<dt><?php echo __('Catalog no.'); ?></dt>
 	<dd>
 		<?php echo h($recording['Recording']['catalog']); ?>
 		&nbsp;

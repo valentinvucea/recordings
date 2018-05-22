@@ -11,7 +11,7 @@
 			<?php echo h($director['Director']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Alt Name'); ?></dt>
+		<dt>Alt. name</dt>
 		<dd>
 			<?php echo h($director['Director']['alt_name']); ?>
 			&nbsp;

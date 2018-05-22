@@ -80,9 +80,8 @@
         <tr class="border-top">
             <th><?php echo $this->Paginator->sort('id'); ?></th>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
-            <th><?php echo $this->Paginator->sort('alt_name'); ?></th>
+            <th><?php echo $this->Paginator->sort('alt_name', 'Alt. name'); ?></th>
             <th><?php echo $this->Paginator->sort('position_id'); ?></th>
-            <th><?php echo $this->Paginator->sort('notes'); ?></th>
             <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         
@@ -94,7 +93,6 @@
             <td>
                 <?php echo $this->Html->link($director['Position']['position'], array('controller' => 'positions', 'action' => 'view', $director['Director']['position_id'])); ?>
             </td>
-            <td><?php echo h($director['Director']['notes']); ?>&nbsp;</td>
             <td class="actions">
                 <?php
                 if( $this->Sessionplus->isSession('Singers') == true ) {

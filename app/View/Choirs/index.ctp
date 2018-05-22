@@ -91,7 +91,7 @@
                 <th class="text-center"><?php echo $this->Paginator->sort('state'); ?></th>            
                 <th class="text-center"><?php echo $this->Paginator->sort('country'); ?></th>
                 <th class="text-center"><?php echo $this->Paginator->sort('denomination'); ?></th>
-                <th class="text-center"><?php echo $this->Paginator->sort('vocalformats'); ?></th>				
+                <th class="text-center"><?php echo $this->Paginator->sort('vocalformats', 'Voc. format'); ?></th>
                 <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         

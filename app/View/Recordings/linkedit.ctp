@@ -17,7 +17,7 @@
 			echo '</tr>';
 
 			echo '<tr>';
-			echo '<td class="grid-1-10">Rec. no.</td>';
+			echo '<td class="grid-1-10">Recording no.</td>';
 			echo '<td class="grid-9-12"><strong>' . h($recording['Recording']['no']) . '</strong></td>';
 			echo '</tr>';
 
@@ -37,7 +37,7 @@
 			echo '</tr>';
 
 			echo '<tr class="extra hidden">';
-			echo '<td class="grid-3-12">' . __('Catalog') . '</td>';
+			echo '<td class="grid-3-12">Catalog no.</td>';
 			echo '<td class="grid-9-12"><strong>' . h($recording['Recording']['catalog']) . '</strong></td>';
 			echo '</tr>';
 

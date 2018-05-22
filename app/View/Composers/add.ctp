@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Composer'); ?></legend>
 	<?php
 		echo $this->Form->input('name', array('class' => 'focus-field'));
-		echo $this->Form->input('alt_name');
+		echo $this->Form->input('alt_name', array('label' => 'Alt. name'));
 		echo $this->Form->input('nationality_id');        
 		echo $this->Form->input('dates');
         echo $this->Form->input('notes');

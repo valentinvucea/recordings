@@ -5,12 +5,12 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('choir');
-		echo $this->Form->input('alt_name');
+		echo $this->Form->input('alt_name', array('label' => 'Alt. name'));
 		echo $this->Form->input('city');
 		echo $this->Form->input('state_id', array('class' => 'tall'));
 		echo $this->Form->input('country_id', array('class' => 'tall'));
 		echo $this->Form->input('denomination_id', array('class' => 'tall'));
-		echo $this->Form->input('vocalformat_id', array('class' => 'tall'));
+		echo $this->Form->input('vocalformat_id', array('label' => 'Vocal format', 'class' => 'tall'));
 		echo $this->Form->input('notes');
 	?>
 	</fieldset>
