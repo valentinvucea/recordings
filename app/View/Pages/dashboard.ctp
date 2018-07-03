@@ -1,15 +1,31 @@
 <div class="home">
 
 	<div class="left_side">
-		<div class="hrow">
-			<h4>Quick search</h4>
-			<div class="search" style="margin-top: 15px;">
-				<form name="frm_search" action="action" method="post" style="margin-top: 0px;">
-					<input class="input-flat" type="text" name="txt_search" placeholder="min 4 char" />
-				</form>
-			</div>
-			<a class="red-link" href="/Pages/advsearch" title="Advanced search">Advanced search</a>
-		</div>
+        <div class="hrow">
+            <h4>Quick search</h4>
+            <div class="homeSearch">
+                <form name="frmSearch" action="action" method="post">
+                    <div class="col-term form-inline">
+                        <label for="searchTerm_1">Search term:</label>
+                        <input type="text" id="searchTerm_1" name="searchTerm_1" placeholder="min 4 char" />
+                    </div>
+                    <div class="col-table form-inline">
+                        <label for="searchTable_1">Table:</label>
+                        <select id="searchTable_1" name="searchTable_1">
+                            <option value="0">All tables</option>
+                            <option value="1">Choirs</option>
+                            <option value="2">Composers</option>
+                            <option value="3">Compositions</option>
+                            <option value="4">Directors</option>
+                            <option value="5">Recordings</option>
+                        </select>
+                    </div>
+                    <div class="col-button form-inline">
+                        <button id="searchAdd">+</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 		<div class="hrow">
 			<h4>Add/edit records</h4>
