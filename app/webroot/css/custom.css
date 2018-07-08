@@ -72,23 +72,6 @@ form .submit input[type=reset] {
     -webkit-border-radius: 5px;
 }
 
-.home {
-	margin: 10px auto;
-	padding: 0;
-	overflow: hidden;
-}
-
-.home .left_side,
-.home .right_side { 
-	float: left;
-	width: 49.5%;
-	padding: 0;
-}
-
-.home .left_side {
-	padding-right: 1%;
-}
-
 .hrow {
 	display: block;
 	width: 100%;
@@ -316,6 +299,7 @@ input[type=button].btn:hover,
 }
 
 form .submit input[type=reset],
+.homeSearch form input[type=submit],
 input[type=button].btn,
 td.actions a.btngreen
  {
@@ -327,6 +311,7 @@ td.actions a.btngreen
 	color: #fff;
 	text-shadow: rgba(0, 0, 0, 0.5) 0 -1px 0;
 	padding: 8px 10px;
+	opacity: 1;
 }
 
 form .submit input[type=reset]:hover,
@@ -680,63 +665,4 @@ dt {
 dd {
 	width: 80%;
 	margin-left: 20%;
-}
-
-.homeSearch form {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
-
-.homeSearch form label {
-	margin-bottom:5px;
-}
-
-.homeSearch form input[type=text],
-.homeSearch form select {
-	padding: 0 5px;
-	margin: 0;
-	border: 1px solid #ccc;
-	height: 36px;
-	line-height: 36px;
-	width: 100%;
-}
-
-.homeSearch form select {
-	height: 38px;
-}
-
-.homeSearch form .col-term {
-	width: 50%;
-}
-
-.homeSearch form .col-table {
-	width: 25%;
-	padding-left: 25px;
-}
-
-.homeSearch form .col-button {
-	width: calc(25% - 60px);
-	padding-left: 15px;
-}
-
-.homeSearch form button {
-	padding: 0 16px;
-	line-height: 34px;
-	font-size: 26px;
-	margin-top: 24px;
-	cursor: pointer;
-	border: 1px solid #999;
-	border-radius: 2px;
-}
-
-.homeSearch form button:hover {
-	background-color: #f2f2f2;
-}
-
-.form-inline {
-	display: inline-block;
-	padding: 0;
-	margin: 0;
-	border: 0;
 }

@@ -15,16 +15,15 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
-$cakeDescription = __d('cake_dev', 'Choirs recordings database');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+		<?php
+            echo sprintf('Music catalog database: %s', $title_for_layout);
+        ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
@@ -32,12 +31,12 @@ $cakeDescription = __d('cake_dev', 'Choirs recordings database');
 		echo $this->Html->css('font-awesome.min');			
 
 		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-		echo $this->Html->css('custom');		
+		echo $this->Html->css('custom');
+        echo $this->fetch('css');
+
+        echo $this->Html->script('jquery.min.js');
 	?>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="/js/custom.js"></script>
+
 </head>
 <body>
 	<div id="container">
@@ -72,7 +71,7 @@ $cakeDescription = __d('cake_dev', 'Choirs recordings database');
 		
 		<div id="footer">
 			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
+					$this->Html->image('cake.power.gif', array('alt' => 'Music catalog database', 'border' => '0')),
 					'http://www.cakephp.org/',
 					array('target' => '_blank', 'escape' => false)
 				);
@@ -84,7 +83,12 @@ $cakeDescription = __d('cake_dev', 'Choirs recordings database');
 		<a href="#" id="close-popup" class="closebtn">&times;</a>
 		<div class="overlay-content"></div>
 	</div>
+
 	<?php //echo $this->element('sql_dump'); ?>
 
-    <script src="/js/custom.js"></script></body>
+    <?php
+        echo $this->Html->script('custom.js', array('inline' => false));
+        echo $this->fetch('script');
+    ?>
+</body>
 </html>

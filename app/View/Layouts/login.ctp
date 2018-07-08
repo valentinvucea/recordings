@@ -31,7 +31,7 @@
 	
 	<!-- scripts -->
 	<?php
-		echo $this->Html->script('jquery-1.9.1.js');
+		echo $this->Html->script('jquery.min.js');
 		echo $this->Html->script('bootstrap.js');
 		echo $this->Html->script('jquery.unobtrusive-ajax.js');
 		echo $this->Html->script('jquery.validate.js');
@@ -62,7 +62,7 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 				
 				</a>
-				<a class="brand" href="#">Choirs recordings</a>
+				<a class="brand" href="#">Music Catalog</a>
 				<!-- start nav collapse -->
 	            <div class="nav-collapse">&nbsp;</div>
 	            <!-- /nav-collapse -->
@@ -87,9 +87,6 @@
 	</div> 
 	<!-- /login-wrapper -->
 
-	<!-- Le javascript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<?php
 		echo $this->fetch('script');
 	?>
