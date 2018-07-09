@@ -713,4 +713,18 @@ class RecordingsController extends AppController {
 
 		$this->set(compact('recording', 'links'));
 	}
+
+    /**
+     * Home page search method
+     */
+    public function search()
+    {
+        if ($this->request && $this->request->is('post')) {
+            $postData = $this->request->data;
+
+            $this->set(compact('postData'));
+
+            $this->render('search');
+        }
+    }
 }

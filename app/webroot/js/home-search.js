@@ -18,16 +18,16 @@ var search = {
     count: 0,
     rowTemplate: '<div id="row_#x#" class="hrow">' +
         '<div class="col-1">' +
-        '<select id="searchOperator_#x#" name="searchOperator_#x#">' +
+        '<select id="searchOperator_#x#" name="row[#x#][searchOperator]">' +
         '<option value="AND">AND</option>' +
         '<option value="OR">OR</option>' +
         '</select>' +
         '</div>' +
         '<div class="col-5">' +
-        '<input type="text" id="searchTerm_#x#" name="searchTerm_#x#" placeholder="Search term..." />' +
+        '<input type="text" id="searchTerm_#x#" name="row[#x#][searchTerm]" placeholder="Search term..." />' +
         '</div>' +
         '<div class="col-4">' +
-        '<select id="searchTable_#x#" name="searchTable_#x#">' +
+        '<select id="searchTable_#x#" name="row[#x#][searchTable]">' +
         '<option value="0">All tables</option>' +
         '<option value="1">Choirs</option>' +
         '<option value="2">Composers</option>' +

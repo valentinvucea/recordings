@@ -5,12 +5,12 @@
                 <h4>Quick search</h4>
                 <div class="homeSearch">
                     <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
-                        <div class="hrow grid">
+                        <div id="row_0" class="hrow grid">
                             <div class="col-6">
-                                <input type="text" id="searchTerm_1" name="searchTerm_1" placeholder="Search term..." />
+                                <input type="text" id="searchTerm_0" name="row[0][searchTerm]" placeholder="Search term..." />
                             </div>
                             <div class="col-4">
-                                <select id="searchTable_1" name="searchTable_1">
+                                <select id="searchTable_0" name="row[0][searchTable]">
                                     <option value="0">All tables</option>
                                     <option value="1">Choirs</option>
                                     <option value="2">Composers</option>
