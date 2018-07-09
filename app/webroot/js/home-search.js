@@ -16,7 +16,7 @@ $(document).ready(function() {
 var search = {
     form: $('#frmSearch'),
     count: 0,
-    rowTemplate: '<div id="row_#x#" class="hrow">' +
+    rowTemplate: '<div id="row_#x#" class="hrow grid">' +
         '<div class="col-1">' +
         '<select id="searchOperator_#x#" name="row[#x#][searchOperator]">' +
         '<option value="AND">AND</option>' +

@@ -719,12 +719,13 @@ class RecordingsController extends AppController {
      */
     public function search()
     {
+        $postData = [];
+
         if ($this->request && $this->request->is('post')) {
             $postData = $this->request->data;
-
-            $this->set(compact('postData'));
-
-            $this->render('search');
         }
+
+        $this->set(compact('postData'));
+        $this->render('search');
     }
 }
