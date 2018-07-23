@@ -132,9 +132,9 @@ table tr.border-top th {
     border-top: 2px solid #555;
 }
 
-table tr td.actions {
-	text-align: right;
-}
+/*table tr td.actions {*/
+	/*text-align: right;*/
+/*}*/
 
 .dashboard h1.title {
 	background: #003d4c url('../img/disc_music.png') no-repeat left;

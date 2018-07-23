@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property Recording $Recording
  */
 class RecordingsController extends AppController {
-	public $components = array('Util');
+	public $components = array('Util', 'Paginator');
 /**
  * index method
  *
@@ -721,11 +721,156 @@ class RecordingsController extends AppController {
     {
         $postData = [];
 
+        $mapping = array(
+            1 => array(
+                'table' => 'choirs',
+                'field' => 'choir'
+            ),
+            2 => array(
+                'table' => 'composers',
+                'field' => 'name'
+            ),
+            3 => array(
+                'table' => 'compositions',
+                'field' => 'title'
+            ),
+            4 => array(
+                'table' => 'directors',
+                'field' => 'name'
+            ),
+            5 => array(
+                'table' => 'recordings',
+                'field' => 'name'
+            ),
+        );
+
         if ($this->request && $this->request->is('post')) {
             $postData = $this->request->data;
         }
 
-        $this->set(compact('postData'));
+        $selectSQL = 'SELECT DISTINCT recordings.id, compositions.title FROM recordings 
+                          INNER JOIN recsongs ON recsongs.recording_id = recordings.id 
+                          INNER JOIN recsingers ON recsingers.recording_id = recordings.id
+                          INNER JOIN songs ON songs.id = recsongs.id 
+                          INNER JOIN singers ON singers.id = recsingers.id 
+                          INNER JOIN compositions ON compositions.id = songs.composition_id 
+                          INNER JOIN composers ON composers.id = songs.composer_id 
+                          INNER JOIN choirs ON choirs.id = singers.choir_id 
+                          INNER JOIN directors ON directors.id = singers.director_id 
+                          %s %s 
+                          ORDER BY recordings.no
+        ';
+
+        /** Search criteria */
+        $where = '';
+
+        foreach ($postData['row'] as $post) {
+            $condition = [];
+            $operator  = '';
+
+            if (0 === $post['searchTable']) {
+                foreach ($mapping as $key => $table) {
+                    $condition[] = sprintf(
+                        '%s.%s LIKE \'%%s%\'',
+                        $table['table'],
+                        $table['field'],
+                        $post['searchTerm']
+                    );
+                }
+            } else {
+                $condition[] = sprintf(
+                    '%s.%s LIKE \'#%s#\'',
+                    $mapping[$post['searchTable']]['table'],
+                    $mapping[$post['searchTable']]['field'],
+                    $post['searchTerm']
+                );
+            }
+
+            if (isset($post['searchOperator'])) {
+                $operator = ' ' . $post['searchOperator'] . ' ';
+            }
+
+            $where .= $operator . implode(' OR ', str_replace('#', '%', $condition));
+        }
+
+        $preparedSQL = sprintf(
+            $selectSQL,
+            ('' ==! $where ? 'WHERE' : ''),
+            $where
+        );
+
+        $db = ConnectionManager::getDataSource('default');
+        $raw = $db->fetchAll($preparedSQL);
+
+        $ids = array_reduce($raw, function($list, $row) {
+            $list[] = $row['recordings']['id'];
+
+            return $list;
+        }, []);
+
+        /* page */
+        $currentPage = 1;
+        if(isset($this->passedArgs['page'])) {
+            $currentPage = $this->passedArgs['page'];
+        }
+
+        $this->Paginator->settings = array (
+            'conditions' => array(
+                'Recording.id' => $ids,
+            ),
+            'contain' => array(
+                'Format' => array(
+                    'fields' => array('format'),
+                ),
+                'Presentation' => array(
+                    'fields' => array('presentation'),
+                ),
+                'Comprecordingnote' => array(
+                    'fields' => array('note'),
+                ),
+                'Company' => array(
+                    'fields' => array('company'),
+                ),
+                'Ancillarymusic' => array(
+                    'fields' => array('name'),
+                ),
+                'Recsong' => array(
+                    'Song' => array(
+                        'Composer' => array(
+                            'fields' => array('id', 'name'),
+                        ),
+                        'Composition' => array(
+                            'fields' => array('id', 'title'),
+                        ),
+                    )
+                ),
+                'Recsinger' => array(
+                    'Singer' => array(
+                        'Choir' => array(
+                            'fields' => array('id', 'choir', 'city'),
+                        ),
+                        'Director' => array(
+                            'fields' => array('id', 'name'),
+                        )
+                    )
+                ),
+            ),
+            'order' => array ('Recording.no' => 'ASC'),
+            'page' => $currentPage,
+            'limit' => 20,
+            'recursive' => 1
+        );
+
+        $results = $this->Paginator->paginate('Recording');
+
+        if (false !== isset($postData['row'][0])) {
+            $postData['row'][0] = array(
+                'searchTable' => 0,
+                'searchTerm'  => '',
+            );
+        }
+
+        $this->set(compact('postData', 'results'));
         $this->render('search');
     }
 }
