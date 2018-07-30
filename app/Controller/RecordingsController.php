@@ -811,8 +811,6 @@ class RecordingsController extends AppController {
             $where
         );
 
-        echo $preparedSQL;
-
         $db = ConnectionManager::getDataSource('default');
         $raw = $db->fetchAll($preparedSQL);
 
