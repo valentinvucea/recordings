@@ -310,7 +310,6 @@ input[type=button].btn:hover,
 }
 
 form .submit input[type=reset],
-.homeSearch form input[type=submit],
 input[type=button].btn,
 td.actions a.btngreen
  {

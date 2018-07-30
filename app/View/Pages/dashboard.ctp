@@ -3,13 +3,13 @@
         <div class="col-6">
             <div class="hrow">
                 <h4>Quick search</h4>
-                <div class="homeSearch">
+                <div class="appSearch" data-page="home">
                     <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
                         <div id="row_0" class="hrow grid">
-                            <div class="col-6">
+                            <div class="col-7">
                                 <input type="text" id="searchTerm_0" name="row[0][searchTerm]" placeholder="Search term..." />
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <select id="searchTable_0" name="row[0][searchTable]">
                                     <option value="0">All tables</option>
                                     <option value="1">Choirs</option>
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="hrow submit-row">
-                            <input type="submit" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
+                            <input type="button" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
                         </div>
                     </form>
                 </div>
@@ -101,6 +101,6 @@
 </div>
 
 <?php
-    echo $this->Html->css('home-search', null, array('inline' => false));
-    echo $this->Html->script('home-search', array('inline' => false));
+    echo $this->Html->css('app-search', null, array('inline' => false));
+    echo $this->Html->script('app-search', array('inline' => false));
 ?>

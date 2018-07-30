@@ -5,10 +5,10 @@
 </div>
 
 <div class="grid">
-    <div class="homeSearch col-6">
+    <div class="appSearch" data-page="list">
         <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
             <?php
-                foreach($postData['row'] as $key=>$row) {
+                foreach($searchData['row'] as $key=>$row) {
             ?>
                 <div id="row_<?php echo $key; ?>" class="hrow grid">
                     <?php
@@ -16,25 +16,25 @@
                     ?>
                         <div class="col-1">
                             <select id="searchOperator_<?php echo $key; ?>" name="row[<?php echo $key; ?>][searchOperator]">
-                                <option <?php echo ('AND' === $row['searchTable'] ? 'selected' : ''); ?> value="AND">AND</option>
-                                <option <?php echo ('OR' === $row['searchTable'] ? 'selected' : ''); ?> value="OR">OR</option>
+                                <option <?php echo ('AND' === $row['searchOperator'] ? 'selected' : ''); ?> value="AND">AND</option>
+                                <option <?php echo ('OR' === $row['searchOperator'] ? 'selected' : ''); ?> value="OR">OR</option>
                             </select>
                         </div>
                     <?php
                         }
                     ?>
-                    <div class="col-<?php echo (0 === $key ? 6 : 5); ?>">
+                    <div class="col-<?php echo (0 === $key ? 7 : 6); ?>">
                         <input type="text" id="searchTerm_0" name="row[<?php echo $key; ?>][searchTerm]"
-                               placeholder="Search term..." <?php echo $row['searchTerm']; ?>/>
+                               placeholder="Search term..." value="<?php echo $row['searchTerm']; ?>"/>
                     </div>
-                    <div class="col-4">
-                        <select id="searchTable_0" name="row[0][searchTable]">
-                            <option <?php echo (0 === $row['searchTable'] ? 'selected' : ''); ?> value="0">All tables</option>
-                            <option <?php echo (1 === $row['searchTable'] ? 'selected' : ''); ?> value="1">Choirs</option>
-                            <option <?php echo (2 === $row['searchTable'] ? 'selected' : ''); ?> value="2">Composers</option>
-                            <option <?php echo (3 === $row['searchTable'] ? 'selected' : ''); ?> value="3">Compositions</option>
-                            <option <?php echo (4 === $row['searchTable'] ? 'selected' : ''); ?> value="4">Directors</option>
-                            <option <?php echo (5 === $row['searchTable'] ? 'selected' : ''); ?> value="5">Recordings</option>
+                    <div class="col-3">
+                        <select id="searchTable_0" name="row[<?php echo $key; ?>][searchTable]">
+                            <option <?php echo (0 == $row['searchTable'] ? 'selected' : ''); ?> value="0">All tables</option>
+                            <option <?php echo (1 == $row['searchTable'] ? 'selected' : ''); ?> value="1">Choirs</option>
+                            <option <?php echo (2 == $row['searchTable'] ? 'selected' : ''); ?> value="2">Composers</option>
+                            <option <?php echo (3 == $row['searchTable'] ? 'selected' : ''); ?> value="3">Compositions</option>
+                            <option <?php echo (4 == $row['searchTable'] ? 'selected' : ''); ?> value="4">Directors</option>
+                            <option <?php echo (5 == $row['searchTable'] ? 'selected' : ''); ?> value="5">Recordings</option>
                         </select>
                     </div>
                     <?php
@@ -57,7 +57,7 @@
                 }
             ?>
             <div class="hrow submit-row">
-                <input type="submit" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
+                <input type="button" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
             </div>
         </form>
     </div>
@@ -130,7 +130,7 @@
 </div>
 
 <?php
-    echo $this->Html->css('home-search', null, array('inline' => false));
+    echo $this->Html->css('app-search', null, array('inline' => false));
     echo $this->Html->css('recordings-search', null, array('inline' => false));
-    echo $this->Html->script('home-search', array('inline' => false));
+    echo $this->Html->script('app-search', array('inline' => false));
 ?>

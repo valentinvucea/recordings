@@ -719,7 +719,8 @@ class RecordingsController extends AppController {
      */
     public function search()
     {
-        $postData = [];
+        $emptySearch = 'Empty search...';
+        $searchData  = [];
 
         $mapping = array(
             1 => array(
@@ -745,10 +746,21 @@ class RecordingsController extends AppController {
         );
 
         if ($this->request && $this->request->is('post')) {
-            $postData = $this->request->data;
+            $searchData = $this->request->data;
+
+            $this->Session->write('searchData', $searchData);
+        } else if ($this->Session->check('searchData') !== false) {
+            $searchData = $this->Session->read('searchData');
         }
 
-        $selectSQL = 'SELECT DISTINCT recordings.id, compositions.title FROM recordings 
+        if (false === isset($searchData['row'][0])) {
+            $searchData['row'][0] = array(
+                'searchTable' => 5,
+                'searchTerm'  => $emptySearch,
+            );
+        }
+
+        $selectSQL = 'SELECT DISTINCT recordings.id FROM recordings 
                           INNER JOIN recsongs ON recsongs.recording_id = recordings.id 
                           INNER JOIN recsingers ON recsingers.recording_id = recordings.id
                           INNER JOIN songs ON songs.id = recsongs.id 
@@ -764,14 +776,14 @@ class RecordingsController extends AppController {
         /** Search criteria */
         $where = '';
 
-        foreach ($postData['row'] as $post) {
+        foreach ($searchData['row'] as $post) {
             $condition = [];
             $operator  = '';
 
-            if (0 === $post['searchTable']) {
-                foreach ($mapping as $key => $table) {
+            if (0 === (int) $post['searchTable']) {
+                foreach ($mapping as $table) {
                     $condition[] = sprintf(
-                        '%s.%s LIKE \'%%s%\'',
+                        '%s.%s LIKE \'#%s#\'',
                         $table['table'],
                         $table['field'],
                         $post['searchTerm']
@@ -798,6 +810,8 @@ class RecordingsController extends AppController {
             ('' ==! $where ? 'WHERE' : ''),
             $where
         );
+
+        echo $preparedSQL;
 
         $db = ConnectionManager::getDataSource('default');
         $raw = $db->fetchAll($preparedSQL);
@@ -863,14 +877,14 @@ class RecordingsController extends AppController {
 
         $results = $this->Paginator->paginate('Recording');
 
-        if (false !== isset($postData['row'][0])) {
-            $postData['row'][0] = array(
+        if ($emptySearch == $searchData['row'][0]['searchTerm']) {
+            $searchData['row'][0] = array(
                 'searchTable' => 0,
                 'searchTerm'  => '',
             );
         }
 
-        $this->set(compact('postData', 'results'));
+        $this->set(compact('searchData', 'results', 'json'));
         $this->render('search');
     }
 }

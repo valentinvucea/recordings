@@ -22,12 +22,12 @@
 				  'accept-charset' => 'UTF-8'
 		)); 
 
-        echo $this->Form->input('no', array(
-		    'type' => 'text',
-			'div' => 'grup grid-1-12 fleft',      
-			'label' => 'Rec. #',
-			'value' => (isset($conditions['Recording.no']) ? $conditions['Recording.no'] : ''),
-		));        
+//        echo $this->Form->input('no', array(
+//		    'type' => 'text',
+//			'div' => 'grup grid-1-12 fleft',
+//			'label' => 'Rec. #',
+//			'value' => (isset($conditions['Recording.no']) ? $conditions['Recording.no'] : ''),
+//		));
 		
         echo $this->Form->input('name', array(
 		    'type'    => 'text',
