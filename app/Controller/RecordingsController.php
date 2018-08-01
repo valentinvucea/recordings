@@ -722,29 +722,6 @@ class RecordingsController extends AppController {
         $emptySearch = 'Empty search...';
         $searchData  = [];
 
-        $mapping = array(
-            1 => array(
-                'table' => 'choirs',
-                'field' => 'choir'
-            ),
-            2 => array(
-                'table' => 'composers',
-                'field' => 'name'
-            ),
-            3 => array(
-                'table' => 'compositions',
-                'field' => 'title'
-            ),
-            4 => array(
-                'table' => 'directors',
-                'field' => 'name'
-            ),
-            5 => array(
-                'table' => 'recordings',
-                'field' => 'name'
-            ),
-        );
-
         if ($this->request && $this->request->is('post')) {
             $searchData = $this->request->data;
 
@@ -760,65 +737,7 @@ class RecordingsController extends AppController {
             );
         }
 
-        $selectSQL = 'SELECT DISTINCT recordings.id FROM recordings 
-                          INNER JOIN recsongs ON recsongs.recording_id = recordings.id 
-                          INNER JOIN recsingers ON recsingers.recording_id = recordings.id
-                          INNER JOIN songs ON songs.id = recsongs.id 
-                          INNER JOIN singers ON singers.id = recsingers.id 
-                          INNER JOIN compositions ON compositions.id = songs.composition_id 
-                          INNER JOIN composers ON composers.id = songs.composer_id 
-                          INNER JOIN choirs ON choirs.id = singers.choir_id 
-                          INNER JOIN directors ON directors.id = singers.director_id 
-                          %s %s 
-                          ORDER BY recordings.no
-        ';
-
-        /** Search criteria */
-        $where = '';
-
-        foreach ($searchData['row'] as $post) {
-            $condition = [];
-            $operator  = '';
-
-            if (0 === (int) $post['searchTable']) {
-                foreach ($mapping as $table) {
-                    $condition[] = sprintf(
-                        '%s.%s LIKE \'#%s#\'',
-                        $table['table'],
-                        $table['field'],
-                        $post['searchTerm']
-                    );
-                }
-            } else {
-                $condition[] = sprintf(
-                    '%s.%s LIKE \'#%s#\'',
-                    $mapping[$post['searchTable']]['table'],
-                    $mapping[$post['searchTable']]['field'],
-                    $post['searchTerm']
-                );
-            }
-
-            if (isset($post['searchOperator'])) {
-                $operator = ' ' . $post['searchOperator'] . ' ';
-            }
-
-            $where .= $operator . implode(' OR ', str_replace('#', '%', $condition));
-        }
-
-        $preparedSQL = sprintf(
-            $selectSQL,
-            ('' ==! $where ? 'WHERE' : ''),
-            $where
-        );
-
-        $db = ConnectionManager::getDataSource('default');
-        $raw = $db->fetchAll($preparedSQL);
-
-        $ids = array_reduce($raw, function($list, $row) {
-            $list[] = $row['recordings']['id'];
-
-            return $list;
-        }, []);
+        $ids = $this->getIdsList($searchData);
 
         /* page */
         $currentPage = 1;
@@ -884,5 +803,72 @@ class RecordingsController extends AppController {
 
         $this->set(compact('searchData', 'results', 'json'));
         $this->render('search');
+    }
+
+    private function getIdsList($searchArgs)
+    {
+        $list = [];
+
+        foreach ($searchArgs['row'] as $args) {
+            if (0 == $args['searchTable']) {
+                $ids = $this->searchAllTables($args['searchTerm']);
+            } else {
+                $ids = $this->fetchSql($args);
+            }
+
+            if (0 === count($list) || (0 !== count($list) && isset($args['searchOperator']) && 'OR' === $args['searchOperator'])) {
+                $list = array_merge($list, $ids);
+            } else {
+                $list = array_intersect($list, $ids);
+            }
+        }
+
+        return $list;
+    }
+
+    private function fetchSql($args)
+    {
+        $templates = [
+            3 => 'SELECT DISTINCT r.recording_id as rid FROM recsongs r INNER JOIN songs s ON r.song_id = s.id INNER JOIN compositions c ON s.composition_id = c.id WHERE c.title LIKE \'#%s#\'',
+            2 => 'SELECT DISTINCT r.recording_id as rid FROM recsongs r INNER JOIN songs s ON r.song_id = s.id INNER JOIN composers c ON s.composer_id = c.id WHERE c.name LIKE \'#%s#\'',
+            1 => 'SELECT DISTINCT r.recording_id as rid FROM recsingers r INNER JOIN singers s ON r.singer_id = s.id INNER JOIN choirs c ON s.choir_id = c.id WHERE c.choir LIKE \'#%s#\'',
+            4 => 'SELECT DISTINCT r.recording_id as rid FROM recsingers r INNER JOIN singers s ON r.singer_id = s.id INNER JOIN directors d ON s.director_id = d.id WHERE d.name LIKE \'#%s#\'',
+            5 => 'SELECT DISTINCT r.id as rid FROM recordings r WHERE r.name LIKE \'#%s#\'',
+        ];
+
+        $db = ConnectionManager::getDataSource('default');
+
+        $sql = sprintf(
+            $templates[$args['searchTable']],
+            $args['searchTerm']
+        );
+
+        $sql = str_replace('#', '%', $sql);
+
+        $results = $db->fetchAll($sql);
+
+        return array_reduce($results, function($list, $row) {
+            $list[] = $row['r']['rid'];
+
+            return $list;
+        }, []);
+    }
+
+    private function searchAllTables($searchTerm)
+    {
+        $list = [];
+
+        for ($i = 1; $i <= 5; $i++) {
+            $searchArray = [
+                'searchTable' => $i,
+                'searchTerm' => $searchTerm
+            ];
+
+            $ids = $this->fetchSql($searchArray);
+
+            $list = array_merge($list, $ids);
+        }
+
+        return $list;
     }
 }
