@@ -29,11 +29,6 @@ class ComposersController extends AppController {
 		        $filters['name'] = $this->data['Composer']['name'];
 			else
 				$this->Session->write('ComposerSearch.name_value', null);
-			
-		    if(isset($this->data['Composer']['id']))
-		        $filters['id'] = $this->data['Composer']['id'];
-			else
-				$this->Session->write('ComposerSearch.id_value', null);		        
 				
 			$this->Session->write('ComposerSearch.page_value', 1);
 			
@@ -43,24 +38,12 @@ class ComposersController extends AppController {
 		
 		//check filters on passedArgs
 		$conditions = array();
-		
-		/* id */
-		if(isset($this->passedArgs['id'])){
-			if($this->passedArgs['id'] != '')  		
-    			$conditions['Composer.id'] = $this->passedArgs['id'];
-		} else {
-			if($this->Session->check('ComposerSearch.id_value'))
-				if($this->Session->check('ComposerSearch.id_value') != '')
-					$conditions['Composer.id'] = $this->Session->read('ComposerSearch.id_value');
-		}     
 
 		/* name */
-        if(array_key_exists('Composer.id', $conditions) == false) {
-            if(isset($this->passedArgs['name']))
-                $conditions['Composer.name'] = $this->passedArgs['name']; 
-            else
-                if($this->Session->check('ComposerSearch.name_value'))
-                    $conditions['Composer.name'] = $this->Session->read('ComposerSearch.name_value');
+        if(isset($this->passedArgs['name'])) {
+            $conditions['Composer.name'] = $this->passedArgs['name'];
+        } else if($this->Session->check('ComposerSearch.name_value')) {
+            $conditions['Composer.name'] = $this->Session->read('ComposerSearch.name_value');
         }
 	
 		/* page */
@@ -115,9 +98,6 @@ class ComposersController extends AppController {
 	}	
     
     public function reset() {
-        if($this->Session->check('ComposerSearch.id_value'))
-            $this->Session->delete('ComposerSearch.id_value');
-        
         if($this->Session->check('ComposerSearch.name_value'))
             $this->Session->delete('ComposerSearch.name_value');
             

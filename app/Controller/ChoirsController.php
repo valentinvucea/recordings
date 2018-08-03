@@ -35,11 +35,6 @@ class ChoirsController extends AppController {
 		        $filters['city'] = $this->data['Choir']['city'];
 			else
 				$this->Session->write('ChoirSearch.city_value', null);
-			
-		    if(isset($this->data['Choir']['id']))
-		        $filters['id'] = $this->data['Choir']['id'];
-			else
-				$this->Session->write('ChoirSearch.id_value', null);		        
 				
 			$this->Session->write('ChoirSearch.page_value', 1);
 			
@@ -49,34 +44,20 @@ class ChoirsController extends AppController {
 		
 		//check filters on passedArgs
 		$conditions = array();
-		
-		/* id */
-		if(isset($this->passedArgs['id'])){
-			if($this->passedArgs['id'] != '')  		
-    			$conditions['Choir.id'] = $this->passedArgs['id'];
-		} else {
-			if($this->Session->check('ChoirSearch.id_value'))
-				if($this->Session->check('ChoirSearch.id_value') != '')
-					$conditions['Choir.id'] = $this->Session->read('ChoirSearch.id_value');
-		}     
 
 		/* choir */
-        if(array_key_exists('Choir.id', $conditions) == false) {
-            if(isset($this->passedArgs['choir']))
-                $conditions['Choir.choir'] = $this->passedArgs['choir']; 
-            else
-                if($this->Session->check('ChoirSearch.choir_value'))
-                    $conditions['Choir.choir'] = $this->Session->read('ChoirSearch.choir_value');
+        if(isset($this->passedArgs['choir'])) {
+            $conditions['Choir.choir'] = $this->passedArgs['choir'];
+        } else if($this->Session->check('ChoirSearch.choir_value')) {
+            $conditions['Choir.choir'] = $this->Session->read('ChoirSearch.choir_value');
         }
 		
 		/* city */
-        if(array_key_exists('Choir.id', $conditions) == false) {
-            if(isset($this->passedArgs['city']))
-                $conditions['Choir.city'] = $this->passedArgs['city']; 
-            else
-                if($this->Session->check('ChoirSearch.city_value'))
-                    $conditions['Choir.city'] = $this->Session->read('ChoirSearch.city_value');
-        }		
+        if(isset($this->passedArgs['city'])) {
+            $conditions['Choir.city'] = $this->passedArgs['city'];
+        } else if($this->Session->check('ChoirSearch.city_value')) {
+                $conditions['Choir.city'] = $this->Session->read('ChoirSearch.city_value');
+        }
 	
 		/* page */
 		if(isset($this->passedArgs['page']))
@@ -136,16 +117,13 @@ class ChoirsController extends AppController {
 	}
     
     public function reset() {
-        if($this->Session->check('ChoirSearch.id_value'))
-            $this->Session->delete('ChoirSearch.id_value');
-        
         if($this->Session->check('ChoirSearch.choir_value'))
             $this->Session->delete('ChoirSearch.choir_value');
             
         if($this->Session->check('ChoirSearch.city_value'))
             $this->Session->delete('ChoirSearch.city_value');
 
-			$this->redirect(array('action' => 'index'));
+        $this->redirect(array('action' => 'index'));
      }	
 
 /**

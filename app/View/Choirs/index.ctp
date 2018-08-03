@@ -19,14 +19,7 @@
 				  'type' => 'POST',
 				  'style' => 'margin-bottom: 0px;',
 				  'accept-charset' => 'UTF-8',
-		)); 
-
-        echo $this->Form->input('id', array(
-		    'type'    => 'text',
-			'div' => 'grup grid-1-12 fleft',      
-			'label' => 'ID:',
-			'value' => (isset($conditions['Choir.id']) ? $conditions['Choir.id'] : ''),
-		));        
+		));
 		
         echo $this->Form->input('choir', array(
 		    'type'    => 'text',

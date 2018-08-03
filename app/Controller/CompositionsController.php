@@ -29,23 +29,19 @@ class CompositionsController extends AppController {
 		        $filters['title'] = $this->data['Composition']['title'];
 			else
 				$this->Session->write('CompositionSearch.title_value', null);
-			// Id
-		    if(isset($this->data['Composition']['id']))
-		        $filters['id'] = $this->data['Composition']['id'];
-			else
-				$this->Session->write('CompositionSearch.id_value', null);		        
+
 			// Opening text
 		    if(isset($this->data['Composition']['opening_text']) && $this->data['Composition']['opening_text'])
 		        $filters['opening_text'] = $this->data['Composition']['opening_text'];
 			else
 				$this->Session->write('CompositionSearch.opening_text_value', null);
+
 			// Genre
 		    if(isset($this->data['Composition']['genre_id']) && $this->data['Composition']['genre_id'])
 		        $filters['genre_id'] = $this->data['Composition']['genre_id'];
 			else
 				$this->Session->write('CompositionSearch.genre_id_value', null);
-				
-			
+
 			$this->Session->write('CompositionSearch.page_value', 1);
 			
 			//redirect user to the index page including the selected filters
@@ -55,41 +51,25 @@ class CompositionsController extends AppController {
 		//check filters on passedArgs
 		$conditions = array();
 		
-		/* id */
-		if(isset($this->passedArgs['id'])){
-			if($this->passedArgs['id'] != '')  		
-    			$conditions['Composition.id'] = $this->passedArgs['id'];
-		} else {
-			if($this->Session->check('CompositionSearch.id_value'))
-				if($this->Session->check('CompositionSearch.id_value') != '')
-					$conditions['Composition.id'] = $this->Session->read('CompositionSearch.id_value');
-		}     
-
 		/* title */
-        if(array_key_exists('Composition.id', $conditions) == false) {
-            if(isset($this->passedArgs['title']))
-                $conditions['Composition.title'] = $this->passedArgs['title']; 
-            else
-                if($this->Session->check('CompositionSearch.title_value'))
-                    $conditions['Composition.title'] = $this->Session->read('CompositionSearch.title_value');
+        if(isset($this->passedArgs['title'])) {
+            $conditions['Composition.title'] = $this->passedArgs['title'];
+        } else if($this->Session->check('CompositionSearch.title_value')) {
+            $conditions['Composition.title'] = $this->Session->read('CompositionSearch.title_value');
         }
 		
 		/* opening text */
-        if(array_key_exists('Composition.id', $conditions) == false) {
-            if(isset($this->passedArgs['opening_text']))
-                $conditions['Composition.opening_text'] = $this->passedArgs['opening_text']; 
-            else
-                if($this->Session->check('CompositionSearch.opening_text_value'))
-                    $conditions['Composition.opening_text'] = $this->Session->read('CompositionSearch.opening_text_value');
+        if(isset($this->passedArgs['opening_text'])) {
+            $conditions['Composition.opening_text'] = $this->passedArgs['opening_text'];
+        } else if($this->Session->check('CompositionSearch.opening_text_value')) {
+                $conditions['Composition.opening_text'] = $this->Session->read('CompositionSearch.opening_text_value');
         }
 
 		/* genre */
-        if(array_key_exists('Composition.id', $conditions) == false) {
-            if(isset($this->passedArgs['genre_id']))
-                $conditions['Genre.genre'] = $this->passedArgs['genre_id'];
-            else
-                if($this->Session->check('CompositionSearch.genre_id_value'))
-                    $conditions['Genre.genre'] = $this->Session->read('CompositionSearch.genre_id_value');
+        if(isset($this->passedArgs['genre_id'])) {
+            $conditions['Genre.genre'] = $this->passedArgs['genre_id'];
+        } else if($this->Session->check('CompositionSearch.genre_id_value')) {
+            $conditions['Genre.genre'] = $this->Session->read('CompositionSearch.genre_id_value');
         }	
 
 		/* page */
@@ -155,9 +135,6 @@ class CompositionsController extends AppController {
 	}
     
     public function reset() {
-        if($this->Session->check('CompositionSearch.id_value'))
-            $this->Session->delete('CompositionSearch.id_value');
-        
         if($this->Session->check('CompositionSearch.title_value'))
             $this->Session->delete('CompositionSearch.title_value');
 			
