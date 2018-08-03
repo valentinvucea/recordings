@@ -816,7 +816,8 @@ class RecordingsController extends AppController {
                 $ids = $this->fetchSql($args);
             }
 
-            if (0 === count($list) || (0 !== count($list) && isset($args['searchOperator']) && 'OR' === $args['searchOperator'])) {
+            if ((0 === count($list) && false === isset($args['searchOperator'])) ||
+                (0 !== count($list) && isset($args['searchOperator']) && 'OR' === $args['searchOperator'])) {
                 $list = array_merge($list, $ids);
             } else {
                 $list = array_intersect($list, $ids);

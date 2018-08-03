@@ -30,11 +30,11 @@
                     <div class="col-3">
                         <select id="searchTable_0" name="row[<?php echo $key; ?>][searchTable]">
                             <option <?php echo (0 == $row['searchTable'] ? 'selected' : ''); ?> value="0">All tables</option>
+                            <option <?php echo (5 == $row['searchTable'] ? 'selected' : ''); ?> value="5">Recordings</option>
                             <option <?php echo (1 == $row['searchTable'] ? 'selected' : ''); ?> value="1">Choirs</option>
+                            <option <?php echo (4 == $row['searchTable'] ? 'selected' : ''); ?> value="4">Directors</option>
                             <option <?php echo (2 == $row['searchTable'] ? 'selected' : ''); ?> value="2">Composers</option>
                             <option <?php echo (3 == $row['searchTable'] ? 'selected' : ''); ?> value="3">Compositions</option>
-                            <option <?php echo (4 == $row['searchTable'] ? 'selected' : ''); ?> value="4">Directors</option>
-                            <option <?php echo (5 == $row['searchTable'] ? 'selected' : ''); ?> value="5">Recordings</option>
                         </select>
                     </div>
                     <?php

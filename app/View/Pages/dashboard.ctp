@@ -12,11 +12,11 @@
                             <div class="col-3">
                                 <select id="searchTable_0" name="row[0][searchTable]">
                                     <option value="0">All tables</option>
+                                    <option value="5">Recordings</option>
                                     <option value="1">Choirs</option>
+                                    <option value="4">Directors</option>
                                     <option value="2">Composers</option>
                                     <option value="3">Compositions</option>
-                                    <option value="4">Directors</option>
-                                    <option value="5">Recordings</option>
                                 </select>
                             </div>
                             <div class="col-2">

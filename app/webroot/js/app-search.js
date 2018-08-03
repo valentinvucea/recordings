@@ -29,8 +29,6 @@ $(document).ready(function() {
 
 var search = {
     form: $('#frmSearch'),
-    container: $('.appSearch'),
-    count: 0,
     rowTemplate: '<div id="row_#x#" class="hrow grid">' +
         '<div class="col-#y#">' +
         '<select id="searchOperator_#x#" name="row[#x#][searchOperator]">' +
@@ -44,17 +42,19 @@ var search = {
         '<div class="col-3">' +
         '<select id="searchTable_#x#" name="row[#x#][searchTable]">' +
         '<option value="0">All tables</option>' +
+        '<option value="5">Recordings</option>' +
         '<option value="1">Choirs</option>' +
+        '<option value="4">Directors</option>' +
         '<option value="2">Composers</option>' +
         '<option value="3">Compositions</option>' +
-        '<option value="4">Directors</option>' +
-        '<option value="5">Recordings</option>' +
         '</select>' +
         '</div>' +
         '<div class="col-2">' +
         '<button type="button" class="btn-remove" id="searchRemove_#x#">-</button>' +
         '</div>' +
         '</div>',
+    container: $('.appSearch'),
+    count: 0,
 
     init: function () {
         var lastRowId = $('form div[id^=row_]').last().attr('id').replace('row_', '');
