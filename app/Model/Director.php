@@ -32,12 +32,12 @@ class Director extends AppModel {
      */
     public $validate = array(
         'name' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule' => 'notEmpty',
+            'required' => true
         ),
         'position_id' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule' => array('notEqual', 0, false),
+            'required' => true
         )
     );
 }

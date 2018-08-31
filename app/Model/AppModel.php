@@ -43,5 +43,18 @@ class AppModel extends Model {
      */ 
     public function checkUnique($ignoredData, $fields, $or = true) {
         return $this->isUnique($fields, $or);
-    } 
+    }
+
+    /**
+     * Because every related table has an empty value record
+     * we validate against the ID of this record
+     *
+     * @param string check
+     * @param $notEqualWith
+     *
+     * @return bool
+     */
+    public function notEqual($check, $notEqualWith) {
+        return array_values($check)[0] != $notEqualWith;
+    }
 } 

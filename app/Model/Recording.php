@@ -106,20 +106,20 @@ class Recording extends AppModel {
      */
     public $validate = array(
         'no' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule' => 'notEmpty',
+            'required' => true
         ),
         'name' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule' => 'notEmpty',
+            'required' => true
         ),
         'format_id' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule' => array('notEqual', 0, false),
+            'required' => true
         ),
         'company_id' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule' => array('notEqual', 7, false),
+            'required' => true
         )
     );
 }

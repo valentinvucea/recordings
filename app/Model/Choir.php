@@ -61,12 +61,12 @@ class Choir extends AppModel {
      */
     public $validate = array(
         'choir' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule'     => 'notEmpty',
+            'required' => true
         ),
         'vocalformat_id' => array(
-            'required' => true,
-            'on' => 'create',
+            'rule'     => array('notEqual', 28, false),
+            'required' => true
         )
     );
 }
