@@ -224,7 +224,7 @@ class RecordingsController extends AppController {
 			throw new NotFoundException(__('Invalid recording'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Recording->save($this->request->data)) {
+		    if ($this->Recording->save($this->request->data)) {
 				$this->Session->setFlash(__('The recording has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {

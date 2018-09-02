@@ -57,6 +57,12 @@
                 }
             ?>
             <div class="hrow submit-row">
+                <label class="for-checkbox" for="enforcePairs">
+                    <input type="checkbox" class="btn" id="enforcePairs" name="enforcePairs" value="1" <?php echo (true === isset($searchData['enforcePairs']) ? ' checked' : ''); ?>>
+                    enforce pairs
+                </label>
+            </div>
+            <div class="hrow submit-row">
                 <input type="button" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
             </div>
         </form>
