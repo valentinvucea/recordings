@@ -83,9 +83,9 @@
 	<table cellpadding="0" cellspacing="0">
         <tr class="border-top">
             <th class="text-center grid-1-20"><?php echo $this->Paginator->sort('id', 'ID'); ?></th>
-            <th class="grid-1-4 no-a-block"><?php echo $this->Paginator->sort('name', 'Composer'); ?></th>                			
-            <th class="grid-1-2 no-a-block"><?php echo $this->Paginator->sort('title', 'Composition'); ?></th>
-            <th class="grid-1-6 no-a-block">Genre</th>            
+            <th class="grid-1-4 no-a-block"><?php echo $this->Paginator->sort('Composer.name', 'Composer'); ?></th>
+            <th class="grid-1-2 no-a-block"><?php echo $this->Paginator->sort('Composition.title', 'Composition'); ?></th>
+            <th class="grid-1-6 no-a-block"><?php echo $this->Paginator->sort('Genre.genre', 'Genre'); ?></th>
             <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         

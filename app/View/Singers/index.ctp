@@ -97,8 +97,8 @@
 	<table cellpadding="0" cellspacing="0">
         <tr class="border-top">
             <th class="text-center grid-1-20"><?php echo $this->Paginator->sort('id', 'ID'); ?></th>
-            <th class="grid-1-3 no-a-block"><?php echo 'Choir (' . $this->Paginator->sort('choir_id', 'ID') . ' - ' . $this->Paginator->sort('choir') .')'; ?></th>
-            <th class="grid-1-3 no-a-block"><?php echo 'Director (' . $this->Paginator->sort('director_id', 'ID') . ' - ' . $this->Paginator->sort('name') . ')'; ?></th>                			
+            <th class="grid-1-3 no-a-block"><?php echo 'Choir (' . $this->Paginator->sort('Recsinger.choir_id', 'ID') . ' - ' . $this->Paginator->sort('Choir.choir', 'Choir') .')'; ?></th>
+            <th class="grid-1-3 no-a-block"><?php echo 'Director (' . $this->Paginator->sort('Recsinger.director_id', 'ID') . ' - ' . $this->Paginator->sort('Director.name', 'Name') . ')'; ?></th>
             <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         

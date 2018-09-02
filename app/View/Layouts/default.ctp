@@ -84,7 +84,7 @@
 		<div class="overlay-content"></div>
 	</div>
 
-	<?php //echo $this->element('sql_dump'); ?>
+	<?php echo $this->element('sql_dump'); ?>
 
     <?php
         echo $this->Html->script('custom.js', array('inline' => false));

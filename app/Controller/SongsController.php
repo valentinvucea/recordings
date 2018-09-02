@@ -127,6 +127,8 @@ class SongsController extends AppController {
 		);
 		*/
 
+        $order = array ('Composer.name' => 'ASC', 'Composition.title' => 'ASC');
+
 		$this->paginate = array (
 			'conditions' => $conditions,
             'contain' => array(
@@ -140,7 +142,7 @@ class SongsController extends AppController {
 	            	'fields' => array('id', 'name')
 	            )
 		    ),
-			'order' => array ('Composer.name' => 'ASC', 'Composition.title' => 'ASC'),
+			'order' => $order,
 			'page' => $curpage,
 			'limit' => 20,
 			'recursive' => 2

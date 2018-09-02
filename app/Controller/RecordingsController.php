@@ -95,7 +95,7 @@ class RecordingsController extends AppController {
 			$name = array_shift($conditions);
 			$conditions['Recording.name LIKE'] = '%' . $name . '%';
 		}
-				
+
 		$this->paginate = array (
 			'conditions' => $conditions,
             'contain' => array('Format', 'Presentation', 'Comprecordingnote', 'Company', 'Ancillarymusic'),

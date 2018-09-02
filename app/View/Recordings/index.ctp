@@ -21,6 +21,15 @@
 				  //'action' => 'index',			  
 				  'accept-charset' => 'UTF-8'
 		));
+
+        echo $this->Form->input('no', array(
+            'type'    => 'text',
+            'div' => 'grup grid-1-8 fleft',
+            'placeholder' => '#',
+            'required' => false,
+            'label' => 'No:',
+            'value' => (isset($conditions['Recording.no']) ? $conditions['Recording.no'] : ''),
+        ));
 		
         echo $this->Form->input('name', array(
 		    'type'    => 'text',
@@ -33,7 +42,7 @@
 		
 		echo $this->Form->input('format_id', array(
 		    'type'    => 'select',
-			'div' => 'grup grid-1-3 fleft',
+			'div' => 'grup grid-1-4 fleft',
 			'empty' => 'All formats',
             'required' => false,
 			'label' => 'Format:',
