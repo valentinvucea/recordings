@@ -118,7 +118,7 @@ class RecordingsController extends AppController {
 		
 		$recordings = $this->paginate('Recording');
 
-		$formats = $this->Recording->Format->find('list');
+		$formats = $this->Recording->Format->find('list', array('order' => 'format'));
 		$this->set(compact('recordings', 'conditions', 'formats'));
         
 		$this->render('index');
@@ -204,7 +204,7 @@ class RecordingsController extends AppController {
 				$this->Session->setFlash(__('The recording could not be saved. Please, try again.'));
 			}
 		}
-		$formats = $this->Recording->Format->find('list');
+		$formats = $this->Recording->Format->find('list', array('order' => 'format'));
 		$companies = $this->Recording->Company->find('list', array('order' => array('company' => 'asc')));
 		$comprecordingnotes = $this->Recording->Comprecordingnote->find('list', array('order' => array('note' => 'asc')));
 		$ancillarymusics = $this->Recording->Ancillarymusic->find('list', array('order' => array('name' => 'asc')));

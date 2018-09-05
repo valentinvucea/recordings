@@ -81,10 +81,10 @@
                 <th class="text-center"><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('choir'); ?></th>
                 <th class="text-center"><?php echo $this->Paginator->sort('city'); ?></th>
-                <th class="text-center"><?php echo $this->Paginator->sort('state'); ?></th>            
-                <th class="text-center"><?php echo $this->Paginator->sort('country'); ?></th>
-                <th class="text-center"><?php echo $this->Paginator->sort('denomination'); ?></th>
-                <th class="text-center"><?php echo $this->Paginator->sort('vocalformats', 'Voc. format'); ?></th>
+                <th class="text-center"><?php echo $this->Paginator->sort('State.state', 'State'); ?></th>
+                <th class="text-center"><?php echo $this->Paginator->sort('Country.country', 'Country'); ?></th>
+                <th class="text-center"><?php echo $this->Paginator->sort('Denomination.denomination', 'Denomination'); ?></th>
+                <th class="text-center"><?php echo $this->Paginator->sort('Vocalformat.vocalformat', 'Voc. format'); ?></th>
                 <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
         
