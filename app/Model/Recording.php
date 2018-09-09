@@ -116,10 +116,6 @@ class Recording extends AppModel {
         'format_id' => array(
             'rule' => array('notEqual', 0, false),
             'required' => true
-        ),
-        'company_id' => array(
-            'rule' => array('notEqual', 7, false),
-            'required' => true
         )
     );
 }
