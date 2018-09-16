@@ -23,7 +23,7 @@
                                 <button type="button" id="searchAdd">+</button>
                             </div>
                         </div>
-                        <div class="hrow submit-row">
+                        <div class="hrow submit-row add-row-before">
                             <label class="for-checkbox" for="enforcePairs">
                                 <input type="checkbox" class="btn" id="enforcePairs" name="enforcePairs" value="1">
                                  enforce pairs

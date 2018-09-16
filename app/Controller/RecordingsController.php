@@ -737,7 +737,11 @@ class RecordingsController extends AppController {
             );
         }
 
-        $ids = $this->getIdsList($searchData);
+        if (false === isset($searchData['enforcePairs'])) {
+            $ids = $this->getIdsList($searchData);
+        } else {
+            $ids = $this->getEnforcedPairsIdsList($searchData);
+        }
 
         /* page */
         $currentPage = 1;
@@ -825,6 +829,106 @@ class RecordingsController extends AppController {
         }
 
         return $list;
+    }
+
+    private function getEnforcedPairsIdsList($searchArgs)
+    {
+        list($songs, $singers) = $this->getEnforcedPairs($searchArgs['row']);
+
+        $songsIds   = $this->getIdsByPairType($songs, 'songs');
+        $singersIds = $this->getIdsByPairType($singers, 'singers');
+
+        if (count($songs) > 0 && count($singers) > 0) {
+            $list = array_intersect($songsIds, $singersIds);
+        } else {
+            $list = array_merge($songsIds, $singersIds);
+        }
+
+        return $list;
+    }
+
+    private function getIdsByPairType($pairs, $type)
+    {
+        $map = [
+            'songs'   => [
+                'select'   => 'SELECT DISTINCT r.recording_id as rid FROM recsongs r INNER JOIN songs s ON r.song_id = s.id INNER JOIN compositions c ON s.composition_id = c.id INNER JOIN composers p ON s.composer_id = p.id WHERE ',
+                'criteria' => '(c.title LIKE \'#%s#\' AND p.name LIKE \'#%s#\')',
+                'first'    => 3,
+                'second'   => 2
+            ],
+            'singers' => [
+                'select'   => 'SELECT DISTINCT r.recording_id as rid FROM recsingers r INNER JOIN singers s ON r.singer_id = s.id INNER JOIN choirs c ON s.choir_id = c.id INNER JOIN directors d ON s.director_id = d.id WHERE ',
+                'criteria' => '(c.choir LIKE \'#%s#\' AND d.name LIKE \'#%s#\')',
+                'first'    => 1,
+                'second'   => 4
+            ],
+        ];
+
+        $where = [];
+        $args  = $map[$type];
+
+        foreach ($pairs as $pair) {
+            $clause = sprintf($args['criteria'], $pair[intval($args['first'])], $pair[intval($args['second'])]);
+            $clause = str_replace('#', '%', $clause);
+            $where[] = $clause;
+        }
+
+        if (count($where) > 0) {
+            $db = ConnectionManager::getDataSource('default');
+            $sql = $args['select'] . implode(' OR ', $where);
+
+            $results = $db->fetchAll($sql);
+
+            return array_reduce($results, function($list, $row) {
+                $list[] = $row['r']['rid'];
+
+                return $list;
+            }, []);
+        }
+
+        return [];
+    }
+
+    private function getEnforcedPairs($args)
+    {
+        $tables = [];
+
+        foreach ($args as $row) {
+            $tables[$row['searchTable']][] = $row['searchTerm'];
+        }
+
+        $songs = [];
+        $singers = [];
+
+        /** Get songs */
+        if (true === isset($tables[2]) && true === isset($tables[3])) {
+            for ($i = 0; $i < max(count($tables[2]), count($tables[3])); $i++) {
+                if (true === isset($tables[2][$i]) && true === isset($tables[3][$i])) {
+                    $songs[] = [
+                        2 => $tables[2][$i],
+                        3 => $tables[3][$i]
+                    ];
+                } else {
+                    break;
+                }
+            }
+        }
+
+        /** Get singers */
+        if (true === isset($tables[1]) && true === isset($tables[4])) {
+            for ($i = 0; $i < max(count($tables[1]), count($tables[4])); $i++) {
+                if (true === isset($tables[1][$i]) && true === isset($tables[4][$i])) {
+                    $singers[] = [
+                        1 => $tables[1][$i],
+                        4 => $tables[4][$i]
+                    ];
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return [$songs, $singers];
     }
 
     private function fetchSql($args)

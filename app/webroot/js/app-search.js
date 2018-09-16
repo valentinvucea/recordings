@@ -74,7 +74,7 @@ var search = {
                 .replace(/#y#/g, operatorWidth)
                 .replace(/#z#/g, searchTermWidth);
 
-            $('.submit-row').before(html);
+            $('.add-row-before').before(html);
         } else {
             window.alert(validation.join('\n'));
         }
