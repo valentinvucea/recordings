@@ -4,7 +4,6 @@
 		<legend><?php echo __('Add Format'); ?></legend>
 	<?php
 		echo $this->Form->input('format', array('class' => 'focus-field'));
-		echo $this->Form->input('order');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

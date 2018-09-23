@@ -11,11 +11,6 @@
 			<?php echo h($format['Format']['format']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Order'); ?></dt>
-		<dd>
-			<?php echo h($format['Format']['order']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

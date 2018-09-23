@@ -4,15 +4,13 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('format'); ?></th>
-			<th><?php echo $this->Paginator->sort('order'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th class="actions text-center"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($formats as $format): ?>
 	<tr>
 		<td><?php echo h($format['Format']['id']); ?>&nbsp;</td>
 		<td><?php echo h($format['Format']['format']); ?>&nbsp;</td>
-		<td><?php echo h($format['Format']['order']); ?>&nbsp;</td>
-		<td class="actions">
+		<td class="actions text-center">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $format['Format']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $format['Format']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $format['Format']['id']), null, __('Are you sure you want to delete # %s?', $format['Format']['id'])); ?>
