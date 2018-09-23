@@ -4,14 +4,12 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('recording_note'); ?></th>
-            <th><?php echo $this->Paginator->sort('notes'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($recordingnotes as $recordingnote): ?>
 	<tr>
 		<td><?php echo h($recordingnote['Recordingnote']['id']); ?>&nbsp;</td>
 		<td><?php echo h($recordingnote['Recordingnote']['recording_note']); ?>&nbsp;</td>
-        <td><?php echo h($recordingnote['Recordingnote']['notes']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $recordingnote['Recordingnote']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recordingnote['Recordingnote']['id'])); ?>
