@@ -136,6 +136,7 @@ table tr td.actions,
 table tr th.actions
 {
 	text-align: center;
+	min-width: 150px;
 }
 
 .dashboard h1.title {
