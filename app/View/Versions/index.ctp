@@ -1,22 +1,25 @@
 <div class="versions index">
 	<h2><?php echo __('Versions'); ?></h2>
+
+    <?php echo $this->element('goto', array("prefix" => "Versions")); ?>
+
 	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('version'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($versions as $version): ?>
-	<tr>
-		<td><?php echo h($version['Version']['id']); ?>&nbsp;</td>
-		<td><?php echo h($version['Version']['version']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $version['Version']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $version['Version']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $version['Version']['id']), null, __('Are you sure you want to delete # %s?', $version['Version']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
+        <tr>
+                <th><?php echo $this->Paginator->sort('id'); ?></th>
+                <th><?php echo $this->Paginator->sort('version'); ?></th>
+                <th class="actions"><?php echo __('Actions'); ?></th>
+        </tr>
+        <?php foreach ($versions as $version): ?>
+        <tr>
+            <td><?php echo h($version['Version']['id']); ?>&nbsp;</td>
+            <td><?php echo h($version['Version']['version']); ?>&nbsp;</td>
+            <td class="actions">
+                <?php echo $this->Html->link(__('View'), array('action' => 'view', $version['Version']['id'])); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $version['Version']['id'])); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $version['Version']['id']), null, __('Are you sure you want to delete # %s?', $version['Version']['id'])); ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
 	</table>
 	<p>
 	<?php
@@ -40,3 +43,5 @@
 		<li><?php echo $this->Html->link(__('Add Composition'), array('controller' => 'compositions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+<?php echo $this->Html->script('/js/paging-functions');

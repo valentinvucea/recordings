@@ -1,5 +1,8 @@
 <div class="genres index">
 	<h2><?php echo __('Genres'); ?></h2>
+
+    <?php echo $this->element('goto', array("prefix" => "Genres")); ?>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -38,3 +41,5 @@
 		<li><?php echo $this->Html->link(__('Add Genre'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
+
+<?php echo $this->Html->script('/js/paging-functions');

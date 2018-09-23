@@ -44,6 +44,7 @@
         </div>
     </div>
 
+    <?php echo $this->element('goto', array("prefix" => "Companies")); ?>
 
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -83,3 +84,5 @@
 		<li><?php echo $this->Html->link(__('Add Company'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
+
+<?php echo $this->Html->script('/js/paging-functions');

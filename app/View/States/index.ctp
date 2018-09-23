@@ -1,5 +1,8 @@
 <div class="states index">
 	<h2><?php echo __('States'); ?></h2>
+
+    <?php echo $this->element('goto', array("prefix" => "States")); ?>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -44,3 +47,5 @@
 		<li><?php echo $this->Html->link(__('Add Country'), array('controller' => 'countries', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+<?php echo $this->Html->script('/js/paging-functions');

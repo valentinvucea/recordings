@@ -1,5 +1,8 @@
 <div class="vocalformats index">
 	<h2><?php echo __('Vocal formats'); ?></h2>
+
+    <?php echo $this->element('goto', array("prefix" => "Vocalformats")); ?>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -38,3 +41,7 @@
 		<li><?php echo $this->Html->link(__('Add Vocal format'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
+
+<?php echo $this->Html->script('/js/paging-functions');
+
+

@@ -1,7 +1,8 @@
-$( document ).ready(function() {		
+/** global: $ */
+
+$( document ).ready(function() {
     $("input[id$='Reset']").click(function(){
 		var redirectUrl = $(this).attr('id');
-		console.log(redirectUrl);
         redirectUrl = location.protocol + '//' + location.host + '/' + redirectUrl.replace('Reset','') + '/reset';
         
         window.location.href = redirectUrl;
@@ -10,8 +11,8 @@ $( document ).ready(function() {
     $('input[type=button][id$="Goto"]').click(function(){
 		var gotoUrl = $(this).attr('id');
         
-        gotoPage = $('#input-goto').val();
-        pages = $(this).attr('data-count');
+        var gotoPage = $('#input-goto').val();
+        var pages = $(this).attr('data-count');
         
         if($('#input-goto').val() == "")
             alert("Please enter the number of page where you want to go to!");
