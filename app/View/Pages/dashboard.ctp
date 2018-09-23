@@ -2,7 +2,7 @@
     <div class="grid">
         <div class="col-6">
             <div class="hrow">
-                <h4>Quick search</h4>
+                <h4>General search</h4>
                 <div class="appSearch" data-page="home">
                     <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
                         <div id="row_0" class="hrow grid">
