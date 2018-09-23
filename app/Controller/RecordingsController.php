@@ -941,11 +941,13 @@ class RecordingsController extends AppController {
             5 => 'SELECT DISTINCT r.id as rid FROM recordings r WHERE r.name LIKE \'#%s#\'',
         ];
 
+        $searchTerm = str_replace('\'', '\'\'', $args['searchTerm']);
+
         $db = ConnectionManager::getDataSource('default');
 
         $sql = sprintf(
             $templates[$args['searchTable']],
-            $args['searchTerm']
+            $searchTerm
         );
 
         $sql = str_replace('#', '%', $sql);
