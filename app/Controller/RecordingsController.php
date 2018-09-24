@@ -894,7 +894,8 @@ class RecordingsController extends AppController {
         $tables = [];
 
         foreach ($args as $row) {
-            $tables[$row['searchTable']][] = $row['searchTerm'];
+            $searchTerm = str_replace('\'', '\'\'', $row['searchTerm']);
+            $tables[$row['searchTable']][] = $searchTerm;
         }
 
         $songs = [];
