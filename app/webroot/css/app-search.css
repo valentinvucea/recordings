@@ -166,3 +166,35 @@
 	clear: inherit;
 	float: inherit;
 }
+
+.pairSearch {
+	display: none;
+}
+
+a.search-tab {
+	color: dimgray;
+	font-size: 1.09em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+	text-decoration: none;
+}
+
+a.search-tab:first-child {
+    margin-right: 25px;
+}
+
+a.search-tab:hover {
+	text-decoration: underline;
+}
+
+a.search-tab.active {
+    color: red;
+}
+
+.appSearch {
+	display: none;
+}
+
+.appSearch.active {
+	display: block;
+}

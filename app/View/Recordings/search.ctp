@@ -5,7 +5,9 @@
 </div>
 
 <div class="grid">
-    <div class="appSearch" data-page="list">
+    <a href="#" data-tab="general" class="search-tab <?php echo (false === $isPairSearch ? 'active' : ''); ?>">General search</a>
+    <a href="#" data-tab="pair" class="search-tab <?php echo (true === $isPairSearch ? 'active' : ''); ?>">Pair search</a>
+    <div class="appSearch generalSearch <?php echo (false === $isPairSearch ? 'active' : ''); ?>" data-page="list">
         <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
             <?php
                 foreach($searchData['row'] as $key=>$row) {
@@ -56,14 +58,59 @@
             <?php
                 }
             ?>
-            <div class="hrow add-row-before">
-                <label class="for-checkbox" for="enforcePairs">
-                    <input type="checkbox" class="btn" id="enforcePairs" name="enforcePairs" value="1" <?php echo (true === isset($searchData['enforcePairs']) ? ' checked' : ''); ?>>
-                    enforce pairs
-                </label>
-            </div>
-            <div class="hrow submit-row">
+            <div class="hrow submit-row add-row-before">
                 <input type="button" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
+            </div>
+        </form>
+    </div>
+    <div class="appSearch pairSearch <?php echo (true === $isPairSearch ? 'active' : ''); ?>" data-page="list">
+        <form id="frmPairSearch" name="frmPairSearch" action="/Recordings/search" method="post">
+            <?php
+                foreach($searchData['rowPair'] as $keyPair => $rowPair) {
+            ?>
+            <div id="row_<?php echo $keyPair; ?>" class="hrow grid">
+                <div class="col-3">
+                    <select id="pairType_<?php echo $keyPair; ?>" name="rowPair[<?php echo $keyPair; ?>][pairType]">
+                        <option <?php echo (0 == $rowPair['pairType'] ? 'selected' : ''); ?> value="0">Pair type</option>
+                        <option <?php echo (1 == $rowPair['pairType'] ? 'selected' : ''); ?> value="1">Composer-Composition</option>
+                        <option <?php echo (2 == $rowPair['pairType'] ? 'selected' : ''); ?> value="2">Choir-Director</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="searchTerm_1_<?php echo $keyPair; ?>"
+                           name="rowPair[<?php echo $keyPair; ?>][searchTerm_1]"
+                           value="<?php echo $rowPair['searchTerm_1']; ?>"
+                           placeholder="<?php echo $pairPlaceholders[$rowPair['pairType']]['searchTerm_1']; ?>"
+                    />
+                </div>
+                <div class="col-4">
+                    <input type="text" id="searchTerm_2_<?php echo $keyPair; ?>"
+                           name="rowPair[<?php echo $keyPair; ?>][searchTerm_2]"
+                           value="<?php echo $rowPair['searchTerm_2']; ?>"
+                           placeholder="<?php echo $pairPlaceholders[$rowPair['pairType']]['searchTerm_2']; ?>"
+                    />
+                </div>
+                <?php
+                    if (0 === $keyPair) {
+                ?>
+                <div class="col-1">
+                    <button type="button" id="pairSearchAdd">+</button>
+                </div>
+                <?php
+                    } else {
+                ?>
+                    <div class="col-1">
+                        <button type="button" class="btn-remove" id="searchRemove_<?php echo $keyPair; ?>">-</button>
+                    </div>
+                <?php
+                    }
+                ?>
+            </div>
+            <?php
+                }
+            ?>
+            <div class="hrow submit-row add-pair-row-before">
+                <input type="button" class="btn" id="searchPairSubmit" name="searchPairSubmit" value="Search">
             </div>
         </form>
     </div>

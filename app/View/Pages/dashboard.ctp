@@ -2,8 +2,9 @@
     <div class="grid">
         <div class="col-6">
             <div class="hrow">
-                <h4>General search</h4>
-                <div class="appSearch" data-page="home">
+                <a href="#" data-tab="general" class="search-tab active">General search</a>
+                <a href="#" data-tab="pair" class="search-tab">Pair search</a>
+                <div class="appSearch generalSearch active" data-page="home">
                     <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
                         <div id="row_0" class="hrow grid">
                             <div class="col-7">
@@ -23,14 +24,33 @@
                                 <button type="button" id="searchAdd">+</button>
                             </div>
                         </div>
-                        <div class="hrow submit-row add-row-before">
-                            <label class="for-checkbox" for="enforcePairs">
-                                <input type="checkbox" class="btn" id="enforcePairs" name="enforcePairs" value="1">
-                                 enforce pairs
-                            </label>
-                        </div>
-                        <div class="hrow submit-row">
+                        <div class="hrow submit-row add-pair-row-before">
                             <input type="button" class="btn" id="searchSubmit" name="searchSubmit" value="Search">
+                        </div>
+                    </form>
+                </div>
+                <div class="appSearch pairSearch" data-page="home">
+                    <form id="frmPairSearch" name="frmPairSearch" action="/Recordings/search" method="post">
+                        <div id="row_0" class="hrow grid">
+                            <div class="col-3">
+                                <select id="pairType_0" name="rowPair[0][pairType]">
+                                    <option selected value="0">Pair type</option>
+                                    <option value="1">Composer-Composition</option>
+                                    <option value="2">Choir-Director</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="searchTerm_1_0" name="rowPair[0][searchTerm_1]" placeholder="Search term..." />
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="searchTerm_2_0" name="rowPair[0][searchTerm_2]" placeholder="Search term..." />
+                            </div>
+                            <div class="col-1">
+                                <button type="button" id="pairSearchAdd">+</button>
+                            </div>
+                        </div>
+                        <div class="hrow submit-row add-pair-row-before">
+                            <input type="button" class="btn" id="searchPairSubmit" name="searchPairSubmit" value="Search">
                         </div>
                     </form>
                 </div>

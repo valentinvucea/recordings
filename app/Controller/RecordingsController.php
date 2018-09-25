@@ -719,8 +719,25 @@ class RecordingsController extends AppController {
      */
     public function search()
     {
-        $emptySearch = 'Empty search...';
-        $searchData  = [];
+        $emptySearch  = 'Empty search...';
+        $emptyTerm    = 'Search term...';
+        $searchData   = [];
+        $isPairSearch = false;
+
+        $pairPlaceholders = [
+            0 => [
+                'searchTerm_1' => $emptyTerm,
+                'searchTerm_2' => $emptyTerm
+            ],
+            1 => [
+                'searchTerm_1' => 'Search Composer...',
+                'searchTerm_2' => 'Search Composition...'
+            ],
+            2 => [
+                'searchTerm_1' => 'Search Choir...',
+                'searchTerm_2' => 'Search Director...',
+            ],
+        ];
 
         if ($this->request && $this->request->is('post')) {
             $searchData = $this->request->data;
@@ -735,12 +752,22 @@ class RecordingsController extends AppController {
                 'searchTable' => 5,
                 'searchTerm'  => $emptySearch,
             );
+            $isPairSearch = true;
         }
 
-        if (false === isset($searchData['enforcePairs'])) {
+        if (false === isset($searchData['rowPair'][0])) {
+            $searchData['rowPair'][0] = array(
+                'pairType'     => 0,
+                'searchTerm_1' => $emptyTerm,
+                'searchTerm_2' => $emptyTerm,
+            );
+            $isPairSearch  = false;
+        }
+
+        if (false === $isPairSearch) {
             $ids = $this->getIdsList($searchData);
         } else {
-            $ids = $this->getEnforcedPairsIdsList($searchData);
+            $ids = $this->getIdsPairList($searchData);
         }
 
         /* page */
@@ -805,7 +832,15 @@ class RecordingsController extends AppController {
             );
         }
 
-        $this->set(compact('searchData', 'results', 'json'));
+        if ($emptyTerm == $searchData['rowPair'][0]['searchTerm_1']) {
+            $searchData['rowPair'][0] = array(
+                'pairType'      => 0,
+                'searchTerm_1'  => '',
+                'searchTerm_2'  => '',
+            );
+        }
+
+        $this->set(compact('searchData', 'results', 'json', 'isPairSearch', 'pairPlaceholders'));
         $this->render('search');
     }
 
@@ -831,9 +866,9 @@ class RecordingsController extends AppController {
         return $list;
     }
 
-    private function getEnforcedPairsIdsList($searchArgs)
+    private function getIdsPairList($searchArgs)
     {
-        list($songs, $singers) = $this->getEnforcedPairs($searchArgs['row']);
+        list($songs, $singers) = $this->getEnforcedPairs($searchArgs['rowPair']);
 
         $songsIds   = $this->getIdsByPairType($songs, 'songs');
         $singersIds = $this->getIdsByPairType($singers, 'singers');
@@ -852,15 +887,11 @@ class RecordingsController extends AppController {
         $map = [
             'songs'   => [
                 'select'   => 'SELECT DISTINCT r.recording_id as rid FROM recsongs r INNER JOIN songs s ON r.song_id = s.id INNER JOIN compositions c ON s.composition_id = c.id INNER JOIN composers p ON s.composer_id = p.id WHERE ',
-                'criteria' => '(c.title LIKE \'#%s#\' AND p.name LIKE \'#%s#\')',
-                'first'    => 3,
-                'second'   => 2
+                'criteria' => '(c.title LIKE \'#%s#\' AND p.name LIKE \'#%s#\')'
             ],
             'singers' => [
                 'select'   => 'SELECT DISTINCT r.recording_id as rid FROM recsingers r INNER JOIN singers s ON r.singer_id = s.id INNER JOIN choirs c ON s.choir_id = c.id INNER JOIN directors d ON s.director_id = d.id WHERE ',
-                'criteria' => '(c.choir LIKE \'#%s#\' AND d.name LIKE \'#%s#\')',
-                'first'    => 1,
-                'second'   => 4
+                'criteria' => '(c.choir LIKE \'#%s#\' AND d.name LIKE \'#%s#\')'
             ],
         ];
 
@@ -868,7 +899,7 @@ class RecordingsController extends AppController {
         $args  = $map[$type];
 
         foreach ($pairs as $pair) {
-            $clause = sprintf($args['criteria'], $pair[intval($args['first'])], $pair[intval($args['second'])]);
+            $clause = sprintf($args['criteria'], $pair[1], $pair[2]);
             $clause = str_replace('#', '%', $clause);
             $where[] = $clause;
         }
@@ -894,39 +925,25 @@ class RecordingsController extends AppController {
         $tables = [];
 
         foreach ($args as $row) {
-            $searchTerm = str_replace('\'', '\'\'', $row['searchTerm']);
-            $tables[$row['searchTable']][] = $searchTerm;
+            if (0 !== $row['pairType']) {
+                $searchTerm_1 = str_replace('\'', '\'\'', $row['searchTerm_1']);
+                $searchTerm_2 = str_replace('\'', '\'\'', $row['searchTerm_2']);
+                $tables[$row['pairType']][] = [
+                    1 => $searchTerm_1,
+                    2 => $searchTerm_2
+                ];
+            }
         }
 
         $songs = [];
         $singers = [];
 
-        /** Get songs */
-        if (true === isset($tables[2]) && true === isset($tables[3])) {
-            for ($i = 0; $i < max(count($tables[2]), count($tables[3])); $i++) {
-                if (true === isset($tables[2][$i]) && true === isset($tables[3][$i])) {
-                    $songs[] = [
-                        2 => $tables[2][$i],
-                        3 => $tables[3][$i]
-                    ];
-                } else {
-                    break;
-                }
-            }
+        if (true === array_key_exists(1, $tables)) {
+            $songs = $tables[1];
         }
 
-        /** Get singers */
-        if (true === isset($tables[1]) && true === isset($tables[4])) {
-            for ($i = 0; $i < max(count($tables[1]), count($tables[4])); $i++) {
-                if (true === isset($tables[1][$i]) && true === isset($tables[4][$i])) {
-                    $singers[] = [
-                        1 => $tables[1][$i],
-                        4 => $tables[4][$i]
-                    ];
-                } else {
-                    break;
-                }
-            }
+        if (true === array_key_exists(2, $tables)) {
+            $singers = $tables[2];
         }
 
         return [$songs, $singers];
