@@ -4,11 +4,17 @@
         echo '<h2 style="margin-bottom: 5px;">' . __('Compositions') . '</h2>';
     ?>
     </div>
+    <?php
+        if (true === $isAdmin) {
+    ?>
     <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
         <ul>
             <li><?php echo $this->Html->link(__('Add Composition'), array('action' => 'add')); ?></li>
         </ul>
     </div>
+    <?php
+        }
+    ?>
 </div>
 
 <div class="conditions horizontal-form row bg-grey rounded">
@@ -92,7 +98,7 @@
 			<td class="text-center"><?php echo h($composition['Composition']['collection_title']); ?></td>		
             <td class="actions" style="width: 60px;">
 				<?php
-					if( $this->Sessionplus->isSession('Songs') == true ) {
+					if( true === $isAdmin && $this->Sessionplus->isSession('Songs') == true ) {
 						if( !$this->Sessionplus->isLinked('composition_id', $composition['Composition']['id'], 'Songs') ) {
 							echo $this->Html->link(__('Link'), array('action' => 'link', $composition['Composition']['id']));
 						} else {
@@ -101,8 +107,12 @@
 					}
 				?>				
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $composition['Composition']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $composition['Composition']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $composition['Composition']['id']), null, __('Are you sure you want to delete # %s?', $composition['Composition']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $composition['Composition']['id']));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $composition['Composition']['id']), null, __('Are you sure you want to delete # %s?', $composition['Composition']['id']));
+                    }
+                ?>
             </td>
         </tr>
         <?php endforeach; ?>

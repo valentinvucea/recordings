@@ -180,6 +180,12 @@ class CompositionsController extends AppController {
 				$this->Session->setFlash(__('The composition could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$genres = $this->Composition->Genre->find('list', array('order'=>array('genre')));
 		$versions = $this->Composition->Version->find('list', array('order'=>array('version')));
 		$recordingnotes = $this->Composition->Recordingnote->find('list', array('order'=>array('recording_note')));
@@ -210,6 +216,11 @@ class CompositionsController extends AppController {
 			$this->request->data = $this->Composition->find('first', $options);
 		}
 
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can edit records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$genres = $this->Composition->Genre->find('list', array('order'=>array('genre')));
 		$versions = $this->Composition->Version->find('list', array('order'=>array('version')));
 		$recordingnotes = $this->Composition->Recordingnote->find('list', array('order'=>array('recording_note')));
@@ -231,6 +242,12 @@ class CompositionsController extends AppController {
 			throw new NotFoundException(__('Invalid composition'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Composition->delete()) {
 			$this->Session->setFlash(__('Composition deleted'));
 			$this->redirect(array('action' => 'index'));

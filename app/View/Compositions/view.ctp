@@ -61,17 +61,19 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Composition'), array('action' => 'edit', $composition['Composition']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Composition'), array('action' => 'delete', $composition['Composition']['id']), null, __('Are you sure you want to delete # %s?', $composition['Composition']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Compositions'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Composition'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Genres'), array('controller' => 'genres', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Genre'), array('controller' => 'genres', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Versions'), array('controller' => 'versions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Version'), array('controller' => 'versions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Recordings notes'), array('controller' => 'recordingnotes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Recordings note'), array('controller' => 'recordingnotes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Voicings'), array('controller' => 'voicings', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Voicing'), array('controller' => 'voicings', 'action' => 'add')); ?> </li>
-	</ul>
+    <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Edit Composition'), array('action' => 'edit', $composition['Composition']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete Composition'), array('action' => 'delete', $composition['Composition']['id']), null, __('Are you sure you want to delete # %s?', $composition['Composition']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Compositions'), array('action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Composition'), array('action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Genres'), array('controller' => 'genres', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Genre'), array('controller' => 'genres', 'action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Versions'), array('controller' => 'versions', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Version'), array('controller' => 'versions', 'action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Recordings notes'), array('controller' => 'recordingnotes', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Recordings note'), array('controller' => 'recordingnotes', 'action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Voicings'), array('controller' => 'voicings', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Voicing'), array('controller' => 'voicings', 'action' => 'add')), $isAdmin);
+	?>
+    </ul>
 </div>
