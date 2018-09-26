@@ -5,7 +5,7 @@
 </div>
 
 <div class="grid">
-    <a href="#" data-tab="general" class="search-tab <?php echo (false === $isPairSearch ? 'active' : ''); ?>">General search</a>
+    <a href="#" data-tab="general" class="search-tab <?php echo (false === $isPairSearch ? 'active' : ''); ?>">Basic search</a>
     <a href="#" data-tab="pair" class="search-tab <?php echo (true === $isPairSearch ? 'active' : ''); ?>">Pair search</a>
     <div class="appSearch generalSearch <?php echo (false === $isPairSearch ? 'active' : ''); ?>" data-page="list">
         <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">

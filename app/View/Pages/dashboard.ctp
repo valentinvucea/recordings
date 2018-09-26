@@ -2,7 +2,7 @@
     <div class="grid">
         <div class="col-6">
             <div class="hrow">
-                <a href="#" data-tab="general" class="search-tab active">General search</a>
+                <a href="#" data-tab="general" class="search-tab active">Basic search</a>
                 <a href="#" data-tab="pair" class="search-tab">Pair search</a>
                 <div class="appSearch generalSearch active" data-page="home">
                     <form id="frmSearch" name="frmSearch" action="/Recordings/search" method="post">
@@ -57,30 +57,41 @@
             </div>
 
             <div class="hrow">
-                <h4>Add/edit records</h4>
+                <h4>Add/Edit records</h4>
                 <div class="dashboard">
                     <ul>
-                        <li><a href="/Recordings/index"><img src="../img/icon-recordings.png" alt="Add/edit recordings" class=""><span>Recordings</span></a></li>
-                        <li><a href="/Choirs/index"><img src="../img/icon-choirs.png" alt="Add/edic choirs" class=""><span>Choirs</span></a></li>
-                        <li><a href="/Directors/index"><img src="../img/icon-director.png" alt="Add/edit directors" class=""><span>Directors</span></a></li>
-                        <li><a href="/Composers/index"><img src="../img/icon-musician.png" alt="Add/edit composers" class=""><span>Composers</span></a></li>
-                        <li><a href="/Compositions/index"><img src="../img/icon-music-notes.png" alt="Add/edit compositions" class=""><span>Compositions</span></a></li>
+                        <li><a href="/Recordings/index"><img src="../img/icon-recordings.png" alt="Add/Edit recordings" class=""><span>Recordings</span></a></li>
+                        <li><a href="/Choirs/index"><img src="../img/icon-choirs.png" alt="Add/Edit choirs" class=""><span>Choirs</span></a></li>
+                        <li><a href="/Directors/index"><img src="../img/icon-director.png" alt="Add/Edit directors" class=""><span>Directors</span></a></li>
+                        <li><a href="/Composers/index"><img src="../img/icon-musician.png" alt="Add/Edit composers" class=""><span>Composers</span></a></li>
+                        <li><a href="/Compositions/index"><img src="../img/icon-music-notes.png" alt="Add/Edit compositions" class=""><span>Compositions</span></a></li>
                     </ul>
                 </div>
             </div>
 
+            <?php
+                if (true === $isAdmin) {
+            ?>
             <div class="hrow">
                 <h4>Other actions</h4>
                 <div class="dashboard">
                     <ul>
+                        <!--
                         <li><a href="/Records/index/1"><img src="../img/icon-link.png" alt="Link tables" class=""><span>Link <br />Modules</span></a></li>
                         <li><a href="#"><img src="../img/icon-report.png" alt="Recordings by choir" class=""><span>Custom <br />Reports</span></a></li>
                         <li><a href="#"><img src="../img/icon-search.png" alt="Compositions voicings" class=""><span>Advanced <br />Search</span></a></li>
-                        <li><a href="/Users/index"><img src="../img/icon-credentials.png" alt="Composition versions" class=""><span>Manage <br />Credentials</span></a></li>
                         <li><a href="#"><img src="../img/icon-export.png" alt="Composition recording notes" class=""><span>Export <br />Database</span></a></li>
+                        -->
+
+                            <li><a href="/Users/index"><img src="../img/icon-credentials.png"
+                                                            alt="Manage Credentials" class=""><span>Manage <br/>Credentials</span></a>
+                            </li>
                     </ul>
                 </div>
             </div>
+            <?php
+                }
+            ?>
 
         </div>
         <div class="col-6">

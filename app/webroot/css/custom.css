@@ -251,7 +251,7 @@ table tr th.actions
 }
 
 /* BUTTONS ACTIONS-TOP */
-div.actions { width: calc(21% - 8px); padding: 10px; }
+div.actions { width: calc(21% - 12px); padding: 10px; }
 div.index, div.form, div.view { width: calc(80% - 51px); padding: 10px; }
 
 
