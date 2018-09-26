@@ -42,14 +42,44 @@ class AppController extends Controller {
         'Session',
 		//'DebugKit.Toolbar'
     );
-    public $helpers = array('Html', 'Form', 'Session', 'Sbmenu');
+    public $helpers = array('Html', 'Form', 'Session', 'Sbmenu', 'Authorize');
 
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         //Configure AuthComponent
-        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
-        $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
-        $this->Auth->loginRedirect = array('controller' => 'pages', 'action' => 'dashboard');
-		$this->Auth->allow('display');
-		
-    }	
+        $this->Auth->loginAction = ['controller' => 'users', 'action' => 'login'];
+        $this->Auth->logoutRedirect = ['controller' => 'users', 'action' => 'login'];
+        $this->Auth->loginRedirect = ['controller' => 'pages', 'action' => 'dashboard'];
+        $this->Auth->allow('display');
+    }
+
+    /** Pass in all views if the user is admin */
+    public function beforeRender() {
+        $this->set('isAdmin', $this->isAdmin());
+    }
+
+    /**
+     * @return bool|mixed
+     */
+    public function isAdmin()
+    {
+        $user = $this->Auth->user();
+
+        if (null !== $user) {
+            $groupId = $user['Group']['id'];
+            if (1 == $groupId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->Auth->user();
+    }
 }
