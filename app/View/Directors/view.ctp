@@ -31,11 +31,13 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Director'), array('action' => 'edit', $director['Director']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Director'), array('action' => 'delete', $director['Director']['id']), null, __('Are you sure you want to delete # %s?', $director['Director']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Directors'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Director'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Positions'), array('controller' => 'positions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
+    <?php
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Edit Director'), array('action' => 'edit', $director['Director']['id'])), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete Director'), array('action' => 'delete', $director['Director']['id']), null, __('Are you sure you want to delete # %s?', $director['Director']['id'])), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Directors'), array('action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Director'), array('action' => 'add')), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Positions'), array('controller' => 'positions', 'action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Position'), array('controller' => 'positions', 'action' => 'add')), $isAdmin);
+	?>
 	</ul>
 </div>

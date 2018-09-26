@@ -145,6 +145,12 @@ class DirectorsController extends AppController {
 				$this->Session->setFlash(__('The director could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$positions = $this->Director->Position->find('list');
 		$this->set(compact('positions'));
 	}
@@ -171,6 +177,12 @@ class DirectorsController extends AppController {
 			$options = array('conditions' => array('Director.' . $this->Director->primaryKey => $id));
 			$this->request->data = $this->Director->find('first', $options);
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can edit records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$positions = $this->Director->Position->find('list');
 		$this->set(compact('positions'));
 	}
@@ -189,6 +201,12 @@ class DirectorsController extends AppController {
 			throw new NotFoundException(__('Invalid director'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Director->delete()) {
 			$this->Session->setFlash(__('Director deleted'));
 			$this->redirect(array('action' => 'index'));

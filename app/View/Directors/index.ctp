@@ -4,11 +4,17 @@
         echo '<h2 style="margin-bottom: 5px;">' . __('Directors') . '</h2>';
     ?>
     </div>
+    <?php
+        if (true === $isAdmin) {
+    ?>
     <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
         <ul>
             <li><?php echo $this->Html->link(__('Add Director'), array('action' => 'add')); ?></li>
         </ul>
     </div>
+    <?php
+        }
+    ?>
 </div>
 
 <div class="conditions horizontal-form row bg-grey rounded">
@@ -81,17 +87,21 @@
             </td>
             <td class="actions">
                 <?php
-                if( $this->Sessionplus->isSession('Singers') == true ) {
-                if( !$this->Sessionplus->isLinked('director_id', $director['Director']['id'], 'Singers') ) {
-                echo $this->Html->link(__('Link'), array('action' => 'link', $director['Director']['id']));
-                } else {
-                echo $this->Html->link(__('Unlink'), array('action' => 'link', 'u' . $director['Director']['id']), array('class' => 'btngreen'));
-                }
-                }
+                    if (true === $isAdmin && $this->Sessionplus->isSession('Singers') == true ) {
+                        if( !$this->Sessionplus->isLinked('director_id', $director['Director']['id'], 'Singers') ) {
+                            echo $this->Html->link(__('Link'), array('action' => 'link', $director['Director']['id']));
+                        } else {
+                            echo $this->Html->link(__('Unlink'), array('action' => 'link', 'u' . $director['Director']['id']), array('class' => 'btngreen'));
+                        }
+                    }
                 ?>
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $director['Director']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $director['Director']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $director['Director']['id']), null, __('Are you sure you want to delete # %s?', $director['Director']['id'])); ?>
+			    <?php echo $this->Html->link(__('View'), array('action' => 'view', $director['Director']['id'])); ?>
+			    <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $director['Director']['id']));
+			            echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $director['Director']['id']), null, __('Are you sure you want to delete # %s?', $director['Director']['id']));
+                    }
+                ?>
             </td>
         </tr>
         <?php endforeach; ?>
