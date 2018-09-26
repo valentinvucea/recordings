@@ -127,19 +127,21 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Recording'), array('action' => 'edit', $recording['Recording']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Recording'), array('action' => 'delete', $recording['Recording']['id']), null, __('Are you sure you want to delete # %s?', $recording['Recording']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Recordings'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Recording'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Formats'), array('controller' => 'formats', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Format'), array('controller' => 'formats', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Recording Notes'), array('controller' => 'comprecordingnotes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Recording Note'), array('controller' => 'comprecordingnotes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Ancillary Musics'), array('controller' => 'ancillarymusics', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Ancillary Music'), array('controller' => 'ancillarymusics', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Presentations'), array('controller' => 'presentations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Presentation'), array('controller' => 'presentations', 'action' => 'add')); ?> </li>
+    <?php
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Edit Recording'), array('action' => 'edit', $recording['Recording']['id'])), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete Recording'), array('action' => 'delete', $recording['Recording']['id']), null, __('Are you sure you want to delete # %s?', $recording['Recording']['id'])), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Recordings'), array('action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Recording'), array('action' => 'add')), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Formats'), array('controller' => 'formats', 'action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Format'), array('controller' => 'formats', 'action' => 'add')), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Company'), array('controller' => 'companies', 'action' => 'add')), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Recording Notes'), array('controller' => 'comprecordingnotes', 'action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Recording Note'), array('controller' => 'comprecordingnotes', 'action' => 'add')), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Ancillary Musics'), array('controller' => 'ancillarymusics', 'action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Ancillary Music'), array('controller' => 'ancillarymusics', 'action' => 'add')), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Presentations'), array('controller' => 'presentations', 'action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Presentation'), array('controller' => 'presentations', 'action' => 'add')), $isAdmin);
+    ?>
 	</ul>
 </div>

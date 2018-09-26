@@ -204,6 +204,12 @@ class RecordingsController extends AppController {
 				$this->Session->setFlash(__('The recording could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$formats = $this->Recording->Format->find('list', array('order' => 'format'));
 		$companies = $this->Recording->Company->find('list', array('order' => array('company' => 'asc')));
 		$comprecordingnotes = $this->Recording->Comprecordingnote->find('list', array('order' => array('note' => 'asc')));
@@ -234,6 +240,12 @@ class RecordingsController extends AppController {
 			$options = array('conditions' => array('Recording.' . $this->Recording->primaryKey => $id));
 			$this->request->data = $this->Recording->find('first', $options);
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can edit records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$formats = $this->Recording->Format->find('list', array('order' => array('format' => 'asc')));
 		$companies = $this->Recording->Company->find('list', array('order' => array('company' => 'asc')));
 		$comprecordingnotes = $this->Recording->Comprecordingnote->find('list', array('order' => array('note' => 'asc')));
@@ -256,6 +268,12 @@ class RecordingsController extends AppController {
 			throw new NotFoundException(__('Invalid recording'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Recording->delete()) {
 			$this->Session->setFlash(__('Recording deleted'));
 			$this->redirect(array('action' => 'index'));
@@ -406,6 +424,11 @@ class RecordingsController extends AppController {
 				die;
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can link records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 
 		// LOAD DATA FOR VIEW
 		if( isset($id) && $id != '' ) {

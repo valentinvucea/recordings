@@ -4,11 +4,17 @@
         echo '<h2 style="margin-bottom: 5px;">' . __('Recordings') . '</h2>';
     ?>
     </div>
+    <?php
+        if (true === $isAdmin) {
+    ?>
     <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
         <ul>
-            <li><?php echo $this->Html->link(__('Add Recording'), array('action' => 'add')); ?></li>
+            <li><?php echo $this->Html->link(__('Add Recording'), ['action' => 'add']); ?></li>
         </ul>
     </div>
+    <?php
+        }
+    ?>
 </div>
 
 <div class="conditions horizontal-form row bg-grey rounded">
@@ -97,10 +103,16 @@
 			<td class="text-center"><?php echo h($recording['Presentation']['presentation']); ?></td>
             <td class="text-center"><?php echo h($recording['Recording']['notes']); ?></td>
             <td class="actions">
-                <?php echo $this->Html->link(__('Link'), array('action' => ($has_links == 'has_links' ? 'linkedit' : 'linkadd'), $recording['Recording']['id']), array('class' => ($has_links == 'has_links' ? 'btngreen' : ''))); ?>			
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $recording['Recording']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recording['Recording']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recording['Recording']['id']), null, __('Are you sure you want to delete # %s?', $recording['Recording']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Link'), array('action' => ($has_links == 'has_links' ? 'linkedit' : 'linkadd'), $recording['Recording']['id']), array('class' => ($has_links == 'has_links' ? 'btngreen' : '')));
+                    }
+                    echo $this->Html->link(__('View'), array('action' => 'view', $recording['Recording']['id']));
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $recording['Recording']['id']]);
+                        echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $recording['Recording']['id']], null, __('Are you sure you want to delete # %s?', $recording['Recording']['id']));
+                    }
+                ?>
             </td>
         </tr>
         <?php endforeach; ?>
