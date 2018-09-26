@@ -36,9 +36,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Composer'), array('action' => 'edit', $composer['Composer']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Composer'), array('action' => 'delete', $composer['Composer']['id']), null, __('Are you sure you want to delete # %s?', $composer['Composer']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Composers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Composer'), array('action' => 'add')); ?> </li>
+    <?php
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Edit Composer'), array('action' => 'edit', $composer['Composer']['id'])), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete Composer'), array('action' => 'delete', $composer['Composer']['id']), null, __('Are you sure you want to delete # %s?', $composer['Composer']['id'])), $isAdmin);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('List Composers'), array('action' => 'index')), true);
+		$this->Authorize->echoIfAdmin($this->Html->link(__('Add Composer'), array('action' => 'add')), $isAdmin);
+    ?>
 	</ul>
 </div>

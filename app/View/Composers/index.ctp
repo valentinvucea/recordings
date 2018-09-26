@@ -4,11 +4,17 @@
         echo '<h2 style="margin-bottom: 5px;">' . __('Composers') . '</h2>';
     ?>
     </div>
+    <?php
+        if (true === $isAdmin) {
+    ?>
     <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
         <ul>
             <li><?php echo $this->Html->link(__('Add Composer'), array('action' => 'add')); ?></li>
         </ul>
     </div>
+    <?php
+        }
+    ?>
 </div>
 
 <div class="conditions horizontal-form row bg-grey rounded">
@@ -70,7 +76,7 @@
             <td><?php echo h($composer['Composer']['dates']); ?>&nbsp;</td>                   
             <td class="actions">
                 <?php
-                    if( $this->Sessionplus->isSession('Songs') == true ) {
+                    if (true === $isAdmin && $this->Sessionplus->isSession('Songs') == true ) {
                         if( !$this->Sessionplus->isLinked('composer_id', $composer['Composer']['id'], 'Songs') ) {
                             echo $this->Html->link(__('Link'), array('action' => 'link', $composer['Composer']['id']));
                         } else {
@@ -79,8 +85,12 @@
                     }
                 ?> 		
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $composer['Composer']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $composer['Composer']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $composer['Composer']['id']), null, __('Are you sure you want to delete # %s?', $composer['Composer']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), ['action' => 'edit', $composer['Composer']['id']]);
+                        echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $composer['Composer']['id']], null, __('Are you sure you want to delete # %s?', $composer['Composer']['id']));
+                    }
+                ?>
             </td>
         </tr>
         <?php endforeach; ?>

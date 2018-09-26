@@ -135,6 +135,11 @@ class ComposersController extends AppController {
 				$this->Session->setFlash(__('The composer could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
         
         $nationalities = $this->Composer->Nationality->find('list', array('order'=>array('nationality')));
 		$this->set(compact('nationalities'));
@@ -162,6 +167,12 @@ class ComposersController extends AppController {
 			$options = array('conditions' => array('Composer.' . $this->Composer->primaryKey => $id));
 			$this->request->data = $this->Composer->find('first', $options);
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can edit records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
         $nationalities = $this->Composer->Nationality->find('list', array('order'=>array('nationality')));
 		$this->set(compact('nationalities'));
 	}
@@ -180,6 +191,12 @@ class ComposersController extends AppController {
 			throw new NotFoundException(__('Invalid composer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Composer->delete()) {
 			$this->Session->setFlash(__('Composer deleted'));
 			$this->redirect(array('action' => 'index'));
@@ -214,8 +231,8 @@ class ComposersController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		} else {
 			if (!$this->Composer->exists($id)) {
-				throw new NotFoundException(__('Invalid composer'));
-			}	
+                throw new NotFoundException(__('Invalid composer'));
+            }
 			
 			if ($this->Session->check('Songs') === false) {
 				$this->Session->setFlash(__('No active Composition-Composer session! Memory cleared!'));				
