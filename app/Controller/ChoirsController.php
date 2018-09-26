@@ -161,6 +161,12 @@ class ChoirsController extends AppController {
 				$this->Session->setFlash(__('The choir could not be saved. Please, try again.'));
 			}
 		}
+
+		if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$states = $this->Choir->State->find('list', array('order' => array('state' => 'asc')));
 		$countries = $this->Choir->Country->find('list', array('order' => array('country' => 'asc')));
 		$denominations = $this->Choir->Denomination->find('list', array('order' => array('denomination' => 'asc')));
@@ -190,6 +196,12 @@ class ChoirsController extends AppController {
 			$options = array('conditions' => array('Choir.' . $this->Choir->primaryKey => $id));
 			$this->request->data = $this->Choir->find('first', $options);
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can edit records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$states = $this->Choir->State->find('list', array('order' => array('state' => 'asc')));
 		$countries = $this->Choir->Country->find('list', array('order' => array('country' => 'asc')));
 		$denominations = $this->Choir->Denomination->find('list', array('order' => array('denomination' => 'asc')));
@@ -211,6 +223,12 @@ class ChoirsController extends AppController {
 			throw new NotFoundException(__('Invalid choir'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Choir->delete()) {
 			$this->Session->setFlash(__('Choir deleted'));
 			$this->redirect(array('action' => 'index'));

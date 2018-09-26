@@ -4,11 +4,17 @@
         echo '<h2 style="margin-bottom: 5px;">' . __('Choirs') . '</h2>';
     ?>
     </div>
-    <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
-        <ul>
-            <li><?php echo $this->Html->link(__('Add Choir'), array('action' => 'add')); ?></li>
-        </ul>
-    </div>
+    <?php
+        if (true === $isAdmin) {
+    ?>
+        <div class="actions-top grid-3-4 fleft" style="padding: 5px 0px;">
+            <ul>
+                <li><?php echo $this->Html->link(__('Add Choir'), ['action' => 'add']); ?></li>
+            </ul>
+        </div>
+    <?php
+        }
+    ?>
 </div>
 
 <div class="conditions horizontal-form row bg-grey rounded">
@@ -85,7 +91,7 @@
             <td class="text-center"><?php echo h($choir['Vocalformat']['vocalformat']); ?></td>
             <td class="actions">
 				<?php
-                    if( $this->Sessionplus->isSession('Singers') == true ) {
+                    if(true === $isAdmin && $this->Sessionplus->isSession('Singers') == true ) {
                         if( !$this->Sessionplus->isLinked('choir_id', $choir['Choir']['id'], 'Singers') ) {
                             echo $this->Html->link(__('Link'), array('action' => 'link', $choir['Choir']['id']));
                         } else {
@@ -94,8 +100,12 @@
                     }					
 				?>			
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $choir['Choir']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $choir['Choir']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $choir['Choir']['id']), null, __('Are you sure you want to delete # %s?', $choir['Choir']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $choir['Choir']['id']));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $choir['Choir']['id']), null, __('Are you sure you want to delete # %s?', $choir['Choir']['id']));
+                    }
+                 ?>
             </td>
         </tr>
         <?php endforeach; ?>
