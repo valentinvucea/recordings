@@ -80,6 +80,7 @@
 <div class="inner">
 	<table cellpadding="0" cellspacing="0">
         <tr class="border-top">
+            <th class="text-center"><?php echo $this->Paginator->sort('id', 'Id'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('no', 'Rec. No'); ?></th>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('format_id'); ?></th>
@@ -97,6 +98,7 @@
                 }
             ?>
 
+            <td class="text-center"><?php echo h($recording['Recording']['id']); ?></td>
             <td class="text-center"><?php echo h($recording['Recording']['no']); ?></td>
             <td class="<?php echo $has_links; ?>"><?php echo h($recording['Recording']['name']); ?></td>
             <td class="text-center"><?php echo h($recording['Format']['format']); ?></td>
