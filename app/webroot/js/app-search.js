@@ -97,8 +97,8 @@ var search = {
         '<div class="col-3">' +
         '<select id="pairType_#x#" name="rowPair[#x#][pairType]">' +
         '<option selected value="0">Pair type</option>' +
-        '<option value="1">Composer-Composition</option>' +
         '<option value="2">Choir-Director</option>' +
+        '<option value="1">Composer-Composition</option>' +
         '</select>' +
         '</div>' +
         '<div class="col-4">' +

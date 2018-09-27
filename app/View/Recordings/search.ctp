@@ -72,8 +72,8 @@
                 <div class="col-3">
                     <select id="pairType_<?php echo $keyPair; ?>" name="rowPair[<?php echo $keyPair; ?>][pairType]">
                         <option <?php echo (0 == $rowPair['pairType'] ? 'selected' : ''); ?> value="0">Pair type</option>
-                        <option <?php echo (1 == $rowPair['pairType'] ? 'selected' : ''); ?> value="1">Composer-Composition</option>
                         <option <?php echo (2 == $rowPair['pairType'] ? 'selected' : ''); ?> value="2">Choir-Director</option>
+                        <option <?php echo (1 == $rowPair['pairType'] ? 'selected' : ''); ?> value="1">Composer-Composition</option>
                     </select>
                 </div>
                 <div class="col-4">
