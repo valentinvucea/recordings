@@ -85,6 +85,7 @@
             <th><?php echo $this->Paginator->sort('name'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('format_id'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('Presentation.presentation', 'Presentation'); ?></th>
+            <th class="text-center"><?php echo $this->Paginator->sort('Comprecordingnote.note', 'Rec. Note'); ?></th>
             <th class="text-center"><?php echo $this->Paginator->sort('notes'); ?></th>
             <th class="actions text-center grid-1-10"><?php echo __('Actions'); ?></th>
         </tr>
@@ -103,6 +104,7 @@
             <td class="<?php echo $has_links; ?>"><?php echo h($recording['Recording']['name']); ?></td>
             <td class="text-center"><?php echo h($recording['Format']['format']); ?></td>
 			<td class="text-center"><?php echo h($recording['Presentation']['presentation']); ?></td>
+			<td class="text-center"><?php echo h($recording['Comprecordingnote']['note']); ?></td>
             <td class="text-center"><?php echo h($recording['Recording']['notes']); ?></td>
             <td class="actions">
                 <?php
