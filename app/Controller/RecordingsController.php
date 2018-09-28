@@ -910,7 +910,7 @@ class RecordingsController extends AppController {
         $map = [
             'songs'   => [
                 'select'   => 'SELECT DISTINCT r.recording_id as rid FROM recsongs r INNER JOIN songs s ON r.song_id = s.id INNER JOIN compositions c ON s.composition_id = c.id INNER JOIN composers p ON s.composer_id = p.id WHERE ',
-                'criteria' => '(c.title LIKE \'#%s#\' AND p.name LIKE \'#%s#\')'
+                'criteria' => '(p.name LIKE \'#%s#\' AND c.title LIKE \'#%s#\')'
             ],
             'singers' => [
                 'select'   => 'SELECT DISTINCT r.recording_id as rid FROM recsingers r INNER JOIN singers s ON r.singer_id = s.id INNER JOIN choirs c ON s.choir_id = c.id INNER JOIN directors d ON s.director_id = d.id WHERE ',
@@ -922,7 +922,7 @@ class RecordingsController extends AppController {
         $args  = $map[$type];
 
         foreach ($pairs as $pair) {
-            $clause = sprintf($args['criteria'], $pair[2], $pair[1]);
+            $clause = sprintf($args['criteria'], $pair[1], $pair[2]);
             $clause = str_replace('#', '%', $clause);
             $where[] = $clause;
         }
