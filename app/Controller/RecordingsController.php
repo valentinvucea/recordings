@@ -922,7 +922,7 @@ class RecordingsController extends AppController {
         $args  = $map[$type];
 
         foreach ($pairs as $pair) {
-            $clause = sprintf($args['criteria'], $pair[1], $pair[2]);
+            $clause = sprintf($args['criteria'], $pair[2], $pair[1]);
             $clause = str_replace('#', '%', $clause);
             $where[] = $clause;
         }
