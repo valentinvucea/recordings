@@ -58,7 +58,7 @@
 				<br/>
                 <li><a href="/Singers/current">Choirs-Directors</a></li>
 				<li><a href="/Songs/current">Composers-Compositions</a></li>
-				<li><a href="/Recordings/current">Add/Confirm Links</a></li>				
+				<li><a class="add-confirm" href="/Recordings/current">Add/Confirm Links</a></li>
 			</ul>
 		</div>
 		

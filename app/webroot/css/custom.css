@@ -679,3 +679,15 @@ dd {
 	width: 80%;
 	margin-left: 20%;
 }
+
+#header ul li a.add-confirm {
+	border: 1px solid #e5e5e5;
+	border-radius: 2px;
+	padding: 2px 5px;
+	text-decoration: none;
+}
+
+#header ul li a.add-confirm:hover {
+	background-color: #f8f8f8;
+	color: #003d4c;
+}

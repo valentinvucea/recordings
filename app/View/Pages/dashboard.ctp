@@ -60,11 +60,13 @@
                 <h4>Add/Edit records</h4>
                 <div class="dashboard">
                     <ul>
-                        <li><a href="/Recordings/index"><img src="../img/icon-recordings.png" alt="Add/Edit recordings" class=""><span>Recordings</span></a></li>
-                        <li><a href="/Choirs/index"><img src="../img/icon-choirs.png" alt="Add/Edit choirs" class=""><span>Choirs</span></a></li>
-                        <li><a href="/Directors/index"><img src="../img/icon-director.png" alt="Add/Edit directors" class=""><span>Directors</span></a></li>
-                        <li><a href="/Composers/index"><img src="../img/icon-musician.png" alt="Add/Edit composers" class=""><span>Composers</span></a></li>
-                        <li><a href="/Compositions/index"><img src="../img/icon-music-notes.png" alt="Add/Edit compositions" class=""><span>Compositions</span></a></li>
+                        <li><a href="/Recordings/index"><img src="../img/icon-recordings.png" alt="Add/Edit recordings" class=""><span>Recordings</span><br></a></li>
+                        <li><a href="/Choirs/index"><img src="../img/icon-choirs.png" alt="Add/Edit choirs" class=""><span>Choirs</span><br></a></li>
+                        <li><a href="/Directors/index"><img src="../img/icon-director.png" alt="Add/Edit directors" class=""><span>Directors</span><br></a></li>
+                        <li><a href="/Composers/index"><img src="../img/icon-musician.png" alt="Add/Edit composers" class=""><span>Composers</span><br></a></li>
+                        <li><a href="/Compositions/index"><img src="../img/icon-music-notes.png" alt="Add/Edit compositions" class=""><span>Compositions</span><br></a></li>
+                        <li><a href="/Singers/current"><img src="../img/cd-pair_32.png" alt="Choirs-Directors" class=""><span>Choirs-Directors</span></a></li>
+                        <li><a href="/Songs/current"><img src="../img/cc-pair_32.png" alt="Composers-Compositions" class=""><span>Composers-Compositions</span></a></li>
                     </ul>
                 </div>
             </div>
