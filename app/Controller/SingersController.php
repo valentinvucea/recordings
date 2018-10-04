@@ -194,6 +194,11 @@ class SingersController extends AppController {
 			}
 		}
 
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$singers = array();
 		
 		if ($this->Session->check('Singers') === false) {
@@ -220,6 +225,7 @@ class SingersController extends AppController {
 		if (!$this->Singer->exists($id)) {
 			throw new NotFoundException(__('Invalid Choir-Director pair'));
 		}
+
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$request = $this->request->data;
 
@@ -236,6 +242,11 @@ class SingersController extends AppController {
 				$this->Session->setFlash(__('The Choir-Director could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$singers_db = $this->Singer->find('first', array(
 				'conditions' => array('Singer.' . $this->Singer->primaryKey => $id),
 				'contain' => array(
@@ -305,6 +316,12 @@ class SingersController extends AppController {
 			throw new NotFoundException(__('Invalid singer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Singer->delete()) {
 			$this->Session->setFlash(__('Singer deleted'));
 			$this->redirect(array('action' => 'index'));

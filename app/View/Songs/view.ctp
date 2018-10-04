@@ -26,15 +26,17 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit this pair'), array('action' => 'edit', $song['Song']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete this pair'), array('action' => 'delete', $song['Song']['id']), null, __('Are you sure you want to delete # %s?', $song['Song']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Add new pair'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List all pairs'), array('action' => 'index')); ?> </li>
-		<li><hr/></li>
-		<li><?php echo $this->Html->link(__('List Compositions'), array('controller' => 'compositions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Composition'), array('controller' => 'compositions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Composer'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+        <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Edit this pair'), array('action' => 'edit', $song['Song']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete pair'), array('action' => 'delete', $song['Song']['id']), null, __('Are you sure you want to delete # %s?', $song['Song']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List all pairs'), array('action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add new pair'), array('action' => 'add')), $isAdmin);
+        echo '<li><hr/></li>';
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Compositions'), array('controller' => 'compositions', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Composition'), array('controller' => 'compositions', 'action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Composer'), array('controller' => 'composers', 'action' => 'add')), $isAdmin);
+        ?>
 	</ul>
 </div>
 

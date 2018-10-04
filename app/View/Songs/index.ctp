@@ -1,9 +1,15 @@
 <div>
+    <?php
+        if (true === $isAdmin) {
+    ?>
     <div class="actions-top grid-1-2 fright" style="padding: 5px 0px;">
         <ul>
             <li><?php echo $this->Html->link(__('Add Composer-Composition pair'), array('action' => 'add')); ?></li>
         </ul>
-    </div>    
+    </div>
+    <?php
+        }
+    ?>
 
     <div class="grid-1-2 fleft">
     <?php 
@@ -103,7 +109,7 @@
             </td>
             <td class="actions">
                 <?php
-                    if ($this->Session->check('links') === true) {
+                    if (true === $isAdmin && $this->Session->check('links') === true) {
                         if( !$this->Sessionplus->isLinkedArr('Songs', 'song_id', $song['Song']['id'], 'links') ) {
                             echo $this->Html->link(__('Link'), array('action' => 'link', $song['Song']['id']));
                         } else {
@@ -112,8 +118,12 @@
                     }
                 ?>
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $song['Song']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $song['Song']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $song['Song']['id']), null, __('Are you sure you want to delete # %s?', $song['Song']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $song['Song']['id']));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $song['Song']['id']), null, __('Are you sure you want to delete # %s?', $song['Song']['id']));
+                    }
+                 ?>
             </td>
         </tr>
         <?php endforeach; ?>

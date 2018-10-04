@@ -1,9 +1,15 @@
 <div>
-    <div class="actions-top grid-1-2 fright" style="padding: 5px 0px;">
-        <ul>
-            <li><?php echo $this->Html->link(__('Add Choir-Director pair'), array('action' => 'add')); ?></li>
-        </ul>
-    </div>    
+    <?php
+        if (true === $isAdmin) {
+    ?>
+        <div class="actions-top grid-1-2 fright" style="padding: 5px 0px;">
+            <ul>
+                <li><?php echo $this->Html->link(__('Add Choir-Director pair'), ['action' => 'add']); ?></li>
+            </ul>
+        </div>
+    <?php
+        }
+    ?>
 
     <div class="grid-1-2 fleft">
     <?php 
@@ -109,7 +115,7 @@
             <td><?php echo h($singer['Director']['name']); ?></td>            			
             <td class="actions">
                 <?php
-                    if ($this->Session->check('links') === true) {
+                    if (true === $isAdmin && $this->Session->check('links') === true) {
                         if( !$this->Sessionplus->isLinkedArr('Singers', 'singer_id', $singer['Singer']['id'], 'links') ) {
                             echo $this->Html->link(__('Link'), array('action' => 'link', $singer['Singer']['id']));
                         } else {
@@ -118,8 +124,12 @@
                     }
                 ?>			
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $singer['Singer']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $singer['Singer']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $singer['Singer']['id']), null, __('Are you sure you want to delete # %s?', $singer['Singer']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $singer['Singer']['id']));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $singer['Singer']['id']), null, __('Are you sure you want to delete # %s?', $singer['Singer']['id']));
+                    }
+                 ?>
             </td>
         </tr>
         <?php endforeach; ?>

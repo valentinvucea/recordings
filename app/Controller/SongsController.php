@@ -196,6 +196,11 @@ class SongsController extends AppController {
 			}
 		}
 
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$songs = array();
 		
 		if ($this->Session->check('Songs') === false) {
@@ -225,6 +230,12 @@ class SongsController extends AppController {
 			throw new NotFoundException(__('Invalid Composition-Composer pair'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Song->delete()) {
 			$this->Session->setFlash(__('Composition-Composer pair deleted'));
 			$this->redirect(array('action' => 'index'));
@@ -274,6 +285,12 @@ class SongsController extends AppController {
 				$this->Session->setFlash(__('The Composition-Composer could not be saved. Please, try again.'));
 			}
 		} else {
+
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$songs_db = $this->Song->find('first', array(
 				'conditions' => array('Song.' . $this->Song->primaryKey => $id),
 				'contain' => array(
