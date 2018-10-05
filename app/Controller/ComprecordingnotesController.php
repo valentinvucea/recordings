@@ -48,6 +48,11 @@ class ComprecordingnotesController extends AppController {
 				$this->Session->setFlash(__('The comprecordingnote could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 	}
 
 /**
@@ -69,6 +74,11 @@ class ComprecordingnotesController extends AppController {
 				$this->Session->setFlash(__('The comprecordingnote could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$options = array('conditions' => array('Comprecordingnote.' . $this->Comprecordingnote->primaryKey => $id));
 			$this->request->data = $this->Comprecordingnote->find('first', $options);
 		}
@@ -88,6 +98,12 @@ class ComprecordingnotesController extends AppController {
 			throw new NotFoundException(__('Invalid comprecordingnote'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Comprecordingnote->delete()) {
 			$this->Session->setFlash(__('Comprecordingnote deleted'));
 			$this->redirect(array('action' => 'index'));

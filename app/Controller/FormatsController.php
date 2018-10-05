@@ -93,15 +93,17 @@ class FormatsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+        
 		$this->Format->id = $id;
 		if (!$this->Format->exists()) {
 			throw new NotFoundException(__('Invalid format'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-        if (false === $this->isAdmin()) {
-            $this->Session->setFlash(__('Only Admins can delete records.'));
-            $this->redirect(array('action' => 'index'));
-        }
+
 		if ($this->Format->delete()) {
 			$this->Session->setFlash(__('Format deleted'));
 			$this->redirect(array('action' => 'index'));

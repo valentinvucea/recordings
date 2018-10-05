@@ -311,16 +311,16 @@ class SingersController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$this->Singer->id = $id;
 		if (!$this->Singer->exists()) {
 			throw new NotFoundException(__('Invalid singer'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-
-        if (false === $this->isAdmin()) {
-            $this->Session->setFlash(__('Only Admins can delete records.'));
-            $this->redirect(array('action' => 'index'));
-        }
 
 		if ($this->Singer->delete()) {
 			$this->Session->setFlash(__('Singer deleted'));

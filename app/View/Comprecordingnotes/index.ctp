@@ -12,8 +12,12 @@
 		<td><?php echo h($comprecordingnote['Comprecordingnote']['note']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $comprecordingnote['Comprecordingnote']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $comprecordingnote['Comprecordingnote']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $comprecordingnote['Comprecordingnote']['id']), null, __('Are you sure you want to delete # %s?', $comprecordingnote['Comprecordingnote']['id'])); ?>
+			<?php
+                if (true === $isAdmin) {
+                    echo $this->Html->link(__('Edit'), array('action' => 'edit', $comprecordingnote['Comprecordingnote']['id']));
+                    echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $comprecordingnote['Comprecordingnote']['id']), null, __('Are you sure you want to delete # %s?', $comprecordingnote['Comprecordingnote']['id']));
+                }
+			?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -35,6 +39,12 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Comp. Recording Note'), array('action' => 'add')); ?></li>
+    <?php
+        if (true === $isAdmin) {
+    ?>
+        <li><?php echo $this->Html->link(__('Add Comp. Recording Note'), array('action' => 'add')); ?></li>
+    <?php
+        }
+    ?>
 	</ul>
 </div>

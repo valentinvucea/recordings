@@ -169,16 +169,16 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Company->id = $id;
-		if (!$this->Company->exists()) {
-			throw new NotFoundException(__('Invalid company'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-
         if (false === $this->isAdmin()) {
             $this->Session->setFlash(__('Only Admins can delete records.'));
             $this->redirect(array('action' => 'index'));
         }
+
+        $this->Company->id = $id;
+		if (!$this->Company->exists()) {
+			throw new NotFoundException(__('Invalid company'));
+		}
+		$this->request->onlyAllow('post', 'delete');
 
 		if ($this->Company->delete()) {
 			$this->Session->setFlash(__('Company deleted'));

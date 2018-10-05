@@ -225,16 +225,16 @@ class SongsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$this->Song->id = $id;
 		if (!$this->Song->exists()) {
 			throw new NotFoundException(__('Invalid Composition-Composer pair'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-
-        if (false === $this->isAdmin()) {
-            $this->Session->setFlash(__('Only Admins can delete records.'));
-            $this->redirect(array('action' => 'index'));
-        }
 
 		if ($this->Song->delete()) {
 			$this->Session->setFlash(__('Composition-Composer pair deleted'));
