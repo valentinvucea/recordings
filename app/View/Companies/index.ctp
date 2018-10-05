@@ -58,8 +58,12 @@
 		<td><?php echo h($company['Company']['company']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $company['Company']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?>
+            <?php
+                if (true === $isAdmin) {
+                    echo $this->Html->link(__('Edit'), ['action' => 'edit', $company['Company']['id']]);
+                    echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $company['Company']['id']], null, __('Are you sure you want to delete # %s?', $company['Company']['id']));
+                }
+            ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -81,7 +85,13 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Company'), array('action' => 'add')); ?></li>
+    <?php
+        if (true === $isAdmin) {
+    ?>
+        <li><?php echo $this->Html->link(__('Add Company'), array('action' => 'add')); ?></li>
+    <?php
+        }
+    ?>
 	</ul>
 </div>
 

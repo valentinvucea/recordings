@@ -48,6 +48,11 @@ class FormatsController extends AppController {
 				$this->Session->setFlash(__('The format could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 	}
 
 /**
@@ -69,6 +74,11 @@ class FormatsController extends AppController {
 				$this->Session->setFlash(__('The format could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$options = array('conditions' => array('Format.' . $this->Format->primaryKey => $id));
 			$this->request->data = $this->Format->find('first', $options);
 		}
@@ -88,6 +98,10 @@ class FormatsController extends AppController {
 			throw new NotFoundException(__('Invalid format'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 		if ($this->Format->delete()) {
 			$this->Session->setFlash(__('Format deleted'));
 			$this->redirect(array('action' => 'index'));

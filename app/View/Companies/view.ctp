@@ -16,9 +16,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Company'), array('action' => 'edit', $company['Company']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Company'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Company'), array('action' => 'add')); ?> </li>
+        <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Companies'), array('action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Edit Company'), array('action' => 'edit', $company['Company']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete Company'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Company'), array('action' => 'add')), $isAdmin);
+        ?>
 	</ul>
 </div>

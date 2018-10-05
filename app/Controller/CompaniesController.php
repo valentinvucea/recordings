@@ -124,6 +124,11 @@ class CompaniesController extends AppController {
 				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 	}
 
 /**
@@ -145,6 +150,11 @@ class CompaniesController extends AppController {
 				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
 			$this->request->data = $this->Company->find('first', $options);
 		}
@@ -164,6 +174,12 @@ class CompaniesController extends AppController {
 			throw new NotFoundException(__('Invalid company'));
 		}
 		$this->request->onlyAllow('post', 'delete');
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		if ($this->Company->delete()) {
 			$this->Session->setFlash(__('Company deleted'));
 			$this->redirect(array('action' => 'index'));

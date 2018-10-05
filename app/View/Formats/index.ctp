@@ -12,8 +12,12 @@
 		<td><?php echo h($format['Format']['format']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $format['Format']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $format['Format']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $format['Format']['id']), null, __('Are you sure you want to delete # %s?', $format['Format']['id'])); ?>
+            <?php
+                if (true === $isAdmin) {
+                    echo $this->Html->link(__('Edit'), array('action' => 'edit', $format['Format']['id']));
+                    echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $format['Format']['id']), null, __('Are you sure you want to delete # %s?', $format['Format']['id']));
+                }
+            ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -32,9 +36,16 @@
 	?>
 	</div>
 </div>
+
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Add Format'), array('action' => 'add')); ?></li>
-	</ul>
+    <h3><?php echo __('Actions'); ?></h3>
+    <ul>
+        <?php
+            if (true === $isAdmin) {
+        ?>
+        <li><?php echo $this->Html->link(__('Add Format'), ['action' => 'add']); ?></li>
+        <?php
+            }
+        ?>
+    </ul>
 </div>
