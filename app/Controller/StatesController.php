@@ -29,8 +29,13 @@ class StatesController extends AppController {
 		if (!$this->State->exists($id)) {
 			throw new NotFoundException(__('Invalid state'));
 		}
-		$options = array('conditions' => array('State.' . $this->State->primaryKey => $id));
-		$this->set('state', $this->State->find('first', $options));
+
+        $state = $this->State->find('first', array(
+            'conditions' => array('State.' . $this->State->primaryKey => $id),
+            'contain' => array('Country')
+        ));
+
+		$this->set(compact('state'));
 	}
 
 /**
@@ -48,6 +53,11 @@ class StatesController extends AppController {
 				$this->Session->setFlash(__('The state could not be saved. Please, try again.'));
 			}
 		}
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$countries = $this->State->Country->find('list');
 		$this->set(compact('countries'));
 	}
@@ -71,6 +81,11 @@ class StatesController extends AppController {
 				$this->Session->setFlash(__('The state could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$options = array('conditions' => array('State.' . $this->State->primaryKey => $id));
 			$this->request->data = $this->State->find('first', $options);
 		}
@@ -87,6 +102,11 @@ class StatesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$this->State->id = $id;
 		if (!$this->State->exists()) {
 			throw new NotFoundException(__('Invalid state'));

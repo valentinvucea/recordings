@@ -47,6 +47,11 @@ class PositionsController extends AppController {
 				$this->Session->setFlash(__('The position could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 	}
 
 /**
@@ -68,6 +73,11 @@ class PositionsController extends AppController {
 				$this->Session->setFlash(__('The position could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$options = array('conditions' => array('Position.' . $this->Position->primaryKey => $id));
 			$this->request->data = $this->Position->find('first', $options);
 		}
@@ -82,6 +92,11 @@ class PositionsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$this->Position->id = $id;
 		if (!$this->Position->exists()) {
 			throw new NotFoundException(__('Invalid position'));

@@ -48,6 +48,11 @@ class GenresController extends AppController {
 				$this->Session->setFlash(__('The genre could not be saved. Please, try again.'));
 			}
 		}
+
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can add new records.'));
+            $this->redirect(array('action' => 'index'));
+        }
 	}
 
 /**
@@ -69,6 +74,11 @@ class GenresController extends AppController {
 				$this->Session->setFlash(__('The genre could not be saved. Please, try again.'));
 			}
 		} else {
+            if (false === $this->isAdmin()) {
+                $this->Session->setFlash(__('Only Admins can edit records.'));
+                $this->redirect(array('action' => 'index'));
+            }
+
 			$options = array('conditions' => array('Genre.' . $this->Genre->primaryKey => $id));
 			$this->request->data = $this->Genre->find('first', $options);
 		}
@@ -83,6 +93,11 @@ class GenresController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+        if (false === $this->isAdmin()) {
+            $this->Session->setFlash(__('Only Admins can delete records.'));
+            $this->redirect(array('action' => 'index'));
+        }
+
 		$this->Genre->id = $id;
 		if (!$this->Genre->exists()) {
 			throw new NotFoundException(__('Invalid genre'));

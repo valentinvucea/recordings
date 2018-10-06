@@ -14,8 +14,12 @@
 		<td><?php echo h($presentation['Presentation']['notes']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $presentation['Presentation']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $presentation['Presentation']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $presentation['Presentation']['id']), null, __('Are you sure you want to delete # %s?', $presentation['Presentation']['id'])); ?>
+            <?php
+                if (true === $isAdmin) {
+                    echo $this->Html->link(__('Edit'), array('action' => 'edit', $presentation['Presentation']['id']));
+                    echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $presentation['Presentation']['id']), null, __('Are you sure you want to delete # %s?', $presentation['Presentation']['id']));
+                }
+             ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -35,8 +39,10 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Add Presentation'), array('action' => 'add')); ?></li>
-	</ul>
+    <h3><?php echo __('Actions'); ?></h3>
+    <ul>
+    <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Presentation'), array('action' => 'add')), $isAdmin);
+    ?>
+    </ul>
 </div>

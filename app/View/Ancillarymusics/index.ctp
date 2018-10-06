@@ -45,12 +45,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
         <?php
-            if (true === $isAdmin) {
+            $this->Authorize->echoIfAdmin($this->Html->link(__('Add Ancillary music'), array('action' => 'add')), $isAdmin);
         ?>
-            <li><?php echo $this->Html->link(__('Add Ancillary music'), array('action' => 'add')); ?></li>
-        <?php
-            }
-        ?>
-
 	</ul>
 </div>

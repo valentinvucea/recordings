@@ -21,9 +21,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Presentation'), array('action' => 'edit', $presentation['Presentation']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Presentation'), array('action' => 'delete', $presentation['Presentation']['id']), null, __('Are you sure you want to delete # %s?', $presentation['Presentation']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Presentations'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Presentation'), array('action' => 'add')); ?> </li>
+        <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Presentations'), array('action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Edit Presentation'), array('action' => 'edit', $presentation['Presentation']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Form->postLink(__('Delete Presentation'), array('action' => 'delete', $presentation['Presentation']['id']), null, __('Are you sure you want to delete # %s?', $presentation['Presentation']['id'])), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Presentation'), array('action' => 'add')), $isAdmin);
+        ?>
 	</ul>
 </div>
