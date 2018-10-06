@@ -15,8 +15,12 @@
             <td><?php echo h($country['Country']['country']); ?>&nbsp;</td>
             <td class="actions">
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $country['Country']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $country['Country']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $country['Country']['id']), null, __('Are you sure you want to delete # %s?', $country['Country']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $country['Country']['id']));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $country['Country']['id']), null, __('Are you sure you want to delete # %s?', $country['Country']['id']));
+                    }
+                 ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -41,9 +45,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Country'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Add State'), array('controller' => 'states', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List States'), array('controller' => 'states', 'action' => 'index')); ?> </li>
+        <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Country'), array('action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add State'), array('controller' => 'states', 'action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List States'), array('controller' => 'states', 'action' => 'index')), true);
+        ?>
 	</ul>
 </div>
 
