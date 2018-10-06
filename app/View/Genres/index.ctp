@@ -15,8 +15,12 @@
 		<td><?php echo h($genre['Genre']['genre']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $genre['Genre']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $genre['Genre']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $genre['Genre']['id']), null, __('Are you sure you want to delete # %s?', $genre['Genre']['id'])); ?>
+			<?php
+                if (true === $isAdmin) {
+                    echo $this->Html->link(__('Edit'), array('action' => 'edit', $genre['Genre']['id']));
+                    echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $genre['Genre']['id']), null, __('Are you sure you want to delete # %s?', $genre['Genre']['id']));
+                }
+             ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -38,7 +42,9 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Genre'), array('action' => 'add')); ?></li>
+        <?php
+            $this->Authorize->echoIfAdmin($this->Html->link(__('Add Genre'), array('action' => 'add')), $isAdmin);
+        ?>
 	</ul>
 </div>
 

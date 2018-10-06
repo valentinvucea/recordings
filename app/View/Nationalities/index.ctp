@@ -12,8 +12,12 @@
 		<td><?php echo h($nationality['Nationality']['nationality']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $nationality['Nationality']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $nationality['Nationality']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $nationality['Nationality']['id']), null, __('Are you sure you want to delete # %s?', $nationality['Nationality']['id'])); ?>
+			<?php
+                if (true === $isAdmin) {
+                    echo $this->Html->link(__('Edit'), array('action' => 'edit', $nationality['Nationality']['id']));
+                    echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $nationality['Nationality']['id']), null, __('Are you sure you want to delete # %s?', $nationality['Nationality']['id']));
+                }
+             ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -35,8 +39,10 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Nationality'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Director'), array('controller' => 'composers', 'action' => 'add')); ?> </li>
+        <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Nationality'), array('action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Composers'), array('controller' => 'composers', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Director'), array('controller' => 'composers', 'action' => 'add')), $isAdmin);
+        ?>
 	</ul>
 </div>

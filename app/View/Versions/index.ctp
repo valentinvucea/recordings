@@ -15,8 +15,12 @@
             <td><?php echo h($version['Version']['version']); ?>&nbsp;</td>
             <td class="actions">
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $version['Version']['id'])); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $version['Version']['id'])); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $version['Version']['id']), null, __('Are you sure you want to delete # %s?', $version['Version']['id'])); ?>
+                <?php
+                    if (true === $isAdmin) {
+                        echo $this->Html->link(__('Edit'), array('action' => 'edit', $version['Version']['id']));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $version['Version']['id']), null, __('Are you sure you want to delete # %s?', $version['Version']['id']));
+                    }
+                 ?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -38,9 +42,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Version'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Compositions'), array('controller' => 'compositions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Composition'), array('controller' => 'compositions', 'action' => 'add')); ?> </li>
+        <?php
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Version'), array('action' => 'add')), $isAdmin);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('List Compositions'), array('controller' => 'compositions', 'action' => 'index')), true);
+        $this->Authorize->echoIfAdmin($this->Html->link(__('Add Composition'), array('controller' => 'compositions', 'action' => 'add')), $isAdmin);
+        ?>
 	</ul>
 </div>
 
