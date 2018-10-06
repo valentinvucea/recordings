@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Composition recording note'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('note');
+		echo $this->Form->input('note', array('label' => 'Rec. Standard Note'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

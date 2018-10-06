@@ -6,7 +6,7 @@
 			<?php echo h($comprecordingnote['Comprecordingnote']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Note'); ?></dt>
+		<dt><?php echo __('Rec. Standard Note'); ?></dt>
 		<dd>
 			<?php echo h($comprecordingnote['Comprecordingnote']['note']); ?>
 			&nbsp;

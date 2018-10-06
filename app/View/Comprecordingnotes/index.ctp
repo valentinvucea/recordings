@@ -3,7 +3,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('note'); ?></th>
+			<th><?php echo $this->Paginator->sort('note', 'Rec. Standard Note'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($comprecordingnotes as $comprecordingnote): ?>
