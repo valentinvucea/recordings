@@ -58,123 +58,14 @@
  * For MySQL to connect via socket specify the `unix_socket` parameter instead of `host` and `port`
  */
 class DATABASE_CONFIG {
-	
-	/*
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'admink6x43Jk',
-		'password' => 'AzqGgm2a1SCc',
-		'database' => 'recordings',		
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	*/
-	public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '4reQeX@D',
-		'database' => 'recordings',		
+		'login' => 'admin',
+		'password' => 'admin',
+		'database' => 'recordings_db',		
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);	
-	
-
-	/* zxq.net & local */
-	/*
-	public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => '888548_user',
-		'password' => 'parola00',
-		'database' => 'recordings_zzl_db',		
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	*/
-
-	/* 000webhost */
-	/*
-		public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'mysql6.000webhost.com',
-		'login' => 'a6273919_user',
-		'password' => 'parola00',
-		'database' => 'a6273919_db',		
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);	
-	
-	/* Byethost */
-	/*
-		public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'sql306.byethost12.com',
-		'login' => 'b12_14380050',
-		'password' => 'parola00',
-		'database' => 'b12_14380050_db',		
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	
-	
-	*/
-	
-	/* 2freehosting.com - recordings.yzi.me */
-	/*
-		public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'mysql.2freehosting.com',
-		'login' => 'u867850604_user',
-		'password' => 'parola00',
-		'database' => 'u867850604_db',		
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-	
-	
-	*/	
-
-	/*
-	public $test = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'test_database_name',
-		'prefix' => '',
-		//'encoding' => 'utf8',
-	);
-	*/
-
-	/*
-	public function __construct() {
-               if (getenv("OPENSHIFT_MYSQL_DB_HOST")):
-	           $this->default['host']       = getenv("OPENSHIFT_MYSQL_DB_HOST");
-	           $this->default['port']       = getenv("OPENSHIFT_MYSQL_DB_PORT");
-	           $this->default['login']      = getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	           $this->default['password']   = getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	           $this->default['database']   = getenv("OPENSHIFT_APP_NAME");
-	           $this->default['datasource'] = 'Database/Mysql';
-	           $this->test['datasource']    = 'Database/Mysql';
-	       else:
-	           $this->default['host']       = getenv("OPENSHIFT_POSTGRESQL_DB_HOST");
-	           $this->default['port']       = getenv("OPENSHIFT_POSTGRESQL_DB_PORT");
-	           $this->default['login']      = getenv("OPENSHIFT_POSTGRESQL_DB_USERNAME");
-	           $this->default['password']   = getenv("OPENSHIFT_POSTGRESQL_DB_PASSWORD");
-	           $this->default['database']   = getenv("OPENSHIFT_APP_NAME");
-	           $this->default['datasource'] = 'Database/Postgres';
-	           $this->test['datasource']    = 'Database/Postgres';
-	       endif;
-	}
-	*/
-
 }
