@@ -7,3 +7,4 @@ app/tmp/cache/views/*
 !app/tmp/cache/view/empty
 app/tmp/logs/*
 .gitignore
+recordings.code-workspace
